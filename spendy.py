@@ -10,6 +10,10 @@ def home():
 def signup():
     return render_template('signup.html')
 
+@spendyApp.route('/signin')
+def signin():
+    return render_template('signin.html')
+
 if __name__ == '__main__':
     spendyApp.run(port=3300,debug=True)
     
