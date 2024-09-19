@@ -1,12 +1,15 @@
 class Config:
-    SECRET_GEY  = 'sabadaBADABUDFJLSDFSHGQHGOIHhohihoiHOIFH'
+    SECRET_KEY  = 'sabadaBADABUDFJLSDFSHGQHGOIHhohihoiHOIFH'
     DEBUG       = True
 
 class DevelopmentConfig:
     MYSQL_HOST      = 'localhost'
     MYSQL_USER      = 'root'
-    MYSQL_PASSWORD  = ''
+    MYSQL_PASSWORD  = 'mysql'
     MYSQL_DB        = 'spendy'
 
 
+config = {
+    'development': DevelopmentConfig
+}
     
