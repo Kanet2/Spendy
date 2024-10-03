@@ -1,7 +1,10 @@
 from flask import Flask,render_template,url_for, request, redirect
 from flask_mysqldb import MySQL
 from werkzeug.security import generate_password_hash
+from Models.ModelUser import ModelUser
+from Models.Entities.User import User
 import datetime
+from config import config
 
 spendyApp = Flask(__name__)  
 db        = MySQL(spendyApp)
@@ -17,7 +20,7 @@ def signup():
         correo = request.form['correo']
         clave  = request.form['clave']
         claveCifrada = generate_password_hash(clave)
-        fechaReg = datetime.datetime()
+        fechaReg = datetime.datetime.now()
         regUsuario = db.connection.cursor()
         regUsuario.execute("INSERT INTO usuario (nombre, correo, clave, fechareg) VALUES(%s,%s,%s,%s)",(nombre, correo,claveCifrada,fechaReg))
         db.connection.commit()
@@ -30,5 +33,6 @@ def signin():
     return render_template('signin.html')
 
 if __name__ == '__main__':
-    spendyApp.run(port=3300,debug=True)
+    spendyApp.config.from_object(config['development'])
+    spendyApp.run(port=3300)
     
