@@ -8,7 +8,7 @@ class User(UserMixin):
         self.correo = correo
         self.clave = clave
         self.fechareg = fechareg
-        self.perfil = perfil;
-    @classmethod
-    def validarClave(self,clabeCifrada,clave):
-        return check_password_hash(clabeCifrada, clave)
+        self.perfil = perfil
+        @classmethod
+        def validarClave(self, clabeCifrada, clave):
+            return check_password_hash(clabeCifrada, clave)

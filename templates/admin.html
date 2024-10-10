@@ -18,20 +18,20 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+              Operaciones
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Act</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="/sUsuario">Usuarios</a></li>
+              <li><a class="dropdown-item" href="#"></a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/signup">Registrate</a>
+            <a class="nav-link">{{current_user.nombre}}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/signin">Iniciar sesion <i class="fa-regular fa-user"></i></a>
+            <a class="nav-link" href="/signout">Salir <i class="fa-solid fa-right-from-bracket"></i></a>
           </li>
         </ul>
         <form class="d-flex" role="search">

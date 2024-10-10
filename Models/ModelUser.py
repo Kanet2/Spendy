@@ -1,5 +1,6 @@
 from Models.Entities.User import User 
 class ModelUser:
+    @classmethod
     def signin(self, db, usuario):
         try:
             selUsuario = db.connection.cursor()
@@ -13,6 +14,7 @@ class ModelUser:
         except Exception as ex:
             raise Exception(ex)
         
+    @classmethod
     def get_by_id(self, db, id):
         try:   
             selUsuario = db.connection.cursor()

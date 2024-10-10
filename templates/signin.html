@@ -1,6 +1,10 @@
 {% extends 'layout.html' %}
 {% block titulo %}Crea una cuenta{% endblock %}
 {% block contenido %}
+
+<Style>
+</Style>
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand" href="/"><i class="fa-solid fa-sack-dollar"></i> Spendy
@@ -44,18 +48,18 @@
 
   <div class="container">
     <main class="form-signin w-100 m-auto">
-    <form>
+    <form action="/signin" method="post">
         <br>
         <br>
       <img class="mb-4" src="/static/img/Perfil.png" alt="" width="400" height="350">
       <h1 class="h3 mb-3 fw-normal">Por favor inicia sesion</h1>
   
       <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <input type="email" name="correo" class="form-control" id="floatingInput" placeholder="name@example.com">
         <label for="floatingInput">Correo Electronico</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <input type="password" name="clave" class="form-control" id="floatingPassword" placeholder="Password">
         <label for="floatingPassword">Contraseña</label>
       </div>
   

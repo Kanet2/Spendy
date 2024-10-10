@@ -1,5 +1,6 @@
 from flask import Flask,render_template,url_for, request, redirect
 from flask_mysqldb import MySQL
+from flask_login import LoginManager, login_user, logout_user
 from werkzeug.security import generate_password_hash
 from Models.ModelUser import ModelUser
 from Models.Entities.User import User
@@ -8,6 +9,11 @@ from config import config
 
 spendyApp = Flask(__name__)  
 db        = MySQL(spendyApp)
+adminSesion = LoginManager(spendyApp)
+
+@adminSesion.user_loader
+def cargaUsuario(id):
+    return ModelUser.get_by_id(db, id)
 
 @spendyApp.route('/')
 def home():
@@ -28,9 +34,31 @@ def signup():
     else:
         return render_template('signup.html')
 
-@spendyApp.route('/signin')
+@spendyApp.route('/signin', methods=['GET','POST'])
 def signin():
-    return render_template('signin.html')
+    if request.method == 'POST':
+        usuario = User()
+        usuario = User(0, None, request.form['correo'], request.form['clave'], None, None)
+
+        usuarioAutenticado = ModelUser.signin(db, usuario)
+        if usuarioAutenticado is not None:
+            login_user(usuarioAutenticado)
+            if usuarioAutenticado.clave: 
+                if usuarioAutenticado.perfil == 'A':
+                    return render_template('admin.html')
+                else: 
+                    return render_template('user.html')
+            else:
+                return 'CONTRASEÑA INCORRECTA'    
+        else:
+            return 'USUARIO INEXISTENTE'
+    else:
+        return render_template('signin.html')
+
+@spendyApp.route('/signout', methods=['GET','POST'])
+def signout():
+    logout_user() 
+    return render_template('home.html')
 
 if __name__ == '__main__':
     spendyApp.config.from_object(config['development'])
