@@ -2,8 +2,8 @@ from flask import Flask,render_template,url_for, request, redirect
 from flask_mysqldb import MySQL
 from flask_login import LoginManager, login_user, logout_user
 from werkzeug.security import generate_password_hash
-from Models.ModelUser import ModelUser
-from Models.Entities.User import User
+from models.ModelUser import ModelUser
+from models.entities.User import User
 import datetime
 from config import config
 
@@ -37,7 +37,6 @@ def signup():
 @spendyApp.route('/signin', methods=['GET','POST'])
 def signin():
     if request.method == 'POST':
-        usuario = User()
         usuario = User(0, None, request.form['correo'], request.form['clave'], None, None)
 
         usuarioAutenticado = ModelUser.signin(db, usuario)
@@ -47,7 +46,7 @@ def signin():
                 if usuarioAutenticado.perfil == 'A':
                     return render_template('admin.html')
                 else: 
-                    return render_template('user.html')
+                    return render_template('usuarios.html')
             else:
                 return 'CONTRASEÑA INCORRECTA'    
         else:
@@ -59,6 +58,14 @@ def signin():
 def signout():
     logout_user() 
     return render_template('home.html')
+
+@spendyApp.route('/sUsuarios', methods=['GET','POST'])
+def selUsuario():
+    selUsuario = db.connection.cursor()
+    selUsuario.execute("SELECT * FROM usuario")
+    u = selUsuario.fetchall()
+    selUsuario.close
+    return render_template('usuarios.html', usuarios = u)
 
 if __name__ == '__main__':
     spendyApp.config.from_object(config['development'])
