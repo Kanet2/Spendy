@@ -1,4 +1,4 @@
-from flask import Flask,render_template,url_for, request, redirect
+from flask import Flask,render_template, url_for, request, redirect, flash
 from flask_mysqldb import MySQL
 from flask_login import LoginManager, login_user, logout_user
 from werkzeug.security import generate_password_hash
@@ -48,9 +48,11 @@ def signin():
                 else: 
                     return render_template('usuarios.html')
             else:
-                return 'CONTRASEÑA INCORRECTA'    
+                flash('Contraseña incorrecta')
+                return redirect(request.url)    
         else:
-            return 'USUARIO INEXISTENTE'
+            flash('Usuario inexistente')
+            return redirect(request.url)
     else:
         return render_template('signin.html')
 
@@ -59,14 +61,28 @@ def signout():
     logout_user() 
     return render_template('home.html')
 
-@spendyApp.route('/sUsuarios', methods=['GET','POST'])
-def selUsuario():
+@spendyApp.route('/sUsuario', methods=['GET','POST'])
+def sUsuario():
     selUsuario = db.connection.cursor()
     selUsuario.execute("SELECT * FROM usuario")
     u = selUsuario.fetchall()
     selUsuario.close
     return render_template('usuarios.html', usuarios = u)
 
+@spendyApp.route('/iUsuario',methods=['GET','POST'])
+def iUsuario():
+    nombre = request.form['nombre']
+    correo = request.form['correo']
+    clave = request.form['clave']
+    claveCifrada = generate_password_hash(clave)
+    fechareg = datetime.datetime.now()
+    perfil = request.form['perfil']
+
+    crearUsuario = db.connection.cursor()
+    crearUsuario.execute("INSERT INTO usuario (nombre, correo, clave, fechareg, perfil) VALUES(%s, %s, %s, %s, %s)",(nombre, correo, claveCifrada, fechareg, perfil))
+    db.connection.commit()
+    flash('Usuario Creado')
+    return redirect('/sUsuario')
 if __name__ == '__main__':
     spendyApp.config.from_object(config['development'])
     spendyApp.run(port=3300)
