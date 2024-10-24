@@ -83,6 +83,32 @@ def iUsuario():
     db.connection.commit()
     flash('Usuario Creado')
     return redirect('/sUsuario')
+
+@spendyApp.route('/uUsuario/<int:id>',methods=['GET','POST'])
+def uUsuario(id):
+    nombre = request.form['nombre']
+    correo = request.form['correo']
+    clave = request.form['clave']
+    claveCifrada = generate_password_hash(clave)
+    fechareg = datetime.datetime.now()
+    perfil = request.form['perfil']
+
+    editarUsuario = db.connection.cursor()
+    editarUsuario.execute("Update usuario SET nombre = %s, correo = %s, clave = %s, fechareg = %s, perfil = %s WHERE id = %s",
+    (nombre,correo,claveCifrada,fechareg,perfil,id))
+    db.connection.commit()
+    flash('Usuario Actualizado')
+    return redirect('/sUsuario')
+
+@spendyApp.route('/dUsuario/<int:id>', methods=['GET','POST']) 
+def dUsuario(id):
+    eliminarCuenta = db.connection.cursor()
+    eliminarCuenta.execute("DELETE FROM usuario WHERE id=%s",(id,))
+    db.connection.commit()
+    flash('Usuario Eliminado')
+    return redirect('/sUsuario')
+
+
 if __name__ == '__main__':
     spendyApp.config.from_object(config['development'])
     spendyApp.run(port=3300)
