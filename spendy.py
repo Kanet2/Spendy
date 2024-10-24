@@ -46,7 +46,7 @@ def signin():
                 if usuarioAutenticado.perfil == 'A':
                     return render_template('admin.html')
                 else: 
-                    return render_template('usuarios.html')
+                    return redirect('/sUsuario')
             else:
                 flash('Contraseña incorrecta')
                 return redirect(request.url)    
@@ -67,7 +67,7 @@ def sUsuario():
     selUsuario.execute("SELECT * FROM usuario")
     u = selUsuario.fetchall()
     selUsuario.close
-    return render_template('usuarios.html', usuarios = u)
+    return render_template('usuarios.html', usuarios=u)
 
 @spendyApp.route('/iUsuario',methods=['GET','POST'])
 def iUsuario():
