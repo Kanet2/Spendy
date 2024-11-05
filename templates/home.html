@@ -8,15 +8,38 @@
   }
 
   body {
-    background-color: grey;
+    background-color: rgb(151, 150, 150);
 
   }
 
   .nav-item:hover {
     background-color: bisque;
   }
-  p{
+
+  p {
     font-size: 3vh;
+  }
+
+  #carouselExampleInterval:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .titulo:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  #carouselExampleInterval,
+  .titulo {
+    transition: transform 0.3s ease-in-out;
+  }
+  li[class="nav-item"]:hover{
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  li[class="nav-item"]{
+    transition: transform 0.3s ease-in-out;
   }
 </style>
 
@@ -68,14 +91,15 @@
   </div>
 </nav>
 <div class="descripcion" style="display: flex; background-color: lemonchiffon; margin: 1vh; padding: 4vh;">
-  <div style="text-align: center; width: 49%; padding: 1vh;">
+  <div class="titulo" style="text-align: center; width: 49%; padding: 1vh; background-color: white;">
     <h1 style="padding: 1vh; margin: 5vh 25vh; font-size: 7vh;">Spendy</h1>
     <span>
       <p>Ahorra y Gana con Spendy</p>
     </span>
   </div>
-  <div style=" margin: 50px; width: 1vh; background-color: black;" ></div>
-  <div style="width: 49%; padding: 1vh;" id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+  <div style=" margin: 50px; width: 1vh; background-color: black;">
+  </div>
+  <div style="width: 49%;" id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active" data-bs-interval="10000">
         <img src="{{ url_for('static',filename='/img/a.jpg')}}" class="d-block w-100" alt="...">
