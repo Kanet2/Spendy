@@ -45,7 +45,10 @@
     margin: 0 .5vh;
   }
 
-
+  input{
+    margin: 0;
+    padding: 0;
+  }
 </style>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -98,35 +101,38 @@
 
 <div style="display: flex; background-color: lemonchiffon; margin: 1vh; padding: 4vh;">
   
-  <div class="container" style="background-color: white; margin: 1vh; padding: 9vh; width: 49%; text-align: center;">
+  <div class="container" style="background-color: white; margin: 1vh; padding: 9vh; width: 49%; align-items: center;">
     <form method="post" action="/signup" class="row g-3">
       
-            <h1><b>Registrate</b></h1>
+            <h1 style="text-align: center;padding: 20px; font-size: 50px;"><b>Registrate</b></h1>
+              <div class="formulariooo">
 
-            <div style="display: flex;">
-            <label for="nr">Nombre completo</label>
-            <input id="nr" name="nombre" placeholder="TU mama perez" style="width: 35%; margin: auto;
-            ">
-            </div>
-          
-                <div style="display: flex;">
-                <label for="floatingInput">Correo Electronico</label>
-                <input type="email" name="correo" 
-                  placeholder="name@example.com">
-                </div>
-              
-                <div style="display: flex;">
-                <div style="display: flex;">
-                <label for="floatingPassword">Contraseña</label>
-                <input type="password" name="clave"  placeholder="Password">
+                <style>
+                  label{
+                    width: 35%;
+                    text-align: right;
+                    padding-top: 5%;
+                  }
+                </style>
+                
+                  <label for="nom" style="">Nombre:</label>
+                  <input style="" type="text" name="nombre" id="nom">
+                  <br>
+                  <label for="corr" style="">Correo:</label>
+                  <input style="" type="email" name="correo" id="corr">
+                  <br>
+                  <label style="" for="contra" >Contraseña:</label>
+                  <input style="" type="password" name="contraseña" id="contra">
+                
+
+                
+                  
+                  
+                  
+                
+                
               </div>
-                </div>
-              
-                <label>
-                  <input type="checkbox" value="remember-me"> Recordar mi cuenta
-                </label>
-              
-              <button type="submit">Iniciar Sesion</button>
+              <button type="submit" style="width: 35%;margin: 60px auto 20px auto; padding: 10px;">Iniciar Sesion</button>
               <hr class="my-4">
               <small >Dando click en iniciar sesion aceptas los terminos y
                 condiciones</small>          
