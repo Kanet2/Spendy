@@ -1,4 +1,4 @@
-from flask import Flask,render_template, url_for, request, redirect, flash
+from flask import Flask,render_template, url_for, request, redirect, flash, session
 from flask_mysqldb import MySQL
 from flask_login import LoginManager, login_user, logout_user
 from werkzeug.security import generate_password_hash
@@ -16,7 +16,14 @@ def cargaUsuario(id):
     return ModelUser.get_by_id(db, id)
 
 @spendyApp.route('/')
+
 def home():
+    '''if session['NombreU']:
+        if session['PerfilU'] == 'A':
+            return render_template('admin.html')
+        else: 
+            return render_template('user.html')
+    else:'''
     return render_template('home.html')
 
 @spendyApp.route('/signup',methods=['GET','POST'])
@@ -42,6 +49,8 @@ def signin():
         usuarioAutenticado = ModelUser.signin(db, usuario)
         if usuarioAutenticado is not None:
             login_user(usuarioAutenticado)
+            session['NombreU'] = usuarioAutenticado.nombre
+            session['PerfilU'] = usuarioAutenticado.perfil
             if usuarioAutenticado.clave: 
                 if usuarioAutenticado.perfil == 'A':
                     return render_template('admin.html')
