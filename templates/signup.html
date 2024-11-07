@@ -45,9 +45,16 @@
     margin: 0 .5vh;
   }
 
-  input{
+  input {
     margin: 0;
     padding: 0;
+    border: none;
+    border-bottom: 1px solid black;
+  }
+  input:focus{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
   }
 </style>
 
@@ -99,52 +106,39 @@
   </div>
 </nav>
 
-<div style="display: flex; background-color: lemonchiffon; margin: 1vh; padding: 4vh;">
-  
-  <div class="container" style="background-color: white; margin: 1vh; padding: 9vh; width: 49%; align-items: center;">
+<div style="display: flex; background-color: lemonchiffon; margin: 1vh 60vh; padding: 4vh;">
+
+  <div class="container" style="background-color: white; padding: 7vh; width: 90%; margin: auto;">
     <form method="post" action="/signup" class="row g-3">
-      
-            <h1 style="text-align: center;padding: 20px; font-size: 50px;"><b>Registrate</b></h1>
-              <div class="formulariooo">
 
-                <style>
-                  label{
-                    width: 35%;
-                    text-align: right;
-                    padding-top: 5%;
-                  }
-                </style>
-                
-                  <label for="nom" style="">Nombre:</label>
-                  <input style="" type="text" name="nombre" id="nom">
-                  <br>
-                  <label for="corr" style="">Correo:</label>
-                  <input style="" type="email" name="correo" id="corr">
-                  <br>
-                  <label style="" for="contra" >Contraseña:</label>
-                  <input style="" type="password" name="contraseña" id="contra">
-                
+      <h1 style="text-align: center; padding-top: 5px; font-size: 40px;"><b>Registrate</b></h1>
+    
 
-                
-                  
-                  
-                  
-                
-                
-              </div>
-              <button type="submit" style="width: 35%;margin: 60px auto 20px auto; padding: 10px;">Iniciar Sesion</button>
-              <hr class="my-4">
-              <small >Dando click en iniciar sesion aceptas los terminos y
-                condiciones</small>          
+        <style>
+          label {
+            width: 35%;
+            padding-top: 50px;
+            font-size: 20px;
+          }
+          
+        </style>
+
+        <label for="nom" style="">Nombre:</label><br>
+        <input style="" type="text" name="nombre" id="nom"><br>
+
+        <label for="corr" style="">Correo:</label><br>
+        <input style="" type="email" name="correo" id="corr"><br>
+
+        <label style="" for="contra">Contraseña:</label><br>
+        <input style="" type="password" name="clave" id="contra">
+
+      <button type="submit" style="width: 35%;margin: 60px auto 20px auto; padding: 10px;">Iniciar Sesion</button>
+      <hr class="my-4">
+      <small>Dando click en iniciar sesion aceptas los terminos y
+        condiciones</small>
     </form>
   </div>
-  <div style=" margin: 50px; width: 1vh; background-color: black;">
-  </div>
-  
-  <div style="background-color: white; margin: 1vh; padding: 4vh; width: 49%;">
-    <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Spendy</h1>
-    <p class="col-lg-10 fs-4">Registrate para empezar a invertir</p>
-  </div>
+
 </div>
 
 {% endblock %}

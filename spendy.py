@@ -117,6 +117,13 @@ def dUsuario(id):
     flash('Usuario Eliminado')
     return redirect('/sUsuario')
 
+@spendyApp.route('/sRifa', methods = ('GET', 'POST'))
+def sProducto():
+    selProducto = db.connection.cursor()
+    selProducto.execute("SELECT * FROM rifasAnuales")
+    p = selProducto.fetchall()
+    selProducto.close()
+    return render_template('rifas.html', productos=p)
 
 if __name__ == '__main__':
     spendyApp.config.from_object(config['development'])
