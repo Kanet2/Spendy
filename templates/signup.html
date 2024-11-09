@@ -2,9 +2,9 @@
 {% block titulo %}Crea una cuenta{% endblock %}
 {% block contenido %}
 
-<div style="display: flex; background-color: rgba(195, 190, 190, 0.854); margin: 2.5vh auto 1vh; padding: 3vh; width: 30%; border-radius: 4px;">
+<div style="display: flex; background-color: rgba(243, 123, 63, 0.854); margin: 2.5vh auto 1vh; padding: 3vh; width: 30%; border-radius: 4px;">
 
-  <div class="container" style="background-color: rgb(154, 67, 43); padding: 4vh; margin: auto; border-radius: 4px;">
+  <div class="container" style="background: linear-gradient(#dc1adf, #4023ea); padding: 4vh; margin: auto; border-radius: 4px;">
     <form method="post" action="/signup" class="row g-3" style="color: white;">
 
       <h1 style="text-align: center; font-size: 45px; font-family: Calibri;margin-top: 20px; margin-bottom: 0;">Crea una cuenta</h1>
@@ -22,6 +22,9 @@
           input:focus{
             outline: none;
           }
+          a.gold{
+            color: gold !important;
+          }
         </style>
 
         <label for="nom" style="padding-left: 0;">Nombre:</label><br>
@@ -33,15 +36,15 @@
         <label style="padding-left: 0;" for="contra">Contraseña:</label><br>
         <input style="margin-bottom: 5vh;" type="password" name="clave" id="contra">
 
-        <small style="font-size: 13px;width: auto;margin: auto; margin-right: 0;">Dando click al recuadro aceptas los <a href=""style="color: gold;">Terminos y
+        <small style="font-size: 13px;width: auto;margin: auto; margin-right: 0;">Dando click al recuadro aceptas los <a class="gold">Terminos y
           Condiciones</a></small><input type="checkbox" style="width: auto;margin: auto; margin-bottom: 0; padding-left: 0;margin-left: 0; margin-top: 2px;">
 
         <div class="hr" style="margin: 1vh auto 2vh; padding: 1px; background-color: white; width: 65%;"></div>
 
-          <p style="font-size: 13px; text-align: center;">¿Ya tienes una cuenta? <a href="/signin" style="color: gold;">Inicia sesion</a></p>
+          <p style="font-size: 13px; text-align: center;">¿Ya tienes una cuenta? <a class="gold" href="/signin">Inicia sesion</a></p>
 
       <button type="submit" style="width: 35%;margin: 2vh auto 3vh; padding: 5px; border: none; 
-      border-radius: 1px; background-color: #e2d8d1;">Registrarse</button>
+      border-radius: 1px; background-color: #5ce946;">Registrarse</button>
       
       
     </form>

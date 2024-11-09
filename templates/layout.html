@@ -22,7 +22,7 @@
   }
 
   .nav-item:hover {
-    background-color: lemonchiffon;
+    background-color: rgba(246, 120, 24, 0.537);
   }
 
   p {
@@ -56,10 +56,17 @@
   nav{
     box-shadow: 0px 1px 5px .1px rgb(174, 174, 174);
   }
-  
+  a,li{
+    color: ghostwhite !important;
+  }
+  .holab{
+    background-color: rgb(2, 192, 100);
+    color: ghostwhite;
+    font-family: Arial, Helvetica, sans-serif;
+  }
 </style>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background: linear-gradient(#dc1adf, #4023ea);">
   <div class="container-fluid">
     <a class="navbar-brand" href="/"> <i class="fa-solid fa-sack-dollar"></i> &nbsp;Spendy
     </a>
@@ -100,8 +107,8 @@
         </li>
       </ul>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Buscar</button>
+        <input  style="margin: 3px;" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button style="margin: 2px;" class="holab btn btn-outline-success" type="submit"><b>Buscar</b></button>
       </form>
     </div>
   </div>
@@ -113,7 +120,7 @@
 
       
       <div class="container">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <footer style="border-top: 1px solid black !important;" class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" >
           <div class="col-md-4 d-flex align-items-center">
             <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
               <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
