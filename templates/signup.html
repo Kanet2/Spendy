@@ -4,10 +4,10 @@
 
 <div style="display: flex; background-color: rgba(195, 190, 190, 0.854); margin: 2.5vh auto 1vh; padding: 3vh; width: 30%; border-radius: 4px;">
 
-  <div class="container" style="background-color: rgb(211, 33, 116); padding: 4vh; margin: auto; border-radius: 4px;">
+  <div class="container" style="background-color: rgb(154, 67, 43); padding: 4vh; margin: auto; border-radius: 4px;">
     <form method="post" action="/signup" class="row g-3" style="color: white;">
 
-      <h1 style="text-align: center; font-size: 40px; font-family: sans-serif;">Registrate</h1>
+      <h1 style="text-align: center; font-size: 45px; font-family: Calibri;margin-top: 20px; margin-bottom: 0;">Crea una cuenta</h1>
     
 
         <style>
@@ -15,25 +15,33 @@
             width: 35%;
             padding-top: 40px;
             font-size: 20px;
+            font-family: Calibri;
+            margin-bottom: -10px;
+          }
+        
+          input:focus{
+            outline: none;
           }
         </style>
 
-        <label for="nom" style="">Nombre:</label><br>
+        <label for="nom" style="padding-left: 0;">Nombre:</label><br>
         <input style="" type="text" name="nombre" id="nom"><br>
 
-        <label for="corr" style="">Correo:</label><br>
+        <label for="corr" style="padding-left: 0;">Correo:</label><br>
         <input style="" type="email" name="correo" id="corr"><br>
 
-        <label style="" for="contra">Contraseña:</label><br>
-        <input style="" type="password" name="clave" id="contra">
+        <label style="padding-left: 0;" for="contra">Contraseña:</label><br>
+        <input style="margin-bottom: 5vh;" type="password" name="clave" id="contra">
 
-        <div class="hr" style="margin: 4vh auto; padding: 1px; background-color: white; width: 50%;"></div>
+        <small style="font-size: 13px;width: auto;margin: auto; margin-right: 0;">Dando click al recuadro aceptas los <a href=""style="color: gold;">Terminos y
+          Condiciones</a></small><input type="checkbox" style="width: auto;margin: auto; margin-bottom: 0; padding-left: 0;margin-left: 0; margin-top: 2px;">
 
-        <small style="font-size: 13px;width: auto;margin: auto; margin-right: 0;">Dando click en iniciar sesion aceptas los terminos y
-          condiciones</small><input type="checkbox" style="width: auto;margin: auto; margin-bottom: 0; padding-left: 0;margin-left: 0; margin-top: 2px;">
+        <div class="hr" style="margin: 1vh auto 2vh; padding: 1px; background-color: white; width: 65%;"></div>
 
-      <button type="submit" style="width: 35%;margin: 3vh auto; padding: 5px; border: none; 
-      border-radius: 1px; background-color: #F5D7E1;">Registrarse</button>
+          <p style="font-size: 13px; text-align: center;">¿Ya tienes una cuenta? <a href="/signin" style="color: gold;">Inicia sesion</a></p>
+
+      <button type="submit" style="width: 35%;margin: 2vh auto 3vh; padding: 5px; border: none; 
+      border-radius: 1px; background-color: #e2d8d1;">Registrarse</button>
       
       
     </form>
