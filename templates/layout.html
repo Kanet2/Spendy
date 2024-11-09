@@ -7,7 +7,106 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ url_for('static',filename='/css/all.min.css')}}">
 </head>
-<body style="background-color: rgb(151, 150, 150);">
+
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+  html{
+    height: 100%;
+  }
+  body {
+    background-color: rgb(151, 150, 150);
+
+  }
+
+  .nav-item:hover {
+    background-color: lemonchiffon;
+  }
+
+  p {
+    font-size: 3vh;
+  }
+
+  #carouselExampleInterval:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .titulo:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  #carouselExampleInterval,
+  .titulo {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  li[class="nav-item"]:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  li[class="nav-item"] {
+    transition: transform 0.3s ease-in-out;
+    margin: 0 .5vh;
+  }
+  nav{
+    box-shadow: 0px 1px 5px .1px rgb(174, 174, 174);
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"> <i class="fa-solid fa-sack-dollar"></i> &nbsp;Spendy
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" style="margin: 0 .5vh;">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li style="font-size: 2.5vh;">|</li>
+        <li class="nav-item" style="margin: 0 .5vh;">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li style="font-size: 2.5vh;">|</li>
+        <li class="nav-item dropdown" style="margin: 0 .5vh;">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Act</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li style="font-size: 2.5vh;">|</li>
+        <li class="nav-item" style="margin: 0 .5vh;">
+          <a class="nav-link" href="/signup">Registrate</a>
+        </li>
+        <li style="font-size: 2.5vh;">|</li>
+        <li class="nav-item" style="margin: 0 .5vh;">
+          <a class="nav-link" href="/signin">Iniciar sesion&nbsp;<i class="fa-regular fa-user"></i></a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<body style="background-image: url(/static/img/ia\ mejorada.jpeg); background-repeat: no-repeat; background-size: cover;">
 
   {% block contenido %}{% endblock %}
 
@@ -18,7 +117,7 @@
             <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
               <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
             </a>
-            <span class="mb-3 mb-md-0 text-body-secondary" style="font-size: 2vh;">&copy; 2024 Company, Inc</span>
+            <span class="mb-3 mb-md-0 text-body-secondary" style="font-size: 1.5vh;">&copy; 2024 Company, Inc</span>
           </div>
       
           <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">

@@ -1,126 +1,21 @@
 {% extends 'layout.html' %}
 {% block titulo %}Crea una cuenta{% endblock %}
 {% block contenido %}
-<style>
-  * {
-    padding: 0;
-    margin: 0;
-  }
 
-  body {
-    background-color: rgb(151, 150, 150);
+<div style="display: flex; background-color: rgba(195, 190, 190, 0.854); margin: 2.5vh auto 1vh; padding: 3vh; width: 30%; border-radius: 4px;">
 
-  }
+  <div class="container" style="background-color: rgb(211, 33, 116); padding: 4vh; margin: auto; border-radius: 4px;">
+    <form method="post" action="/signup" class="row g-3" style="color: white;">
 
-  .nav-item:hover {
-    background-color: lemonchiffon;
-  }
-
-  p {
-    font-size: 3vh;
-  }
-
-  #carouselExampleInterval:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .titulo:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
-  }
-
-  #carouselExampleInterval,
-  .titulo {
-    transition: transform 0.3s ease-in-out;
-  }
-
-  li[class="nav-item"]:hover {
-    transform: scale(1.1);
-    transition: transform 0.3s ease-in-out;
-  }
-
-  li[class="nav-item"] {
-    transition: transform 0.3s ease-in-out;
-    margin: 0 .5vh;
-  }
-
-  input {
-    margin: 0;
-    padding: 0;
-    border: none;
-    border-bottom: 1px solid black;
-  }
-  input:focus{
-    border: none;
-    outline: none;
-    border-bottom: 1px solid black;
-  }
-</style>
-
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/"><i class="fa-solid fa-sack-dollar"></i> Spendy
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li style="font-size: 2.5vh;">|</li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li style="font-size: 2.5vh;">|</li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Act</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li style="font-size: 2.5vh;">|</li>
-        <li class="nav-item">
-          <a class="nav-link" href="/signup">Registrate</a>
-        </li>
-        <li style="font-size: 2.5vh;">|</li>
-        <li class="nav-item">
-          <a class="nav-link" href="/signin">Iniciar sesion <i class="fa-regular fa-user"></i></a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Buscar</button>
-      </form>
-    </div>
-  </div>
-</nav>
-
-<div style="display: flex; background-color: lemonchiffon; margin: 1vh 60vh; padding: 4vh;">
-
-  <div class="container" style="background-color: white; padding: 7vh; width: 90%; margin: auto;">
-    <form method="post" action="/signup" class="row g-3">
-
-      <h1 style="text-align: center; padding-top: 5px; font-size: 40px;"><b>Registrate</b></h1>
+      <h1 style="text-align: center; font-size: 40px; font-family: sans-serif;">Registrate</h1>
     
 
         <style>
           label {
             width: 35%;
-            padding-top: 50px;
+            padding-top: 40px;
             font-size: 20px;
           }
-          
         </style>
 
         <label for="nom" style="">Nombre:</label><br>
@@ -132,10 +27,15 @@
         <label style="" for="contra">Contraseña:</label><br>
         <input style="" type="password" name="clave" id="contra">
 
-      <button type="submit" style="width: 35%;margin: 60px auto 20px auto; padding: 10px;">Iniciar Sesion</button>
-      <hr class="my-4">
-      <small>Dando click en iniciar sesion aceptas los terminos y
-        condiciones</small>
+        <div class="hr" style="margin: 4vh auto; padding: 1px; background-color: white; width: 50%;"></div>
+
+        <small style="font-size: 13px;width: auto;margin: auto; margin-right: 0;">Dando click en iniciar sesion aceptas los terminos y
+          condiciones</small><input type="checkbox" style="width: auto;margin: auto; margin-bottom: 0; padding-left: 0;margin-left: 0; margin-top: 2px;">
+
+      <button type="submit" style="width: 35%;margin: 3vh auto; padding: 5px; border: none; 
+      border-radius: 1px; background-color: #F5D7E1;">Registrarse</button>
+      
+      
     </form>
   </div>
 
