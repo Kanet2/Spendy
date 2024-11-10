@@ -7,6 +7,17 @@
   <title>{% block titulo %}{% endblock %}</title>
   <link rel="stylesheet" href="{{ url_for('static',filename='/css/bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{ url_for('static',filename='/css/all.min.css')}}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@700&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Silkscreen:wght@400;700&family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
+  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Rubik+Mono+One&family=Sawarabi+Gothic&family=Silkscreen:wght@400;700&family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
 </head>
 
 <style>
@@ -67,15 +78,19 @@
   }
 
   .holab {
-    background-color: rgb(2, 192, 100);
+    background-color: rgb(33, 145, 91);
     color: ghostwhite;
     font-family: Arial, Helvetica, sans-serif;
   }
+
+  .titu {
+    font-family: 'Silkscreen' !important;
+  }
 </style>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background: linear-gradient(#dc1adf, #4023ea);">
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background: linear-gradient(#a10aa3, #4023ea); font-family: 'Electrolize'">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"> <i class="fa-solid fa-sack-dollar"></i> &nbsp;Spendy
+    <a class="navbar-brand titu" href="/"> <i class="fa-solid fa-sack-dollar"></i>&nbsp;Spendy
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -114,8 +129,8 @@
         </li>
       </ul>
       <form class="d-flex" role="search">
-        <input style="margin: 3px;" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button style="margin: 2px;" class="holab btn btn-outline-success" type="submit"><b>Buscar</b></button>
+        <input style="margin: 2px;" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button style="margin: 2px; font-family: 'Electrolize';" class="holab btn btn-outline-success" type="submit"><b>Buscar</b></button>
       </form>
     </div>
   </div>
@@ -126,33 +141,34 @@
 
   {% block contenido %}{% endblock %}
 
+  <style>
+    footer d-flex{
+    border-top: 1px solid black !important;
+  }
+  .s{
+    color: black !important;
+  }
+  .f{
+    margin: 0 10px;
+  }
+    </style>
 
   <div class="container">
-    <footer style="border-top: 1px solid black !important;"
-      class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-      <div class="col-md-4 d-flex align-items-center">
-        <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-          <svg class="bi" width="30" height="24">
-            <use xlink:href="#bootstrap" />
-          </svg>
-        </a>
-        <span class="mb-3 mb-md-0 text-body-secondary" style="font-size: 1.5vh;">&copy; 2024 Company, Inc</span>
-      </div>
-
-      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-        <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24">
-              <use xlink:href="#twitter" />
-            </svg></a></li>
-        <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24">
-              <use xlink:href="#instagram" />
-            </svg></a></li>
-        <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24">
-              <use xlink:href="#facebook" />
-            </svg></a></li>
+    <hr style="width: 100%; background-color: black; margin: 2vh auto;"/>
+    <footer style="display: flex;">
+      <p style="font-size: 1.7vh; margin-left: 1vh; margin-right: 50vh;" class="col-md-4 mb-0 text-body-secondary">&copy; 2024 Company, Inc</p>
+      <ul class="nav">
+        <li class="f"><a class="s" href="/templates/preguntas.html">Preguntas frecuentes</a></li>
+        <li class="f"><a class="s" href="#">Contacto</a></li>
+        <li class="f"><a class="s" href="#">Soporte</a></li>
+        <li class="f"><a class="s" href="#"><i class="fa-solid fa-sack-dollar"></i></a></li>
       </ul>
       
-      <i class="fa-solid fa-sack-dollar"></i>
     </footer>
+  </div>
+     
+
+      
   </div>
 
   <script src="{{ url_for('static',filename='/js/bootstrap.bundle.min.js')}}"></script>
