@@ -8,7 +8,6 @@ class DevelopmentConfig(Config):
     MYSQL_PASSWORD  = 'mysql'
     MYSQL_DB        = 'spendy'
 
-
 config = {
     'development': DevelopmentConfig
 }
