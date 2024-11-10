@@ -26,6 +26,12 @@ def home():
     else:'''
     return render_template('home.html')
 
+@spendyApp.route('/preguntas')
+def preguntas():
+    return render_template('preguntas.html')
+
+
+
 @spendyApp.route('/signup',methods=['GET','POST'])
 def signup():
     if request.method == 'POST': 
