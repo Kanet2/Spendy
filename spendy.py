@@ -30,7 +30,9 @@ def home():
 def preguntas():
     return render_template('preguntas.html')
 
-
+@spendyApp.route('/tabla')
+def tabla():
+    return render_template('tabla.html')
 
 @spendyApp.route('/signup',methods=['GET','POST'])
 def signup():
