@@ -9,6 +9,8 @@ from config import config
 
 spendyApp = Flask(__name__)  
 db        = MySQL(spendyApp)
+# Python anywhere
+spendyApp.config.from_object(config['development'])
 adminSesion = LoginManager(spendyApp)
 
 @adminSesion.user_loader
@@ -148,7 +150,8 @@ def oRifa():
     flash('Rifa creada')
     return redirect('/sRifa')
 
+'''
 if __name__ == '__main__':
     spendyApp.config.from_object(config['development'])
     spendyApp.run(port=3300)
-    
+'''    
