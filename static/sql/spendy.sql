@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 07-11-2024 a las 18:01:05
--- Versión del servidor: 5.7.44-log
--- Versión de PHP: 7.4.9
+-- Tiempo de generación: 14-11-2024 a las 06:10:50
+-- Versión del servidor: 8.0.40
+-- Versión de PHP: 8.1.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,12 +28,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `inversiones` (
-  `id` int(8) NOT NULL,
-  `userId` int(8) NOT NULL,
-  `amount` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `userId` int NOT NULL,
+  `amount` int NOT NULL,
   `fechaInversion` datetime NOT NULL,
   `fechaRetorno` datetime NOT NULL,
-  `status` text COLLATE utf8mb4_spanish_ci NOT NULL
+  `status` text CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 -- --------------------------------------------------------
@@ -43,11 +43,11 @@ CREATE TABLE `inversiones` (
 --
 
 CREATE TABLE `opcionesdeinversion` (
-  `id` int(8) NOT NULL,
-  `cantidadMinima` int(11) NOT NULL,
-  `cantidadMaxima` int(11) NOT NULL,
-  `tasaDeInteres` int(11) NOT NULL,
-  `tiempoPlazo` int(4) NOT NULL
+  `id` int NOT NULL,
+  `cantidadMinima` int NOT NULL,
+  `cantidadMaxima` int NOT NULL,
+  `tasaDeInteres` int NOT NULL,
+  `tiempoPlazo` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 -- --------------------------------------------------------
@@ -57,9 +57,9 @@ CREATE TABLE `opcionesdeinversion` (
 --
 
 CREATE TABLE `retornos` (
-  `id` int(8) NOT NULL,
-  `inversionesId` int(8) NOT NULL,
-  `cantidadRetorno` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `inversionesId` int NOT NULL,
+  `cantidadRetorno` int NOT NULL,
   `fechaRetorno` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
@@ -70,28 +70,30 @@ CREATE TABLE `retornos` (
 --
 
 CREATE TABLE `rifasanuales` (
-  `id` int(8) NOT NULL,
-  `anio` year(4) NOT NULL,
-  `premio` float NOT NULL,
+  `id` int NOT NULL,
+  `anio` year NOT NULL,
+  `premio` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  `descripcion` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `fechaEntrega` date NOT NULL,
-  `imag` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL
+  `imag` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `rifasanuales`
 --
 
-INSERT INTO `rifasanuales` (`id`, `anio`, `premio`, `fechaEntrega`, `imag`) VALUES
-(1, '2025', 1000, '2026-01-01', 'ganador de sorteo.png'),
-(2, '2026', 5000, '2027-01-01', 'ganador de sorteo.png'),
-(3, '2027', 50000, '2028-01-01', 'ganador de sorteo.png'),
-(4, '2028', 100000, '2029-01-01', 'ganador de sorteo.png'),
-(5, '2029', 250000, '2030-01-01', 'ganador de sorteo.png'),
-(6, '2030', 500000, '2031-01-01', 'ganador de sorteo.png'),
-(7, '2031', 1000000, '2032-01-01', 'ganador de sorteo.png'),
-(8, '2032', 2000000, '2033-01-01', 'ganador de sorteo.png'),
-(9, '2033', 3000000, '2034-01-01', 'ganador de sorteo.png'),
-(10, '2034', 5000000, '2035-01-01', 'ganador de sorteo.png');
+INSERT INTO `rifasanuales` (`id`, `anio`, `premio`, `descripcion`, `fechaEntrega`, `imag`) VALUES
+(1, '2025', 'Mil Pesos', 'Mil pesos Mexicanos en efectivo.', '2026-01-01', 'mil.png'),
+(2, '2026', 'Xbox Series S', 'Una Xbox Series S totalmente Nueva.', '2027-01-01', 'Xbox.jpg'),
+(3, '2027', 'Bicicleta', 'Bicicleta nueva color naranja de buena calidad.', '2028-01-01', 'Bici.jpg'),
+(4, '2028', 'Moto Nueva', 'Moto Yamaha con 0km, y con papeles listos.', '2029-01-01', 'Moto.jpg'),
+(5, '2029', '25Mil Pesos', 'VeinticicoMil pesos Mexicanos en efectivo.', '2030-01-01', 'mil.png'),
+(6, '2030', 'IPhone 20', 'El IPhone mas nuevo hasta el dia de hoy.', '2031-01-01', 'IPhone.jpeg'),
+(7, '2031', 'Tsuru Tuneado', 'Tsuru tuneado dportivo nuevo del año 2029.', '2032-01-01', 'Tsuru.jpg'),
+(8, '2032', '100Mil Pesos', 'CienMil pesos Mexicanos en efectivo.', '2033-01-01', 'mil.png'),
+(9, '2033', '500Mil Pesos', 'QuinientosMil pesos Mexicanos en efectivo.', '2034-01-01', 'mil.png'),
+(10, '2034', 'Casa Nueva', 'La casa de tus sueños no necesita una descripcion', '2035-01-01', 'Casa.jpg'),
+(11, '2020', 'pelo', 'pelo de el brian limpio', '2026-01-01', 'mil.png');
 
 -- --------------------------------------------------------
 
@@ -100,13 +102,13 @@ INSERT INTO `rifasanuales` (`id`, `anio`, `premio`, `fechaEntrega`, `imag`) VALU
 --
 
 CREATE TABLE `usuario` (
-  `id` int(8) NOT NULL,
-  `nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `correo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `clave` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `id` int NOT NULL,
+  `nombre` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish_ci NOT NULL,
+  `correo` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish_ci NOT NULL,
+  `clave` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish_ci NOT NULL,
   `fechareg` datetime NOT NULL,
-  `perfil` char(1) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'U'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `perfil` char(1) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish_ci NOT NULL DEFAULT 'U'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -164,31 +166,31 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `inversiones`
 --
 ALTER TABLE `inversiones`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `opcionesdeinversion`
 --
 ALTER TABLE `opcionesdeinversion`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `retornos`
 --
 ALTER TABLE `retornos`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `rifasanuales`
 --
 ALTER TABLE `rifasanuales`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas

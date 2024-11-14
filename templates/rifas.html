@@ -62,7 +62,7 @@
           <h1 class="" id="exampleModalLabel" style="margin: 2vh auto;">Nueva Rifa</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin: 0;"></button>
         </div>
-        <form action="/iRifa" method="post">
+        <form action="/oRifa" method="post">
           <div class="modal-body">
             <div class="form-floating mb-3">
               <input type="text" name="anio" class="form-control" id="floatingInputo" placeholder="TU mama perez">
@@ -80,12 +80,12 @@
 
             <div class="form-floating mb-3">
               <input type="text" name="fechaEntrega" class="form-control" id="floatingInputo" placeholder="TU mama perez">
-              <label for="floatingInput">Fecha de entrega del Objeto</label>
+              <label for="floatingInput">Fecha de entrega del Objeto( Formato: YYYY-MM-DD )</label>
             </div>
 
             <div class="form-floating mb-3">              
-              <select name="img" style="padding: 2vh; width: 100%;">
-                <option selected>Imagen</option>
+              <select name="imag" style="padding: 2vh; width: 100%;">
+                <option disabled selected>Selecciona una imagen</option>
                 <option value="mil.png">Dinero</option>
                 <option value="Bici.jpg">Bici</option>
                 <option value="Xbox.jpg">Xbox</option>
@@ -98,8 +98,8 @@
             
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Crear</button>
           </div>
         </form>
       </div>

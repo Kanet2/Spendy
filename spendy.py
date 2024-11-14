@@ -133,15 +133,17 @@ def sProducto():
     selProducto.close()
     return render_template('rifas.html', productos=p)
 
-@spendyApp.route("/iRifa", methods=['GET','POST'])
-def iRifa():
+@spendyApp.route("/oRifa", methods=['GET','POST'])
+def oRifa():
     anio = request.form['anio']
     premio = request.form['premio']
     descripcion = request.form['descripcion']
     fechaEntrega = request.form['fechaEntrega']
-    img = request.form['imag']
+    img = request.form.get('imag')
+    print(request.form)
+
     crearUsuario = db.connection.cursor()
-    crearUsuario.execute("INSERT INTO usuario (anio, premio, descripcion, fechaEntrega, imag) VALUES(%s, %s, %s, %s, %s)",(anio, premio, descripcion, fechaEntrega, img))
+    crearUsuario.execute("INSERT INTO rifasanuales (anio, premio, descripcion, fechaEntrega, imag) VALUES(%s, %s, %s, %s, %s)",(anio, premio, descripcion, fechaEntrega, img))
     db.connection.commit()
     flash('Rifa creada')
     return redirect('/sRifa')
