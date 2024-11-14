@@ -133,6 +133,19 @@ def sProducto():
     selProducto.close()
     return render_template('rifas.html', productos=p)
 
+@spendyApp.route("/iRifa", methods=['GET','POST'])
+def iRifa():
+    anio = request.form['anio']
+    premio = request.form['premio']
+    descripcion = request.form['descripcion']
+    fechaEntrega = request.form['fechaEntrega']
+    img = request.form['imag']
+    crearUsuario = db.connection.cursor()
+    crearUsuario.execute("INSERT INTO usuario (anio, premio, descripcion, fechaEntrega, imag) VALUES(%s, %s, %s, %s, %s)",(anio, premio, descripcion, fechaEntrega, img))
+    db.connection.commit()
+    flash('Rifa creada')
+    return redirect('/sRifa')
+
 if __name__ == '__main__':
     spendyApp.config.from_object(config['development'])
     spendyApp.run(port=3300)
