@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+{% block titulo %}Ahorra y gana con Spendy{% endblock %}
+{% block contenido %}
+<style>
+    body{
+        background-color: aliceblue !important;
+        background-image: none !important;
+    }
+    main{
+        background-color: white;
+        width: 100%;
+        display: flex;         
+        align-items: center;   
+        flex-direction: column; 
+        height: 85vh;        
+    }
+    .uy, .negro{
+        color: black !important;
+        list-style-type: none;
+    }
+    .centrado{
+        text-align: center;
+    }
+    h1, .uy, small{
+        margin: 2vh auto;
+    }
+    
+    .uy{
+        padding: 0;
+        margin: 0;
+    }
+    .negro {
+        margin-bottom: 1vh;
+    }
+</style>
+
+<main>
+    <h1 class="centrado">Como invertir en nuestra pagina</h1>
+    <ul class="uy">
+        <li class="negro">1. Inicia Sesion con tu correo electronico personal (Te contactaremos por aqui en caso de inconvenientes).</li>
+        <li class="negro">2. Escoge que cantidad de dinero invertiras.</li>
+        <li class="negro">3. Elige el tiempo que sera invertido.</li>
+        <li class="negro">4. Da click en invertir</li>
+        <li class="negro">5. Se mostrara una cuenta de banco, deposita a ella la cantidad elegida.</li>
+    </ul>
+    <small>Y listo, tu dinero estara invertido, solo espera a que el plazo termine y te depositaremos tu dinero mas las ganancias.</small>
+</main>
+
+{% endblock %}

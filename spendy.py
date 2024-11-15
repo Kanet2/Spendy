@@ -10,7 +10,7 @@ from config import config
 spendyApp = Flask(__name__)  
 db        = MySQL(spendyApp)
 # Python anywhere
-spendyApp.config.from_object(config['development'])
+#spendyApp.config.from_object(config['development'])
 adminSesion = LoginManager(spendyApp)
 
 @adminSesion.user_loader
@@ -130,7 +130,7 @@ def dUsuario(id):
 @spendyApp.route('/sRifa', methods = ('GET', 'POST'))
 def sProducto():
     selProducto = db.connection.cursor()
-    selProducto.execute("SELECT * FROM rifasAnuales")
+    selProducto.execute("SELECT * FROM rifasanuales")
     p = selProducto.fetchall()
     selProducto.close()
     return render_template('rifas.html', productos=p)
@@ -150,8 +150,17 @@ def oRifa():
     flash('Rifa creada')
     return redirect('/sRifa')
 
-'''
+@spendyApp.route("/cInvertir")
+def inversiones():
+    return render_template("comoInvertir.html")
+
+@spendyApp.route('/Invertir')
+def invertir():
+    return render_template('invertir.html')
+
+#Python no esto
+
 if __name__ == '__main__':
     spendyApp.config.from_object(config['development'])
     spendyApp.run(port=3300)
-'''    
+    
