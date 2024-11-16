@@ -29,8 +29,9 @@
     }
 
     .azul h1 {
-        margin: 5vh auto;
+        margin: 4vh auto;
         color: ghostwhite;
+        font-size: 2.5vw;
     }
 
     .azul div .precio {
@@ -43,7 +44,7 @@
 
     div.blanco {
         width: 50vw;
-        height: 3vh;
+        height: .5vh;
         background-color: white;
     }
 
@@ -54,10 +55,9 @@
     }
 
     .sig {
-        margin: auto 8vw;
         border: none;
         color: black;
-        width: 8vw;
+        width: 15vw;
         height: 4vh;
         font-size: 2vh;
         border-radius: 10px;
@@ -65,25 +65,35 @@
 </style>
 <section class="recuadro">
     <div class="azul">
-        <div style="height: 55vh; margin: 0;">
-            
-            <div style="height: 15vh; padding: 3vh;"><p class="centrado">1 de 5</p></div>
-            <div style="height: 15vh;"><h1 class="centrado">¿Cuanto dinero deseas invertir?</h1></div>
-            <div style=" width: fit-content; margin: 0 auto; height: 20vh;">
-                <input class="precio" type="text" placeholder="100 - 10,000,000">
+        <div style="height: 70vh; margin: 0;">
+
+            <div style="height: 8vh; padding: 2vh;">
+                <p class="centrado">1 de 5</p>
             </div>
-            
+
+            <div style="height: 17.5vh; width: 50vw;">
+                <div style="color: ghostwhite; text-align: center;">
+                    <div class="blanco"></div>
+                </div>
+            </div>
+
+            <div style="height: 8vh;">
+                <h1 class="centrado">¿Cuanto dinero deseas invertir?</h1>
+            </div>
+            <div style=" width: fit-content; margin: 4vh auto; height: 4vh;">
+                <input class="precio" type="text" placeholder="100 - 10,000,000">
+                
+            </div>
+
         </div>
 
-        <div style="height: 15vh; width: 50vw;">
-            <div style="color: ghostwhite; text-align: center;">
-                <p style="font-size: 2vh;">"Al invertir estas participando para la rifa anual."</p>
+        <div style="height: 3vh;">
             <div class="blanco"></div>
-            </div>
+        </div>
 
-        <div style="width: fit-content; display: flex; flex-direction: row; justify-content: center; margin: 0 auto; height: 10vh;">
-            <input class="sig" type="button" value="atras">
-            <input class="sig" type="button" value="siguiente">
+        <div style="width: fit-content; display: flex; flex-direction: row; align-items: center; margin: 0 auto; height: 5vh;">
+            <input class="sig" type="button" value="atras" style="margin-left: -.5vw;">
+            <input class="sig" type="button" value="siguiente"  style="margin-left: 1vw;">
         </div>
     </div>
 </section>
