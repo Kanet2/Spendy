@@ -31,28 +31,82 @@
     justify-content: right;
     margin-bottom: 1vh;
   }
-  .card-body{
+
+  .card-body {
     padding: 0;
   }
-  .card{
+
+  .card {
     border-radius: 10px;
     border: none;
   }
+
+  .container.esg {
+    background-color: rgb(118, 163, 60);
+    padding: 3vh;
+    margin: 2vh auto;
+  }
+
+  .row-cols-1.row-cols-md-3.g-4 {
+    
+  }
+
+  @media (max-width: 768px) {
+    .container.esg {
+      padding: 2vh 1vh;
+    }
+
+    .rifasT {
+      font-size: 2.5vh;
+      margin-bottom: 2vh;
+    }
+
+    .año {
+      font-size: 2vh;
+    }
+
+    .objeto {
+      font-size: 3vh;
+    }
+
+    .des {
+      font-size: 2vh;
+    }
+
+    .col{
+      padding: 5vw !important;
+    }
+    .card {
+      margin: 1vh auto;
+    }
+
+    .row-cols-1.row-cols-md-3.g-4 {
+      gap: 2vh;
+    }
+
+    img.card-img-top {
+      max-height: 30vh;
+      object-fit: cover;
+    }
+
+    .modal-content {
+      font-size: 2vh;
+    }
+  }
 </style>
 
-<div class="container esg" style="background-color: rgb(118, 163, 60); padding: 3vh; margin: 2vh auto;">
-  <h1 class="rifasT" style=" color: ghostwhite; text-align: center; font-family: Silkscreen;">$Rifas$</h1>
+<div class="container esg">
+  <h1 class="rifasT" style="color: ghostwhite; text-align: center; font-family: Silkscreen;">$Rifas$</h1>
   {% with mensajes = get_flashed_messages() %}
   {% if mensajes %}
   {% for m in mensajes %}
   <div class="alert alert-success alert-dismissible fade show" role="alert">
-    {{m}}
+    {{ m }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
   {% endfor %}
   {% endif %}
   {% endwith %}
-
 
   <!-- Modal Insert -->
   <div class="modal fade" id="insert" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -65,25 +119,23 @@
         <form action="/oRifa" method="post">
           <div class="modal-body">
             <div class="form-floating mb-3">
-              <input type="text" name="anio" class="form-control" id="floatingInputo" placeholder="TU mama perez">
-              <label for="floatingInput">Año en el que sera Rifado</label>
+              <input type="text" name="anio" class="form-control" id="floatingInputo" placeholder="Año de la rifa">
+              <label for="floatingInput">Año en el que será Rifado</label>
             </div>
             <div class="form-floating mb-3">
-              <input type="text" name="premio" class="form-control" id="floatingInputo" placeholder="TU mama perez">
+              <input type="text" name="premio" class="form-control" id="floatingInputo" placeholder="Premio de la rifa">
               <label for="floatingInput">Objeto de rifa</label>
             </div>
-            
             <div class="form-floating mb-3">
-              <input type="text" name="descripcion" class="form-control" id="floatingInputo" placeholder="TU mama perez">
-              <label for="floatingInput">Descripcion del objeto</label>
+              <input type="text" name="descripcion" class="form-control" id="floatingInputo" placeholder="Descripción">
+              <label for="floatingInput">Descripción del objeto</label>
             </div>
-
             <div class="form-floating mb-3">
-              <input type="text" name="fechaEntrega" class="form-control" id="floatingInputo" placeholder="TU mama perez">
-              <label for="floatingInput">Fecha de entrega del Objeto( Formato: YYYY-MM-DD )</label>
+              <input type="text" name="fechaEntrega" class="form-control" id="floatingInputo"
+                placeholder="Fecha de entrega">
+              <label for="floatingInput">Fecha de entrega del Objeto (Formato: YYYY-MM-DD)</label>
             </div>
-
-            <div class="form-floating mb-3">              
+            <div class="form-floating mb-3">
               <select name="imag" style="padding: 2vh; width: 100%;">
                 <option disabled selected>Selecciona una imagen</option>
                 <option value="mil.png">Dinero</option>
@@ -95,7 +147,6 @@
                 <option value="Casa.jpg">Casa</option>
               </select>
             </div>
-            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -105,14 +156,10 @@
       </div>
     </div>
   </div>
+
   <div class="row row-cols-1 row-cols-md-3 g-4">
 
-
-
     {% for p in productos %}
-
-
-
     <div class="col">
       <div class="card">
         <div style="box-shadow: 0px 3px 5px -2px rgba(0, 0, 0, 0.253);">
@@ -120,88 +167,26 @@
         </div>
         <div class="card-body">
           <p class="año"><small><b>{{p.1}}</b></small></p>
-          <p class="objeto" style="background-color: rgb(100, 179, 84); color: ghostwhite; margin-bottom: 1vh;">{{p.2}}</p>
-          
-          <p class="des" style="width: 85%; margin: auto; font-size: 3vh; font-family: Arial, Helvetica, sans-serif;">Descripcion: <br></p>
+          <p class="objeto" style="background-color: rgb(100, 179, 84); color: ghostwhite; margin-bottom: 1vh;">{{p.2}}
+          </p>
+          <p class="des" style="width: 85%; margin: auto; font-size: 3vh; font-family: Arial, Helvetica, sans-serif;">
+            Descripción: <br>
+          </p>
           <div style="max-height: 12vh; min-height: 12vh; width: 70%; margin: auto;">
             <p class="des" style="font-family: Arial, Helvetica, sans-serif;">{{p.3}}</p>
           </div>
-          
-          <div style="width: 100%; background-color: hotpink; color: ghostwhite; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; padding: 1.5vh;">
-          <p class="objeto" style="margin: 0; font-size: 2.5vh;">Fecha de entrega: {{p.4}}</p>
-        </div>
-          <!-- Button trigger modal -->
-          <!--
-          <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#update{{p.0}}">
-            <i class="fa-regular fa-pen-to-square fa-2xl"></i>          
-          </button>
-          -->
-          <!-- Modal Update -->
-          <div class="modal fade" id="update{{p.0}}" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Proyecto</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="/iProducto" method="post">
-                  <div class="modal-body">
-                    <div class="form-floating mb-3">
-                      <input type="text" name="nombre" class="form-control" id="floatingInputo"
-                        placeholder="TU mama perez" value="{{p.2}}">
-                      <label for="floatingInput">Nombre
-                        completo</label>
-                    </div>
-                    <div class="col-md-10 mx-auto col-lg-5">
-                      <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
-                        <div class="form-floating mb-3">
-                          <input type="email" name="descripcion" class="form-control" id="floatingInput"
-                            placeholder="name@example.com">
-                          <label for="floatingInput">Descripcion</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                          <input type="Number" name="clave" class="form-control" id="floatingPassword"
-                            placeholder="Password">
-                          <label for="floatingPassword">Imagen</label>
-
-                        </div>
-
-                    </div>
-                    <div class="form-floating mb-3">
-                      <label for="floatingPassword">Perfil</label>
-                      <br />
-                      <select name="perfil" class="form-select" aria-label="Default select example">
-                        <option selected>Tipo de Proyecto</option>
-                        <option value="A">Administrador</option>
-                        <option value="U">Usuario</option>
-
-                      </select>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                      <button type="submit" class="btn btn-primary">Crear
-                        Usuario</button>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
-                </form>
-              </div>
-            </div>
+          <div
+            style="width: 100%; background-color: hotpink; color: ghostwhite; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; padding: 1.5vh;">
+            <p class="objeto" style="margin: 0; font-size: 2.5vh;">Fecha de entrega: {{p.4}}</p>
           </div>
-
         </div>
       </div>
     </div>
     {% endfor %}
-
-    <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insert" title="Añadir Rifa">
       <i class="fa-solid fa-plus fa-2xl"></i>
     </button>
   </div>
 </div>
+
 {% endblock %}

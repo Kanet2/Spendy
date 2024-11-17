@@ -2,60 +2,137 @@
 {% block titulo %}Crea una cuenta{% endblock %}
 {% block contenido %}
 
-<div style="background: linear-gradient(#a10aa3, #4023ea,  #4023ea,  #4023ea,  #4023ea,  #4023ea, #4023ea, #4023ea, #4023ea); margin: 2.5vh auto 1vh; padding: 2vh 4vh 4vh; width: 25%; border-radius: 4px;">
-  
-  <div style=" margin: auto; text-align: center;">
-  <i class="fa-solid fa-sack-dollar" style="display: inline-block; color: white; font-size: 3vh;"></i>
-  <h1 style="display: inline-block; font-family: 'Silkscreen'; margin: 0 0 3vh; text-align: center; color: white;">Spendy</h1>
-</div>
-
-  <div class="container" style="border: 1px solid rgb(214, 214, 214); background-color: rgb(226, 226, 226); padding: 4vh; margin: auto; border-radius: 4px;">
-    <form method="post" action="/signup" class="row g-3" style="color: rgb(0, 0, 0);">
-      <h2 style="text-align: center; font-size: 45px; font-family: Calibri;margin-top: 3vh; margin-bottom: 1vh;">Crea una cuenta</h1>
-        <style>
-          label {
-            width: 35%;
-            padding-top: 20px;
-            font-size: 20px;
-            font-family: Calibri;
-            margin-bottom: -10px;
-          }
-          input{
-            border-radius: 5px;
-            border: 1px solid rgb(188, 188, 188);
-          }
-          input:focus{
-            outline: none;
-          }
-          a.gold{
-            color: rgb(71, 149, 38) !important;
-          }
-        </style>
-
-        <label for="nom" style="padding-left: 0;">Nombre:</label><br>
-        <input style="" type="text" name="nombre" id="nom"><br>
-
-        <label for="corr" style="padding-left: 0;">Correo:</label><br>
-        <input style="" type="email" name="correo" id="corr"><br>
-
-        <label style="padding-left: 0;" for="contra">Contraseña:</label><br>
-        <input style="margin-bottom: 4vh;" type="password" name="clave" id="contra">
-
-        <div class="hr" style="margin: 0vh auto 2vh; padding: 1px; background-color: rgb(0, 0, 0); width: 75%; box-shadow: 0 1px 5px .5px rgb(166, 166, 166);"></div>
-        <div style="display: flex;">
-        <small style=" display: inline; font-size: 13px; padding: 0; margin: 0; margin-right: .5vh; margin-left: auto;">Acepta los <a class="gold" style="display: inline;">Terminos y
-          Condiciones</a></small>
-          <input type="checkbox" style="width: auto; margin-top: 2vh; margin: 0; margin-bottom: 0; padding-left: 0;margin-right: auto;height: 2.3vh;">
-        </div>
-          <br>
-      <button type="submit" style="display: block; width: 35%;margin: 2vh auto; padding: 5px; border: none; 
-      border-radius: 1px; background-color: #5ce946;">Registrarse</button>
-      <p style="font-size: 13px; text-align: center; margin: 1vh auto;">¿Ya tienes una cuenta? <a class="gold" href="/signin">Inicia sesion</a></p>
-      
-      
-    </form>
+<div
+  style="background: linear-gradient(#a10aa3, #4023ea, #4023ea, #4023ea); margin: 2.5vh auto 1vh; padding: 2vh 4vh 4vh; width: 33%; border-radius: 4px; resize: both; overflow: auto;">
+  <div style="margin: auto; text-align: center;">
+    <i class="fa-solid fa-sack-dollar" style="display: inline-block; color: white; font-size: 3vh;"></i>
+    <h1 style="display: inline-block; font-family: 'Silkscreen'; margin: 0 0 3vh; text-align: center; color: white;">
+      Spendy</h1>
   </div>
 
+  <div class="container"
+    style="border: 1px solid rgb(214, 214, 214); background-color: rgb(226, 226, 226); padding: 4vh; margin: auto; border-radius: 4px;">
+    <form method="post" action="/signup" class="row g-3" style="color: rgb(0, 0, 0);">
+      <h2 style="text-align: center; font-size: 3vh; font-family: Calibri; margin-top: 3vh; margin-bottom: 1vh;">Crea
+        una cuenta</h2>
+      <style>
+        label {
+          width: 35%;
+          padding-top: 20px;
+          font-size: 2vh;
+          font-family: Calibri;
+          margin-bottom: -10px;
+        }
+
+        .regi{
+          width: 45% !important;
+        }
+
+        input {
+          border-radius: 5px;
+          border: 1px solid rgb(188, 188, 188);
+          width: 100%;
+          /* Se ajusta automáticamente */
+          padding: 0.5vh;
+        }
+
+        input:focus {
+          outline: none;
+        }
+
+        a.gold {
+          color: rgb(71, 149, 38) !important;
+        }
+
+        @media (max-width: 768px) {
+          div[style*="width: 33%"] {
+            width: 90vw !important;
+            /* Ajustar ancho en pantallas medianas */
+          }
+
+          label {
+            width: 100%;
+            text-align: left;
+            font-size: 2.2vh;
+          }
+
+          input {
+            font-size: 1.8vh;
+            padding: 1vh;
+            height: 5vh;
+          }
+
+          button {
+            font-size: 2vh;
+            padding: 1vh;
+          }
+
+          .hr {
+            width: 100%;
+          }
+        }
+
+        @media (max-width: 576px) {
+          div[style*="width: 33%"] {
+            width: 90vw !important;
+            /* Ocupa todo el ancho */
+            padding: 2vh 2vh 3vh;
+          }
+
+          label {
+            font-size: 2.5vh;
+          }
+
+          input {
+            font-size: 2.3vh;
+            padding: 1.5vh;
+            height: 5vh;
+          }
+
+          .me-2 {
+            width: 30vw !important;
+            margin: auto;
+          }
+
+          .hr {
+            width: 100%;
+          }
+
+          small {
+            font-size: 2vh;
+          }
+
+          .regi {
+            width: 60% !important;
+          }
+        }
+      </style>
+
+      <label for="nom">Nombre:</label><br>
+      <input type="text" name="nombre" id="nom"><br>
+
+      <label for="corr">Correo:</label><br>
+      <input type="email" name="correo" id="corr"><br>
+
+      <label for="contra">Contraseña:</label><br>
+      <input type="password" name="clave" id="contra" style="margin-bottom: 4vh;">
+
+      <div class="hr"
+        style="margin: 0vh auto 2vh; padding: 1px; background-color: rgb(0, 0, 0); width: 75%; box-shadow: 0 1px 5px 0.5px rgb(166, 166, 166);">
+      </div>
+      <div style="display: flex;">
+        <small
+          style="display: inline; font-size: 1.3vh; padding: 0; margin: 0; margin-right: 0.5vh; margin-left: auto;">Acepta
+          los <a class="gold" style="display: inline;">Términos y Condiciones</a></small>
+        <input type="checkbox" style="width: auto; margin: 0 0 0 auto; height: 2.3vh;">
+      </div>
+      <br>
+      <button class="regi" type="submit"
+        style="display: block; width: 35%; margin: 2vh auto; padding: 1vh; border: none; border-radius: 1px; background-color: #5ce946;">Registrarse</button>
+      <p style="font-size: 13px; text-align: center; margin: 1vh auto;">¿Ya tienes una cuenta? <a class="gold"
+          href="/signin">Inicia sesión</a></p>
+    </form>
+  </div>
 </div>
 
 {% endblock %}

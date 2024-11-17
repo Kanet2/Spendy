@@ -62,7 +62,7 @@ def signin():
             session['NombreU'] = usuarioAutenticado.nombre
             session['PerfilU'] = usuarioAutenticado.perfil
             if usuarioAutenticado.clave: 
-                if usuarioAutenticado.perfil == 'A':
+                if usuarioAutenticado.perfil == 'U':
                     return render_template('admin.html')
                 else: 
                     return redirect('/sUsuario')
