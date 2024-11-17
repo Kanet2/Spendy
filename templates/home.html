@@ -10,7 +10,7 @@
   }
 
   th {
-    padding: 15px 10px;
+    padding: 1vw 1vw;
     background-color: rgb(209, 40, 235);
     color: ghostwhite;
     font-size: 2vh;
@@ -30,12 +30,12 @@
   }
 </style>
 <div class="descripcion"
-  style="display: flex; background-color: rgba(184, 182, 182, 0.483); margin: 4vh; padding: 4vh;">
-  <div class="titulo" style="text-align: center; width: 49vw; padding: 1vh; background-color: white;">
-    <h1 style="padding: 1vh; margin: 2vh 25vh; font-size: 5vh; font-family: 'Rubik Mono One' ">Spendy</b>
+  style="display: flex; background-color: rgba(124, 124, 124, 0.483); margin: 2vw; padding: 2vw;">
+  <div class="titulo" style="text-align: center; width: 44vw; height: 70vh; padding: 1vh; background-color: white;">
+    <h1 style="padding: 1vh; margin: 2vh 25vh; font-size: 2.5vw; font-family: 'Rubik Mono One' ">Spendy</b>
     </h1>
     <div class="tabla">
-      <p style="text-align: center; font-size: 3vh; margin-bottom: 5px; font-family: 'Electrolize';">Tasa de interes:</p>
+      <p style="text-align: center; font-size: 1vw; margin-bottom: 1vw; font-family: 'Electrolize';">Tasa de interes:</p>
       <div class="hr" style=" box-shadow: 0 2px 6px 1px rgb(166, 166, 166); margin: 0vh auto .5vh; padding: 1px; background-color: rgb(0, 0, 0); width: 90%;"></div>
 
       <table>
@@ -68,15 +68,17 @@
       </table>
     </div>
 
-    <div class="hr" style=" box-shadow: 0 2px 6px 1px rgb(166, 166, 166); margin: .5vh auto .5vh; padding: 1px; background-color: rgb(0, 0, 0); width: 60%;"></div>
-    <span>
-      <i><small style="font-size: 20px; font-family: Serif; padding: 0;">Ahorra y Gana con Spendy</small></i>
-    </span>
+    <div class="hr" style=" box-shadow: 0 2px 6px 1px rgb(166, 166, 166); margin: .1vw auto; padding: 1px; background-color: rgb(0, 0, 0); width: 60%;"></div>
+    
+      <i><small style="font-size: 1vw; height: 1vh; font-family: Serif; padding: 0; margin: 0;">Ahorra y Gana con Spendy</small></i>
+    
   </div>
-  <div style=" margin: 50px; width: 1vw; background-color: black;">
+
+  <div style="margin: 2vw; width: .5vw; background-color: black;">
   </div>
-  <div style="width: 49vw;" id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
+
+  <div  id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner" style="width: 44vw; height: 70vh;">
       <div class="carousel-item active" data-bs-interval="3000">
         <img src="{{ url_for('static',filename='/img/agu.png')}}" class="d-block w-100" alt="...">
       </div>

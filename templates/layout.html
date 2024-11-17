@@ -12,12 +12,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@700&display=swap" rel="stylesheet">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Silkscreen:wght@400;700&family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
-  
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Rubik+Mono+One&family=Sawarabi+Gothic&family=Silkscreen:wght@400;700&family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Silkscreen:wght@400;700&family=Sixtyfour+Convergence&display=swap"
+    rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Electrolize&family=Rubik+Mono+One&family=Sawarabi+Gothic&family=Silkscreen:wght@400;700&family=Sixtyfour+Convergence&display=swap"
+    rel="stylesheet">
 </head>
 
 <style>
@@ -29,15 +33,23 @@
   html {
     height: 100vh;
     width: 100vw;
+    margin: 0;
+    padding: 0;
   }
 
   body {
-    background-color: rgb(151, 150, 150);
-
+    background-color: white;
+    height: 100vh;
+    width: 100vw;
   }
-
+  div{
+    margin: 0;
+  }
+  nav{
+    overflow-x: hidden;
+  }
   .nav-item:hover {
-    background: linear-gradient(#4023ea,#a10aa3);
+    background: linear-gradient(#4023ea, #a10aa3);
   }
 
   p {
@@ -67,6 +79,7 @@
   li[class="nav-item"] {
     transition: transform 0.3s ease-in-out;
     margin: 0 .5vh;
+    font-size: 1.8vh;
   }
 
   nav {
@@ -86,91 +99,123 @@
 
   .titu {
     font-family: 'Silkscreen' !important;
+    font-size: 2vh;
+    margin-left: 1vw;
+    padding: 0;
   }
-  .ho:hover{
+
+  .ho:hover {
     background-color: #a10aa3;
   }
+
+  .navbar-toggler-icon {
+    height: 3vh;
+    font-size: 2.5vh;
+    width: 2vw;
+  }
+
 </style>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary" style="width: 100vw; height: 6vh; background: linear-gradient(#a10aa3, #4023ea); font-family: 'Electrolize'">
-  <div class="container-fluid">
-    <a class="navbar-brand titu" href="/"> <i class="fa-solid fa-sack-dollar"></i>&nbsp;Spendy
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+<nav class="navbar navbar-expand-lg bg-body-tertiary"style="width: 100vw; height: 6vh; background: linear-gradient(#a10aa3, #4023ea); font-family: 'Electrolize'; padding: 0; ">
+  <div class="deds" style="width: 100%; height: 6vh; display: flex; flex-direction: row; justify-content: space-between; margin: 0; padding: 0;">
+
+    <div style="display: flex; flex-direction: row; align-items: center; height: 6vh; align-items: center; width: 100vw;">
+      <a class="navbar-brand titu" href="/"> <i class="fa-solid fa-sack-dollar"></i>&nbsp;Spendy
+      </a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" style="display: flex; flex-direction: row; justify-content: right; width: 100vw;">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="display: flex; align-items: center; flex-direction: row;">
+          <li class="nav-item" style="margin: 0 .5vh;">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="" style="font-size: 3vh;">|</li>
+          <li class="nav-item" style="margin: 0 .5vh;">
+            <a class="nav-link" href="/Invertir">Invertir</a>
+          </li>
+          <li style="font-size: 3vh;">|</li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 1.8vh;">
+              Funciones
+            </a>
+            <ul class="dropdown-menu" style="background-color: #4729f3;">
+              <li><a class="ho dropdown-item" href="/cInvertir">Como invertir</a></li>
+              <li><a class="ho dropdown-item" href="/sRifa">Rifas</a></li>
+              <li><a class="ho dropdown-item" href="/sUsuario">Usuarios</a></li>
+            </ul>
+          </li>
+          <li style="font-size: 3vh;">|</li>
+          <li class="nav-item" style="margin: 0 .5vh;">
+            <a class="nav-link" href="/signup">Registrate</a>
+          </li>
+          <li style="font-size: 3vh; ">|</li>
+          <li class="nav-item" style="margin: 0 .5vh;">
+            <a class="nav-link" href="/signin">Iniciar sesion&nbsp;<i class="fa-regular fa-user"></i></a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search" style="display: flex; align-items: center; justify-content: end; gap: 0.5rem;">
+          <input 
+            style="margin: 0; height: 4vh; width: 10vw; font-size: 2vh; padding: 0; padding-left: .3vw; border-radius: 1vh;" 
+            class="form-control me-2" 
+            type="search" 
+            placeholder="Search" 
+            aria-label="Search">
+          <button 
+            style="margin: 0; height: 4vh; width: 6vw; font-size: 2vh; padding: 0; font-family: 'Electrolize'; margin-right: 1vw; border-radius: 1vh;" 
+            class="holab btn btn-outline-success" 
+            type="submit">
+            <b>Buscar</b>
+          </button>
+        </form>
+        
+        
+      </div>
+    </div>
+
+    <!--
+    <div style="display: flex; flex-direction: row; align-items: center; height: 6vh; ">
+    <button class="navbar-toggler" type="button" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item" style="margin: 0 .5vh;">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li style="font-size: 2.5vh;">|</li>
-        <li class="nav-item" style="margin: 0 .5vh;">
-          <a class="nav-link" href="/Invertir">Invertir</a>
-        </li>
-        <li style="font-size: 2.5vh;">|</li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Funciones
-          </a>
-          <ul class="dropdown-menu" style="background-color: #4729f3;">
-            <li><a class="ho dropdown-item" href="/cInvertir">Como invertir</a></li>
-            <li><a class="ho dropdown-item" href="/sRifa">Rifas</a></li>
-            <li><a class="ho dropdown-item" href="/sUsuario">Usuarios</a></li>
-          </ul>
-        </li>
-        <li style="font-size: 2.5vh;">|</li>
-        <li class="nav-item" style="margin: 0 .5vh;">
-          <a class="nav-link" href="/signup">Registrate</a>
-        </li>
-        <li style="font-size: 2.5vh;">|</li>
-        <li class="nav-item" style="margin: 0 .5vh;">
-          <a class="nav-link" href="/signin">Iniciar sesion&nbsp;<i class="fa-regular fa-user"></i></a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input style="margin: 2px;" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button style="margin: 2px; font-family: 'Electrolize';" class="holab btn btn-outline-success" type="submit"><b>Buscar</b></button>
-      </form>
-    </div>
+  </div>
+  -->
   </div>
 </nav>
 
-<body
-  style="background-image: url(/static/img/ia\ mejorada.jpeg); background-size: cover;">
+<body style="backgroud-image: url(/static/img/ia\ mejorada.jpeg); background-size: cover;">
 
   {% block contenido %}{% endblock %}
 
   <style>
-    footer d-flex{
-    border-top: 1px solid black !important;
-  }
-  .s{
-    color: black !important;
-  }
-  .f{
-    margin: 0 10px;
-  }
-    </style>
+    footer d-flex {
+      border-top: 1px solid black !important;
+    }
+
+    .s {
+      color: black !important;
+    }
+
+    .f {
+      margin: 0 10px;
+    }
+  </style>
 
 
-  <div class="container" style="height: 6vh;">
-    <hr style="width: 100%; background-color: black; margin: 2vh auto;"/>
-    <footer style="display: flex;">
-      <p style="font-size: 1.7vh; margin-left: 1vh; margin-right: 20vw;" class="col-md-4 mb-0 text-body-secondary">&copy; 2024 Company, Inc</p>
-      <ul class="nav">
+  <div class="" style="height: 6vh; width: 80vw; margin: auto; border-top: 1px solid rgb(133, 132, 132); padding-top: 1vh;">
+    <footer style="display: flex; margin: auto; width: 80vw;">
+      <p style="font-size: .8vw;  margin: auto; width: 40vw; text-align: left;" class="col-md-4 mb-0 text-body-secondary">
+        &copy; 2024 Company, Inc</p>
+      <ul class="nav" style="font-size: .8vw; width: 40vw; justify-content: right;">
         <li class="f"><a class="s" href="/preguntas">Preguntas frecuentes</a></li>
         <li class="f"><a class="s" href="#">Contacto</a></li>
         <li class="f"><a class="s" href="#">Soporte</a></li>
         <li class="f"><a class="s" href="#"><i class="fa-solid fa-sack-dollar"></i></a></li>
       </ul>
-      
+
     </footer>
   </div>
-     
 
-      
+
+
   </div>
 
   <script src="{{ url_for('static',filename='/js/bootstrap.bundle.min.js')}}"></script>
