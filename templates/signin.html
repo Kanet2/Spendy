@@ -3,57 +3,230 @@
 {% block contenido %}
 
 <style>
-  .eso{
-    margin-top: 4vh;
-    padding: 5vh;
-    width: 65%;
-    background: linear-gradient(to top,#ff0000, #9503f0, #9503f0,#ff0000);
+  /* Contenedor principal de la "hoja" */
+  .eso {
+    padding: 4vh;
+    width: 90%; /* Aprovechamos un 90% del ancho completo de la pantalla */
+    max-width: 100%; /* Aseguramos que no se exceda del 100% del ancho */
+    height: calc(100vh - 18vh); /* Aprovechamos el 100% de la altura de la pantalla menos un margen superior */
+    background: linear-gradient(to top, #ff0000, #9503f0, #9503f0, #ff0000);
     border-radius: 0 95% 0 95%;
-    height: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+    overflow: hidden; /* Asegura que nada sobresalga de la "hoja" */
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  input{
-    margin: 3vh 0;
+
+  /* Fondo blanco que simula la hoja */
+  .eso::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    border-radius: 0 95% 0 95%;
+    z-index: -1; /* Lo coloca detrás del formulario */
+    padding: 4vh; /* Asegura que el formulario no toque los bordes */
+    box-sizing: border-box;
   }
-  .asu{
+
+  /* Estilo para el formulario */
+  .form-signin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Centrado del formulario */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  form{
+    width: 30vw;
+  }
+
+  /* Estilo de los inputs con la clase 'pipi' */
+  .pipi {
+    margin: 1vh 0;
+    font-size: 2vh;
+    padding: 1.5vh; /* Aumento del padding para hacerlo más grande */
+    width: 90%; /* Ancho de los inputs al 90% para que sean más anchos */
+    box-sizing: border-box; /* Asegura que el padding no sobresalga */
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+  }
+
+  .pipi:focus {
+    border-color: #9503f0; /* Cambia el color del borde cuando se hace foco */
+    outline: none; /* Elimina el contorno predeterminado */
+  }
+
+  /* Estilo para el link */
+  .asu {
     color: blue !important;
-    margin-bottom: 6vh;
+    margin-bottom: 2vh;
+    font-size: 2vh;
+  }
+
+  /* Botón */
+  .boto {
+    font-size: 3vh;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1.5vh 0;
+    width: 90%; /* El botón tendrá el mismo ancho que los inputs (90%) */
+    text-align: center;
+    margin-top: 2vh; /* Espacio entre el último input y el botón */
+  }
+
+  /* Estilo para las etiquetas */
+  .form-floating label {
+    font-size: 2.5vh;
+  }
+
+  /* Responsividad para pantallas medianas */
+  @media (max-width: 768px) {
+    form{
+    width: 100%;
+  }
+    .eso {
+      width: 100%; /* Aumenta el ancho en pantallas medianas */
+      padding: 4vh;
+      border-radius: 0 75% 0 75%;
+      height: calc(100vh - 18vh); /* Hace el formulario un 50% más largo en pantallas medianas */
+    }
+
+    .form-signin {
+      width: 90%; /* Reduce el ancho del formulario */
+    }
+
+    .boto {
+      font-size: 3vh; /* Aumenta tamaño del botón */
+      width: 90%; /* El botón tendrá el mismo ancho que los inputs */
+    }
+
+    .form-floating .pipi {
+      font-size: 2.5vh; /* Ajusta tamaño de texto de los inputs */
+      padding: 1.5vh; /* Aumento del padding para los inputs */
+      width: 90%; /* Aumento del ancho de los inputs */
+    }
+
+    .form-floating label {
+      font-size: 2.5vh; /* Aumenta tamaño de las etiquetas */
+    }
+
+    .asu {
+      font-size: 1.8vh; /* Reducir tamaño del texto del link */
+      margin-bottom: 1.5vh; /* Reducir el espacio entre el link y el botón */
+    }
+  }
+
+  /* Responsividad para pantallas pequeñas */
+  @media (max-width: 576px) {
+    form{
+    width: 100%;
+  }
+    .eso {
+      width: 100%; /* Formulario más ancho en dispositivos pequeños */
+      padding: 3vh;
+      border-radius: 0 75% 0 75%;
+      height: calc(100vh - 18vh); /* Hace el formulario un 33% más largo en pantallas pequeñas */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Reducir sombra en pantallas pequeñas */
+    }
+
+    .form-signin {
+      width: 100%; /* Asegura que el formulario no quede demasiado grande */
+    }
+
+    .boto {
+      font-size: 3.5vh; /* Ajuste tamaño del botón */
+      width: 90%; /* El botón tendrá el mismo ancho que los inputs */
+    }
+
+    .form-floating .pipi {
+      font-size: 3.5vh; /* Aumenta tamaño de texto en inputs */
+      padding: 1.5vh; /* Ajuste en padding para inputs más grandes */
+      width: 90%; /* Aumento del ancho de los inputs */
+    }
+
+    .form-floating label {
+      font-size: 2.5vh; /* Ajuste tamaño de las etiquetas */
+    }
+
+    .h1 {
+      font-size: 4vh; /* Ajuste del tamaño del título */
+    }
+
+    .asu {
+      font-size: 2.5vh; /* Reducción del tamaño del texto */
+      margin-bottom: 1vh; /* Reduce el espacio debajo del link */
+    }
+
+    .pipi {
+      margin: 1vh 0;
+      padding: 1.5vh;
+      width: 90%; /* Aumento del 90% de ancho para inputs */
+    }
+
+    /* Cambio de lado y centrado del checkbox y su texto */
+    .form-check {
+      display: flex;
+      align-items: center; /* Alineación vertical */
+      justify-content: center; /* Centrado horizontal */
+    }
+
+    .form-check input {
+      margin-right: 1vh; /* Espacio entre el checkbox y el texto */
+    }
+
+    .form-check label {
+      font-size: 2.5vh; /* Ajuste tamaño de texto */
+    }
   }
 </style>
-<div class="container eso" >
-  <main class="form-signin w-100 m-auto">
 
+<div class="container eso">
+  <main class="form-signin w-100 m-auto">
     <form action="/signin" method="post">
       {% with mensajes = get_flashed_messages() %}
-      {% if mensajes %}
-      {% for m in mensajes %}
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{m}}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-      {% endfor %}
-      {% endif %}
+        {% if mensajes %}
+          {% for m in mensajes %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              {{m}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
       {% endwith %}
       <br>
-      <div style="width: 40%; margin: 11vh auto;">
-        <h1 style="color: rgb(255, 255, 255);">Inicia Sesion</h1>
-          <div class="form-floating">
-            <input type="email" name="correo" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Correo Electronico</label>
-          </div>
-          <div class="form-floating">
-            <input type="password" name="clave" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Contraseña</label>
-          </div>
+      <div style="width: 100%; margin: auto;">
+        <h1 class="h1" style="color: rgb(255, 255, 255); font-size: 3.5vh; text-align: center;">Inicia Sesión</h1>
+        <div class="form-floating">
+          <input type="email" name="correo" class="pipi form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Correo Electrónico</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" name="clave" class="pipi form-control" id="floatingPassword" placeholder="Password">
+          <label for="floatingPassword">Contraseña</label>
+        </div>
 
-          <div class="form-check text-start my-3">
-            <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              <a style="text-decoration: none; color: ghostwhite; font-family: Arial, Helvetica, sans-serif;"><strong><a style="color: white;" class="asu" href="https://www.youtube.com/watch?v=rSWj__OmHis">Recuerdame</a><span style="color: ghostwhite;"> siempre</span></strong></a>
-            </label>
-          </div>
-          <button class="btn btn-primary w-100 py-2" style="background-color: rgb(60, 151, 66); font-size: 2vh; font-family: Arial, Helvetica, sans-serif;" type="submit">Iniciar sesion</button>
-        </form>
+        <div class="form-check text-start my-3">
+          <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            <a style="text-decoration: none; color: ghostwhite; font-family: Arial, Helvetica, sans-serif;">
+              <strong><a style="color: white;" class="asu" href="https://www.youtube.com/watch?v=rSWj__OmHis">Recuerdame</a><span style="color: ghostwhite;"> siempre</span></strong>
+            </a>
+          </label>
+        </div>
+        <button class="boto btn btn-primary w-100 py-2" style="background-color: rgb(60, 151, 66);" type="submit">Iniciar sesión</button>
       </div>
+    </form>
   </main>
 </div>
+
 {% endblock %}
