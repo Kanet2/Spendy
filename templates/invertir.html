@@ -8,7 +8,7 @@
         background-color: white;
     }
 
-    section.recuadro {
+    .recuadro {
         height: 86vh;
         display: flex;
         padding: 0;
@@ -56,73 +56,170 @@
 
     .sig {
         border: none;
-        color: black;
+        color: black !important;
         width: 15vw;
         height: 4vh;
         font-size: 2vh;
         border-radius: 10px;
     }
+
     @media (max-width: 768px) {
-        section.recuadro{
+        .recuadro {
             width: 100vw !important;
         }
-        div.azul{
+
+        div.azul {
             width: 90vw !important;
         }
-        div.blanco{
+
+        div.blanco {
             width: 100%;
         }
-        .men{
+
+        .men {
             width: 90vw !important;
         }
-        h1.centrado{
+
+        h1.centrado {
             font-size: 5vw;
         }
-        input.precio{
+
+        input.precio, select, p.precio{
             width: 60vw !important;
             text-align: center;
             height: 6vh !important;
         }
-        .sig{
+        p.precio{
+            width: 70vw !important;
+            text-align: center;
+            height: 7vh !important;
+        }
+        .sig {
             width: 30vw !important;
             height: 5vh !important;
             font-size: 3.2vw;
         }
     }
 </style>
-<section class="recuadro">
-    <div class="azul">
-        <div style="height: 70vh; margin: 0;">
 
-            <div style="height: 8vh; padding: 2vh;">
-                <p class="centrado">1 de 5</p>
-            </div>
-
-            <div class="men" style="height: 17.5vh; width: 50vw;">
-                <div style="color: ghostwhite; text-align: center;">
-                    <div class="blanco"></div>
+<div id="carouselExample" class="carousel slide recuadro" style="display: flex; justify-content: center; align-items: center;">
+    <div class="carousel-inner" style="display: flex; justify-content: center; align-items: center;">
+        <form action="" method="post">
+            <!-- Primer item del carrusel -->
+            <div class="carousel-item active">
+                <div class="azul">
+                    <div style="height: 70vh; margin: 0;">
+                        <!-- Numeros -->
+                        <div style="height: 8vh; padding: 2vh;">
+                            <p class="centrado">1 de 3</p>
+                        </div>
+                        <!-- Linea Blanca -->
+                        <div class="men" style="height: 17.5vh; width: 50vw;">
+                            <div style="color: ghostwhite; text-align: center;">
+                                <div class="blanco"></div>
+                            </div>
+                        </div>
+                        <!-- Texto principal -->
+                        <div style="height: 8vh;">
+                            <h1 class="centrado">¿Cuánto dinero deseas invertir?</h1>
+                        </div>
+                        <!-- Input principal -->
+                        <div style="width: fit-content; margin: 4vh auto; height: 4vh;">
+                            <input class="precio" name="precio" type="text" placeholder="100 - 10,000,000">
+                        </div>
+                    </div>
+                    <!-- Linea Blanca -->
+                    <div style="height: 3vh;">
+                        <div class="blanco"></div>
+                    </div>
+                    <!-- Botones -->
+                    <div
+                        style="width: fit-content; display: flex; flex-direction: row; align-items: center; margin: 0 auto; height: 5vh;">
+                        <button class="sig" type="button">Atras</button>
+                        <div style="width: 4vw;"></div>
+                        <button class="sig" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="next">Siguiente</button>
+                    </div>
                 </div>
             </div>
 
-            <div style="height: 8vh;">
-                <h1 class="centrado">¿Cuanto dinero deseas invertir?</h1>
+            <!-- Segundo item del carrusel -->
+            <div class="carousel-item">
+                <div class="azul">
+                    <div style="height: 70vh; margin: 0;">
+                        <div style="height: 8vh; padding: 2vh;">
+                            <p class="centrado">2 de 3</p>
+                        </div>
+                        <div class="men" style="height: 17.5vh; width: 50vw;">
+                            <div style="color: ghostwhite; text-align: center;">
+                                <div class="blanco"></div>
+                            </div>
+                        </div>
+                        <div style="height: 8vh;">
+                            <h1 class="centrado">¿Cuanto tiempo deseas invertir?</h1>
+                        </div>
+                        <div style="width: fit-content; margin: 4vh auto; height: 4vh;">
+                            <select name="plazo" class="precio" style="border-radius: 0; padding: 0;">
+                                <option selected disabled>Elige tu plazo</option>
+                                <option value="uno-mes">1 Mes</option>
+                                <option value="tres-mes">3 Mes</option>
+                                <option value="seis-mes">6 Mes</option>
+                                <option value="nueve-mes">9 Mes</option>
+                                <option value="doce-mes">12 Mes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="height: 3vh;">
+                        <div class="blanco"></div>
+                    </div>
+                    <div
+                        style="width: fit-content; display: flex; flex-direction: row; align-items: center; margin: 0 auto; height: 5vh;">
+                        <button class="sig" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="prev">Atras</button>
+                        <div style="width: 4vw;"></div>
+                        <button class="sig" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="next">Invertir</button>
+                    </div>
+                </div>
             </div>
-            <div style=" width: fit-content; margin: 4vh auto; height: 4vh;">
-                <input class="precio" type="text" placeholder="100 - 10,000,000">
-                
+
+            <!-- Tercer item del carrusel -->
+            <div class="carousel-item" style="border: 2px solid black; border-radius: 4vh;">
+                <div class="azul" style="background-color: rgb(191, 191, 191);">
+                    <div style="height: 70vh; margin: 0;">
+                        <div style="height: 8vh; padding: 2vh;">
+                            <p class="centrado" style="color: rgb(51, 48, 44);">3 de 3</p>
+                        </div>
+                        <div class="men" style="height: 10.5vh; width: 50vw;">
+                            <div style="color: ghostwhite; text-align: center;">
+                                <div class="blanco" style="background-color: black;"></div>
+                            </div>
+                        </div>
+                        <div style="height: 15vh;">
+                            <h1 class="centrado" style="color: rgb(50, 47, 42);">Deposita a esta cuenta</h1>
+                        </div>
+                        <div style="width: fit-content; margin: 4vh auto; padding: 0; height: 6vh; display: flex; align-items: center; background-color: white; border-radius: 4vh;">
+                            <p class="precio" style="font-size: 2.5vh;"><span style="font-family: Arial, Helvetica, sans-serif;"><b>CLABE:</b> 002180000118350123</span></p>
+                        </div>
+                        <p style="text-align: center; margin-top: 10vh; font-family: Arial, Helvetica, sans-serif; color: rgb(0, 0, 0); background-color: white; border-radius: 4vh; width: 80%; margin:10vh auto auto;"><b>Nota: </b>Al hacer la transferencia debes poner de concepto "Spendy", de lo contrario no se contara el pago.</p>
+                    </div>
+                    <div style="height: 3vh;">
+                        <div class="blanco" style="background-color: black;"></div>
+                    </div>
+                    <div
+                        style="width: fit-content; display: flex; flex-direction: row; align-items: center; margin: 0 auto; height: 5vh;">
+                        <button class="sig" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="prev">Atras</button>
+                        <div style="width: 4vw;"></div>
+                        <button class="sig" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="next" style="background-color: rgba(240, 248, 255, 0); color: rgba(240, 248, 255, 0);"><span style="color: rgba(240, 248, 255, 0);">Invertir</span></button>
+                    </div>
+                </div>
             </div>
 
-        </div>
-
-        <div style="height: 3vh;">
-            <div class="blanco"></div>
-        </div>
-
-        <div style="width: fit-content; display: flex; flex-direction: row; align-items: center; margin: 0 auto; height: 5vh;">
-            <input class="sig" type="button" value="atras">
-            <div style="width: 4vw;"></div>
-            <input class="sig" type="button" value="siguiente">
-        </div>
+        </form>
     </div>
+</div>
+
 </section>
 {% endblock %}

@@ -3,6 +3,9 @@
 {% block contenido %}
 
 <style>
+  body{
+    background-color: rgb(214, 213, 213);
+  }
   /* Contenedor principal de la "hoja" */
   .eso {
     padding: 4vh;
@@ -70,17 +73,21 @@
   .asu {
     color: blue !important;
     margin-bottom: 2vh;
-    font-size: 2vh;
+    font-size: 1vw !important;
+  }
+  .bgd{
+    color: white !important;
   }
 
   /* Botón */
   .boto {
-    font-size: 3vh;
+    font-size: 1.3vw !important;
     font-family: Arial, Helvetica, sans-serif;
-    padding: 1.5vh 0;
+    padding: 1.5vw 0;
     width: 100%;
     text-align: center;
     margin-top: 1vh 0;
+    color: rgb(233, 230, 230) !important;
   }
 
   /* Responsividad para dispositivos pequeños */
@@ -97,37 +104,18 @@
     }
 
     .pipi, .boto {
-      font-size: 4vh; /* Tamaño aumentado al doble */
-      padding: 2.5vh 0;
+      font-size: 4vw; /* Tamaño aumentado al doble */
+      padding-top: 5vw 0 !important;
     }
 
+    .boto{
+      font-size: 5vw !important;
+    }
     .asu {
-      font-size: 3.5vh;
+      font-size: 3vw !important;
     }
   }
 
-  @media (max-width: 576px) {
-    .eso {
-      width: 100%;
-      padding: 2vh;
-      border-radius: 0 75% 0 75%;
-      height: auto; /* Altura ajustada automáticamente */
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    form {
-      width: 100%;
-    }
-
-    .pipi, .boto {
-      font-size: 5vh; /* Tamaño aumentado al doble */
-      padding: 3vh 0;
-    }
-
-    .asu {
-      font-size: 4vh;
-    }
-  }
 </style>
 
 <div class="container eso">
@@ -159,7 +147,7 @@
           <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
           <label class="form-check-label" for="flexCheckDefault">
             <a style="text-decoration: none; color: ghostwhite; font-family: Arial, Helvetica, sans-serif;">
-              <strong><a style="color: white;" class="asu" href="https://www.youtube.com/watch?v=rSWj__OmHis">Recuerdame</a><span style="color: ghostwhite;"> siempre</span></strong>
+              <strong><a style="color: white;" class="asu" href="https://www.youtube.com/watch?v=rSWj__OmHis">Recuerdame</a><span class="asu bgd" style="color: ghostwhite;"> siempre</span></strong>
             </a>
           </label>
         </div>
