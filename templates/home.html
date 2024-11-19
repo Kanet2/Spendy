@@ -5,8 +5,11 @@
 {% block contenido %}
 
 <style>
+  th,td{
+    padding: 2vh !important;
+  }
   th, thead{
-    background-color: hotpink !important;
+    background-color: rgb(252, 60, 156) !important;
     color: ghostwhite !important;
   }
   .row{
@@ -23,11 +26,19 @@
   .grande{
     transition: transform 0.3s ease;
   }
+  @media (max-width: 768px) {
+    .grande:hover{
+      transform: none;
+    }
+    th,td{
+    padding: .7vh !important;
+  }
+  }
 </style>
   <div class="row align-items-stretch">
     <!-- Div de la tabla -->
     <div class="grande col-md-5 d-flex flex-column bg-light">
-      <h1 class="text-center mt-3" style="margin: 3vh auto 2vh;">Spendy</h1>
+      <h1 class="text-center mt-3" style="margin: 4vh auto 2vh;">Spendy</h1>
       <table class="table table-bordered mb-3" style="text-align: center">
         <thead>
           <tr>
