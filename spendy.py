@@ -1,6 +1,7 @@
 from flask import Flask,render_template, url_for, request, redirect, flash, session
 from flask_mysqldb import MySQL
 from flask_login import LoginManager, login_user, logout_user
+from flask_mail import Mail, Message
 from werkzeug.security import generate_password_hash
 from models.ModelUser import ModelUser
 from models.entities.User import User
@@ -8,9 +9,11 @@ import datetime
 from config import config
 
 spendyApp = Flask(__name__)  
-db        = MySQL(spendyApp)
 # Python anywhere
-#spendyApp.config.from_object(config['development'])
+spendyApp.config.from_object(config['development'])
+spendyApp.config.from_object(config['mail'])
+db        = MySQL(spendyApp)
+mail      = Mail(spendyApp)
 adminSesion = LoginManager(spendyApp)
 
 @adminSesion.user_loader
@@ -47,6 +50,9 @@ def signup():
         regUsuario = db.connection.cursor()
         regUsuario.execute("INSERT INTO usuario (nombre, correo, clave, fechareg) VALUES(%s,%s,%s,%s)",(nombre, correo,claveCifrada,fechaReg))
         db.connection.commit()
+        msg = Message(subject='Bienvenido a Spendy',recipients=[correo])
+        msg.html = render_template('mail.html', nombre=nombre)
+        mail.send(msg)
         return render_template('home.html')
     else:
         return render_template('signup.html')
