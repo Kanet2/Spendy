@@ -1,7 +1,8 @@
 {% extends 'layout.html' %}
-{% block titulo %}Usuarios{% endblock %}
-{% block contenido %}
 
+{% block titulo %}Usuarios{% endblock %}
+
+{% block contenido %}
 <style>
     /* Estilos generales */
     div.tablo {
@@ -94,7 +95,7 @@
     button[type="button"].btn-close {
         margin-top: 10px;
     }
-    </style>
+</style>
 
 <div class="container">
 
@@ -110,180 +111,156 @@
     {% endwith %}
 
     <div class="tablo">
-    <h1 style="border-top: 5px solid black; border-right: 5px solid black; border-left: 5px solid black; text-align: center; font-family: 'Silkscreen'; color: white; background-color: rgb(73, 39, 12); border-radius: 100% 100% 0 0;">Tabla de Usuarios</h1>
-    <div style="background-color: rgb(73, 39, 12); padding: 4vh; border-bottom: 5px solid black; border-right: 5px solid black; border-left: 5px solid black;">
-        <div style="background-color: white;padding: 2vh;">
-        <table class="table" style="min-height: 40vh;">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Correo</th>
-                <th scope="col">Fecha de Registro</th>
-                <th scope="col">Perfil</th>
-                <th scope="col" colspan="2">
-                    <!-- Button  -->
-                    <button type="button" style=" background-color: ghostwhite; padding: .5vh 5vh; text-align: center; border-radius: 5px;" data-bs-toggle="modal" data-bs-target="#insert">
-                        <i class="fa-solid fa-user-plus"></i>
-                    </button>
-                </th>
-
-            </tr>
-
-            <!-- Modal insert -->
-            <div class="modal fade" id="insert" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <form action="/iUsuario" method="post">
-                            <div class="modal-body">
-                                <div class="form-floating mb-3">
-                                    <input type="text" name="nombre" class="form-control" id="floatingInputo"
-                                        placeholder="TU mama perez">
-                                    <label for="floatingInput">Nombre
-                                        completo</label>
-                                </div>
-                                <div class="col-md-10 mx-auto col-lg-5">
-                                    <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
-                                        <div class="form-floating mb-3">
-                                            <input type="email" name="correo" class="form-control" id="floatingInput"
-                                                placeholder="name@example.com">
-                                            <label for="floatingInput">Correo</label>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                            <input type="password" name="clave" class="form-control"
-                                                id="floatingPassword" placeholder="Password">
-                                            <label for="floatingPassword">Contraseña</label>
-
-                                        </div>
-
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <label for="floatingPassword">Perfil</label>
-                                    <br />
-                                    <select name="perfil" class="form-select" aria-label="Default select example">
-                                        <option selected>Selecciona un
-                                            perfil</option>
-                                        <option value="A">Administrador</option>
-                                        <option value="U">Usuario</option>
-
-                                    </select>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="submit" class="btn btn-primary">Crear
-                                        Usuario</button>
-                                </div>
-                            </div>
-                        </form>
+        <h1 style="border-top: 5px solid black; border-right: 5px solid black; border-left: 5px solid black; text-align: center; font-family: 'Silkscreen'; color: white; background-color: rgb(73, 39, 12); border-radius: 100% 100% 0 0;">Tabla de Usuarios</h1>
+        
+        <!-- Modal insert -->
+        <div class="modal fade" id="insert" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                </div>
-            </div>
-
-        </thead>
-    </div>        
-</div>
-</div>
-        <tbody>
-            {% for u in usuarios %}
-            <tr>
-                <th scope="row">{{u.0}}</th>
-                <td>{{u.1}}</td>
-                <td>{{u.2}}</td>
-                <td>{{u.4}}</td>
-                <td>{{u.5}}</td>
-                <td>
-                    <!-- Button Update -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#update{{u.0}}">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                    </button>
-                </td>
-                <td>
-                    <!-- Button Delete -->
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{u.0}}">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                </td>
-            </tr>
-
-            <!-- Modal Update -->
-            <div class="modal fade" id="update{{u.0}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Usuario</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <form action="/uUsuario/{{u.0}}" method="post">
-                            <div class="modal-body">
+                    <form action="/iUsuario" method="post">
+                        <div class="modal-body">
+                            <div class="form-floating mb-3">
+                                <input type="text" name="nombre" class="form-control" id="floatingInputo" placeholder="TU mama perez">
+                                <label for="floatingInput">Nombre completo</label>
+                            </div>
+                            <div class="col-md-10 mx-auto col-lg-5">
                                 <div class="form-floating mb-3">
-                                    <input type="text" name="nombre" value="{{u.1}}" class="form-control"
-                                        id="floatingInputo" placeholder="TU mama perez">
-                                    <label for="floatingInput">Nombre completo</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="email" name="correo" value="{{u.2}}" class="form-control"
-                                        id="floatingInput" placeholder="name@example.com">
+                                    <input type="email" name="correo" class="form-control" id="floatingInput" placeholder="name@example.com">
                                     <label for="floatingInput">Correo</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="password" name="clave" class="form-control" id="floatingPassword"
-                                        placeholder="Password">
+                                    <input type="password" name="clave" class="form-control" id="floatingPassword" placeholder="Password">
                                     <label for="floatingPassword">Contraseña</label>
                                 </div>
-                                <div class="form-floating mb-3">
-                                    <label for="floatingPassword">Perfil</label>
-                                    <select name="perfil" class="form-select" aria-label="Default select example">
-                                        <option>Selecciona un perfil</option>
-                                        <option {% if u.5=='A' %} selected {% endif %} value="A">Administrador</option>
-                                        <option {% if u.5=='U' %} selected {% endif %} value="U">Usuario</option>
-                                    </select>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <label for="floatingPassword">Perfil</label>
+                                <select name="perfil" class="form-select" aria-label="Default select example">
+                                    <option selected>Selecciona un perfil</option>
+                                    <option value="A">Administrador</option>
+                                    <option value="U">Usuario</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Crear Usuario</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div style="background-color: rgb(73, 39, 12); padding: 4vh; border-bottom: 5px solid black; border-right: 5px solid black; border-left: 5px solid black;">
+            <div style="background-color: white;padding: 2vh;">
+                <table class="table" style="min-height: 40vh;">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Fecha de Registro</th>
+                            <th scope="col">Perfil</th>
+                            <th scope="col" colspan="2">
+                                <!-- Button  -->
+                                <button type="button" style=" background-color: ghostwhite; padding: .5vh 5vh; text-align: center; border-radius: 5px;" data-bs-toggle="modal" data-bs-target="#insert">
+                                    <i class="fa-solid fa-user-plus"></i>
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for u in usuarios %}
+                        <tr>
+                            <th scope="row">{{u.0}}</th>
+                            <td>{{u.1}}</td>
+                            <td>{{u.2}}</td>
+                            <td>{{u.4}}</td>
+                            <td>{{u.5}}</td>
+                            <td>
+                                <!-- Button Update -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update{{u.0}}">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <!-- Button Delete -->
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{u.0}}">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Modal Update -->
+                        <div class="modal fade" id="update{{u.0}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Usuario</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form action="/uUsuario/{{u.0}}" method="post">
+                                        <div class="modal-body">
+                                            <div class="form-floating mb-3">
+                                                <input type="text" name="nombre" value="{{u.1}}" class="form-control" id="floatingInputo" placeholder="TU mama perez">
+                                                <label for="floatingInput">Nombre completo</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input type="email" name="correo" value="{{u.2}}" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                                <label for="floatingInput">Correo</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input type="password" name="clave" class="form-control" id="floatingPassword" placeholder="Password">
+                                                <label for="floatingPassword">Contraseña</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <label for="floatingPassword">Perfil</label>
+                                                <select name="perfil" class="form-select" aria-label="Default select example">
+                                                    <option>Selecciona un perfil</option>
+                                                    <option {% if u.5=='A' %} selected {% endif %} value="A">Administrador</option>
+                                                    <option {% if u.5=='U' %} selected {% endif %} value="U">Usuario</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-primary">Actualizar Usuario</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary"
-                                    data-bs-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn btn-primary">Actualizar Usuario</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Modal Delete -->
-            <div class="modal fade" id="delete{{u.0}}" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Usuario</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="/dUsuario/{{u.0}}" method="post">
-                            <div class="modal-body">
-                                <p><i class="fa-solid fa-triangle-exclamation" style="color: #f02400;"></i>¿Deseas
-                                    Eliminar al Usuario {{u.1}}?</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary"
-                                    data-bs-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn btn-danger">Eliminar Usuario</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </tbody>
 
-    </table>
+                        <!-- Modal Delete -->
+                        <div class="modal fade" id="delete{{u.0}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Usuario</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form action="/dUsuario/{{u.0}}" method="post">
+                                        <div class="modal-body">
+                                            <p><i class="fa-solid fa-triangle-exclamation" style="color: #f02400;"></i>¿Deseas Eliminar al Usuario {{u.1}}?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-danger">Eliminar Usuario</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    </div>
-    {% endblock %}
+</div>
+
+{% endblock %}

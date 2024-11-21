@@ -1,6 +1,6 @@
-from flask import Flask,render_template, url_for, request, redirect, flash, session
+from flask import Flask, render_template, url_for, request, redirect, flash, session
 from flask_mysqldb import MySQL
-from flask_login import LoginManager, login_user, logout_user
+from flask_login import LoginManager, login_user, logout_user, current_user
 from flask_mail import Mail, Message
 from werkzeug.security import generate_password_hash
 from models.ModelUser import ModelUser
@@ -12,23 +12,29 @@ spendyApp = Flask(__name__)
 # Python anywhere
 spendyApp.config.from_object(config['development'])
 spendyApp.config.from_object(config['mail'])
-db        = MySQL(spendyApp)
-mail      = Mail(spendyApp)
+db = MySQL(spendyApp)
+mail = Mail(spendyApp)
 adminSesion = LoginManager(spendyApp)
 
 @adminSesion.user_loader
 def cargaUsuario(id):
     return ModelUser.get_by_id(db, id)
 
-@spendyApp.route('/')
+# Definir el contexto global para las variables aRU y aIS
+@spendyApp.context_processor
+def inject_user_info():
+    if current_user.is_authenticated:
+        aRU = f'<a class="nav-link">{current_user.nombre}</a>'
+        aIS = '<a class="nav-link" href="/signout">Salir <i class="fa-solid fa-right-from-bracket"></i></a>'
+    else:
+        aRU = '<a class="nav-link" href="/signup">Regístrate</a>'
+        aIS = '<a class="nav-link" href="/signin">Iniciar sesión <i class="fa-regular fa-user"></i></a>'
 
+    # Pasar las variables a todas las plantillas
+    return dict(Primero=aRU, Segundo=aIS)
+
+@spendyApp.route('/')
 def home():
-    '''if session['NombreU']:
-        if session['PerfilU'] == 'A':
-            return render_template('admin.html')
-        else: 
-            return render_template('user.html')
-    else:'''
     return render_template('home.html')
 
 @spendyApp.route('/preguntas')
@@ -39,39 +45,39 @@ def preguntas():
 def tabla():
     return render_template('tabla.html')
 
-@spendyApp.route('/signup',methods=['GET','POST'])
+@spendyApp.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST': 
         nombre = request.form['nombre'] 
         correo = request.form['correo']
-        clave  = request.form['clave']
+        clave = request.form['clave']
         claveCifrada = generate_password_hash(clave)
         fechaReg = datetime.datetime.now()
         regUsuario = db.connection.cursor()
-        regUsuario.execute("INSERT INTO usuario (nombre, correo, clave, fechareg) VALUES(%s,%s,%s,%s)",(nombre, correo,claveCifrada,fechaReg))
+        regUsuario.execute("INSERT INTO usuario (nombre, correo, clave, fechareg) VALUES(%s,%s,%s,%s)", (nombre, correo, claveCifrada, fechaReg))
         db.connection.commit()
-        msg = Message(subject='Bienvenido a Spendy',recipients=[correo])
+        msg = Message(subject='Bienvenido a Spendy', recipients=[correo])
         msg.html = render_template('mail.html', nombre=nombre)
         mail.send(msg)
         return render_template('home.html')
     else:
         return render_template('signup.html')
 
-@spendyApp.route('/signin', methods=['GET','POST'])
+@spendyApp.route('/signin', methods=['GET', 'POST'])
 def signin():
     if request.method == 'POST':
         usuario = User(0, None, request.form['correo'], request.form['clave'], None, None)
 
         usuarioAutenticado = ModelUser.signin(db, usuario)
         if usuarioAutenticado is not None:
-            login_user(usuarioAutenticado)
-            session['NombreU'] = usuarioAutenticado.nombre
-            session['PerfilU'] = usuarioAutenticado.perfil
-            if usuarioAutenticado.clave: 
+            if usuarioAutenticado.clave:  # Verificar si la contraseña es correcta
+                login_user(usuarioAutenticado)
+                session['NombreU'] = usuarioAutenticado.nombre
+                session['PerfilU'] = usuarioAutenticado.perfil
                 if usuarioAutenticado.perfil == 'U':
-                    return render_template('admin.html')
-                else: 
-                    return redirect('/sUsuario')
+                    return render_template('user.html')  # Redirigir a la página de usuario
+                else:
+                    return render_template('admin.html')  # Redirigir a la página de administrador
             else:
                 flash('Contraseña incorrecta')
                 return redirect(request.url)    
@@ -81,20 +87,20 @@ def signin():
     else:
         return render_template('signin.html')
 
-@spendyApp.route('/signout', methods=['GET','POST'])
+@spendyApp.route('/signout', methods=['GET', 'POST'])
 def signout():
-    logout_user() 
-    return render_template('home.html')
+    logout_user()
+    return redirect('/')
 
 @spendyApp.route('/sUsuario', methods=['GET','POST'])
 def sUsuario():
     selUsuario = db.connection.cursor()
     selUsuario.execute("SELECT * FROM usuario")
     u = selUsuario.fetchall()
-    selUsuario.close
+    selUsuario.close()
     return render_template('usuarios.html', usuarios=u)
 
-@spendyApp.route('/iUsuario',methods=['GET','POST'])
+@spendyApp.route('/iUsuario', methods=['GET','POST'])
 def iUsuario():
     nombre = request.form['nombre']
     correo = request.form['correo']
@@ -104,12 +110,12 @@ def iUsuario():
     perfil = request.form['perfil']
 
     crearUsuario = db.connection.cursor()
-    crearUsuario.execute("INSERT INTO usuario (nombre, correo, clave, fechareg, perfil) VALUES(%s, %s, %s, %s, %s)",(nombre, correo, claveCifrada, fechareg, perfil))
+    crearUsuario.execute("INSERT INTO usuario (nombre, correo, clave, fechareg, perfil) VALUES(%s, %s, %s, %s, %s)", (nombre, correo, claveCifrada, fechareg, perfil))
     db.connection.commit()
     flash('Usuario Creado')
     return redirect('/sUsuario')
 
-@spendyApp.route('/uUsuario/<int:id>',methods=['GET','POST'])
+@spendyApp.route('/uUsuario/<int:id>', methods=['GET','POST'])
 def uUsuario(id):
     nombre = request.form['nombre']
     correo = request.form['correo']
@@ -120,7 +126,7 @@ def uUsuario(id):
 
     editarUsuario = db.connection.cursor()
     editarUsuario.execute("Update usuario SET nombre = %s, correo = %s, clave = %s, fechareg = %s, perfil = %s WHERE id = %s",
-    (nombre,correo,claveCifrada,fechareg,perfil,id))
+                          (nombre, correo, claveCifrada, fechareg, perfil, id))
     db.connection.commit()
     flash('Usuario Actualizado')
     return redirect('/sUsuario')
@@ -128,12 +134,12 @@ def uUsuario(id):
 @spendyApp.route('/dUsuario/<int:id>', methods=['GET','POST']) 
 def dUsuario(id):
     eliminarCuenta = db.connection.cursor()
-    eliminarCuenta.execute("DELETE FROM usuario WHERE id=%s",(id,))
+    eliminarCuenta.execute("DELETE FROM usuario WHERE id=%s", (id,))
     db.connection.commit()
     flash('Usuario Eliminado')
     return redirect('/sUsuario')
 
-@spendyApp.route('/sRifa', methods = ('GET', 'POST'))
+@spendyApp.route('/sRifa', methods=('GET', 'POST'))
 def sProducto():
     selProducto = db.connection.cursor()
     selProducto.execute("SELECT * FROM rifasanuales")
@@ -148,12 +154,35 @@ def oRifa():
     descripcion = request.form['descripcion']
     fechaEntrega = request.form['fechaEntrega']
     img = request.form.get('imag')
-    print(request.form)
 
     crearUsuario = db.connection.cursor()
-    crearUsuario.execute("INSERT INTO rifasanuales (anio, premio, descripcion, fechaEntrega, imag) VALUES(%s, %s, %s, %s, %s)",(anio, premio, descripcion, fechaEntrega, img))
+    crearUsuario.execute("INSERT INTO rifasanuales (anio, premio, descripcion, fechaEntrega, imag) VALUES(%s, %s, %s, %s, %s)", 
+                         (anio, premio, descripcion, fechaEntrega, img))
     db.connection.commit()
     flash('Rifa creada')
+    return redirect('/sRifa')
+
+@spendyApp.route('/uRifa/<string:premio>', methods=['GET','POST'])
+def uRifa(premio):
+    anio = request.form['anio']
+    premio = request.form['premio']
+    descripcion = request.form['descripcion']
+    fechaEntrega = request.form['fechaEntrega']
+    img = request.form['imag']
+
+    editarRifa = db.connection.cursor()
+    editarRifa.execute("Update rifasanuales SET anio = %s, premio = %s, descripcion = %s, fechaEntrega = %s, imag = %s WHERE premio = %s",
+                          (anio, premio, descripcion, fechaEntrega, img, premio))
+    db.connection.commit()
+    flash('Rifa Actualizada')
+    return redirect('/sRifa')
+
+@spendyApp.route('/dRifa/<string:premio>', methods=['GET','POST']) 
+def dRifa(premio):
+    eliminarRifa = db.connection.cursor()
+    eliminarRifa.execute("DELETE FROM rifasanuales WHERE premio=%s", (premio,))
+    db.connection.commit()
+    flash('Rifa Eliminada')
     return redirect('/sRifa')
 
 @spendyApp.route("/cInvertir")
@@ -164,9 +193,7 @@ def inversiones():
 def invertir():
     return render_template('invertir.html')
 
-#Python no esto
-
+# Iniciar la aplicación
 if __name__ == '__main__':
     spendyApp.config.from_object(config['development'])
     spendyApp.run(port=3300)
-    

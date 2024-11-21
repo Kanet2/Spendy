@@ -1,5 +1,7 @@
 {% extends 'layout.html' %}
+
 {% block titulo %}Productos{% endblock %}
+
 {% block contenido %}
 
 <style>
@@ -47,9 +49,7 @@
     margin: 2vh auto;
   }
 
-  .row-cols-1.row-cols-md-3.g-4 {
-    
-  }
+  .row-cols-1.row-cols-md-3.g-4 {}
 
   @media (max-width: 768px) {
     .container.esg {
@@ -73,9 +73,10 @@
       font-size: 2vh;
     }
 
-    .col{
+    .col {
       padding: 5vw !important;
     }
+
     .card {
       margin: 1vh auto;
     }
@@ -99,14 +100,15 @@
   <h1 class="rifasT" style="color: ghostwhite; text-align: center; font-family: Silkscreen;">$Rifas$</h1>
   {% with mensajes = get_flashed_messages() %}
   {% if mensajes %}
-  {% for m in mensajes %}
-  <div class="alert alert-success alert-dismissible fade show" role="alert">
-    {{ m }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-  {% endfor %}
+    {% for m in mensajes %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ m }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
   {% endif %}
   {% endwith %}
+
 
   <!-- Modal Insert -->
   <div class="modal fade" id="insert" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -114,7 +116,8 @@
       <div class="modal-content" style="background-color: rgb(196, 205, 212);">
         <div class="modal-header">
           <h1 class="" id="exampleModalLabel" style="margin: 2vh auto;">Nueva Rifa</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin: 0;"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            style="margin: 0;"></button>
         </div>
         <form action="/oRifa" method="post">
           <div class="modal-body">
@@ -156,6 +159,9 @@
       </div>
     </div>
   </div>
+  <!-- Modal Insert -->
+
+  
 
   <div class="row row-cols-1 row-cols-md-3 g-4">
 
@@ -182,11 +188,124 @@
         </div>
       </div>
     </div>
+
+    <!--BOTONES-->
+    <div class="col">
+      <div class="card">
+        <div style="box-shadow: 0px 3px 5px -2px rgba(0, 0, 0, 0.253);">
+          <img src="/static/img/{{p.5}}" class="card-img-top" alt="Not found">
+        </div>
+        <div class="card-body">
+          <p class="año"><small><b>{{p.1}}</b></small></p>
+          <p class="objeto" style="background-color: rgb(100, 179, 84); color: ghostwhite; margin-bottom: 1vh;">{{p.2}}
+          </p>
+          <p class="des" style="width: 85%; margin: auto; font-size: 3vh; font-family: Arial, Helvetica, sans-serif;">
+            Descripción: <br>
+          </p>
+          <div style="max-height: 12vh; min-height: 12vh; width: 70%; margin: auto;">
+            <p class="des" style="font-family: Arial, Helvetica, sans-serif;">{{p.3}}</p>
+          </div>
+          <div
+            style="width: 100%; background-color: hotpink; color: ghostwhite; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; padding: 1.5vh;">
+            <p class="objeto" style="margin: 0; font-size: 2.5vh;">Fecha de entrega: {{p.4}}</p>
+          </div>
+        </div>
+        <!-- Button Update -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update{{p.2}}">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+          <!-- Button Delete -->
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{p.2}}">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+
+        <!-- Modal Update -->
+  <div class="modal fade" id="update" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Rifa</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/uRifa/{{p.2}}" method="post">
+        <div class="modal-body">
+          <div class="form-floating mb-3">
+            <input type="text" name="nombre" value="{{p.1}}" class="form-control" id="floatingInputo"
+              placeholder="TU mama perez">
+            <label for="floatingInput">Nuevo año de rifa:</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" name="correo" value="{{p.2}}" class="form-control" id="floatingInput" placeholder="">
+            <label for="floatingInput">Nuevo premio:</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" value="{{p.3}}" name="clave" class="form-control" id="floatingPassword" placeholder="">
+            <label for="floatingPassword">Nueva descripcion:</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="date" value="{{p.4}}" name="clave" class="form-control" id="floatingPassword" placeholder="">
+            <label for="floatingPassword">Nueva fecha de entrega:</label>
+          </div>
+          <div class="form-floating mb-3">
+            <label for="floatingPassword">Nueva imagen:</label>
+            <select name="perfil" class="form-select" aria-label="Default select example">
+              <option disabled>Selecciona una nueva imagen</option>
+              <option {% if p.5=='mil.png' %} value="mil.png">Dinero</option>
+              <option {% if p.5=='Bici.jpg' %} value="Bici.jpg">Bici</option>
+              <option {% if p.5=='Xbox.jpg' %} value="Xbox.jpg">Xbox</option>
+              <option {% if p.5=='Moto.jpg' %} value="Moto.jpg">Moto</option>
+              <option {% if p.5=='IPhone.jpeg' %} value="IPhone.jpeg">IPhone</option>
+              <option {% if p.5=='Tsuru.jpg' %} value="Tsuru.jpg">Tsuru</option>
+              <option {% if p.5=='Casa.jpg' %} value="Casa.jpg">Casa</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Actualizar Rifa</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Modal Update -->
+
+<!-- Modal Delete -->
+<div class="modal fade" id="delete{{p.2}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Usuario</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/dRifa/{{p.2}}" method="post">
+        <div class="modal-body">
+          <p><i class="fa-solid fa-triangle-exclamation" style="color: #f02400;"></i>¿Deseas
+            Eliminar la Rifa "{{p.1}}"?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-danger">Eliminar Usuario</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Modal Delete -->
+
+      </div>
+    </div>
     {% endfor %}
+
+    <!--Crear-->
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insert" title="Añadir Rifa">
       <i class="fa-solid fa-plus fa-2xl"></i>
     </button>
   </div>
 </div>
+</div>
+
+  </div>
 
 {% endblock %}
