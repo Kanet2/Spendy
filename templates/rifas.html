@@ -107,56 +107,6 @@
     {% endif %}
     {% endwith %}
 
-
-    <!-- Modal Insert -->
-    <div class="modal fade" id="insert" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content" style="background-color: rgb(196, 205, 212);">
-                <div class="modal-header">
-                    <h1 class="" id="exampleModalLabel" style="margin: 2vh auto;">Nueva Rifa</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin: 0;"></button>
-                </div>
-                <form action="/oRifa" method="post">
-                    <div class="modal-body">
-                        <div class="form-floating mb-3">
-                            <input type="text" name="anio" class="form-control" id="floatingInputo" placeholder="Año de la rifa">
-                            <label for="floatingInput">Año en el que será Rifado</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" name="premio" class="form-control" id="floatingInputo" placeholder="Premio de la rifa">
-                            <label for="floatingInput">Objeto de rifa</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" name="descripcion" class="form-control" id="floatingInputo" placeholder="Descripción">
-                            <label for="floatingInput">Descripción del objeto</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" name="fechaEntrega" class="form-control" id="floatingInputo" placeholder="Fecha de entrega">
-                            <label for="floatingInput">Fecha de entrega del Objeto (Formato: YYYY-MM-DD)</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <select name="imag" style="padding: 2vh; width: 100%;">
-                                <option disabled selected>Selecciona una imagen</option>
-                                <option value="mil.png">Dinero</option>
-                                <option value="Bici.jpg">Bici</option>
-                                <option value="Xbox.jpg">Xbox</option>
-                                <option value="Moto.jpg">Moto</option>
-                                <option value="IPhone.jpeg">IPhone</option>
-                                <option value="Tsuru.jpg">Tsuru</option>
-                                <option value="Casa.jpg">Casa</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary">Crear</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- Modal Insert -->
-
     <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for p in productos %}
         <div class="col">
@@ -173,125 +123,11 @@
                     </div>
                     <div style="width: 100%; background-color: hotpink; color: ghostwhite; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; padding: 1.5vh;">
                         <p class="objeto" style="margin: 0; font-size: 2.5vh;">Fecha de entrega: {{p.4}}</p>
-                        <!--BOTONES-->
-        <!-- Button Update -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update{{p.0}}">
-          <i class="fa-solid fa-pen-to-square"></i>
-      </button>
-      <!-- Button Delete -->
-      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{p.0}}">
-          <i class="fa-solid fa-trash"></i>
-      </button>
                     </div>
                 </div>
             </div>
         </div>
-
-        
-
-        <!-- Modal Update -->
-        <div class="modal fade" id="update{{p.0}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Rifa</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form action="/uRifa/{{p.0}}" method="post">
-                        <div class="modal-body">
-                            <div class="form-floating mb-3">
-                                <input type="text" name="anio" value="{{p.1}}" class="form-control" id="floatingInputo" placeholder="TU mama perez">
-                                <label for="floatingInput">Nuevo año de rifa:</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input type="text" name="premio" value="{{p.2}}" class="form-control" id="floatingInput" placeholder="">
-                                <label for="floatingInput">Nuevo premio:</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input type="text" value="{{p.3}}" name="descripcion" class="form-control" id="floatingPassword" placeholder="">
-                                <label for="floatingPassword">Nueva descripcion:</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input type="text" name="fechaEntrega" value="{{p.4}}" class="form-control" id="floatingInput" placeholder="">
-                                <label for="floatingInput">Nueva fecha de entrega:</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                              <select name="imag" style="padding: 2vh; width: 100%;">
-                                <option disabled selected>Nueva imagen</option>
-                                <option {% if p.5 == 'mil.png' %} selected {% endif %} value="mil.png">Dinero</option>
-                                <option {% if p.5 == 'Bici.jpg' %} selected {% endif %} value="Bici.jpg">Bici</option>
-                                <option {% if p.5 == 'Xbox.jpg' %} selected {% endif %} value="Xbox.jpg">Xbox</option>
-                                <option {% if p.5 == 'Moto.jpg' %} selected {% endif %} value="Moto.jpg">Moto</option>
-                                <option {% if p.5 == 'IPhone.jpeg' %} selected {% endif %} value="IPhone.jpeg">IPhone</option>
-                                <option {% if p.5 == 'Tsuru.jpg' %} selected {% endif %} value="Tsuru.jpg">Tsuru</option>
-                                <option {% if p.5 == 'Casa.jpg' %} selected {% endif %} value="Casa.jpg">Casa</option>
-                            </select>
-                                   
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="submit" class="btn btn-primary">Actualizar</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Modal Update -->
-
-        <!-- Modal Delete -->
-        <div class="modal fade" id="delete{{p.0}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Seguro que quieres eliminar la rifa <b>{{p.2}}</b>?</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <a href="/dRifa/{{p.0}}" class="btn btn-primary">Aceptar</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal Delete -->
         {% endfor %}
-
-    <div class="col">
-        <div class="card">
-            <div style="box-shadow: 0px 3px 5px -2px rgba(0, 0, 0, 0.253);">
-                <img src="/static/img/Bici.jpg" class="card-img-top" alt="Not found">
-            </div>
-            <div class="card-body">
-                <p class="año"><small><b>¿Seguro?</b></small></p>
-                <p class="objeto" style="background-color: rgb(100, 179, 84); color: ghostwhite; margin-bottom: 1vh; font-size: 3vh;">Añade una rifa</p>
-                <p class="des" style="width: 100%; margin: auto; font-size: 3vh; font-family: Arial, Helvetica, sans-serif; text-align: center;">¿Nueva rifa en mente?<br></p>
-                <div style="max-height: 12vh; min-height: 12vh; width: 70%; margin: auto; display: flex; justify-content: center; align-items: center;">
-                    <br>
-                    <!--Crear-->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insert" title="Añadir Rifa">
-            <i style="font-size: 4vh;" class="fa-solid fa-plus fa-2xl"></i>
-          </button>
-          <br>
-                </div>
-                <div style="width: 100%; background-color: hotpink; color: ghostwhite; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; padding: 1.5vh;">
-                    <p class="objeto" style="margin: 0; font-size: 2.5vh;">Insertar/Crear una nueva rifa</p>
-                
-                  
-            <div class="boton agregar" style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
-                        <!-- Button Update -->
-        <button disabled type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update">
-            <i class="fa-solid fa-pen-to-square"></i>
-        </button>
-        
-
-
-        <!-- Button Delete -->
-        <button disabled type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete">
-            <i class="fa-solid fa-trash"></i>
-        </button>
-    </div>
-</div>
                 </div>
             </div>
         </div>

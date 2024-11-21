@@ -22,9 +22,9 @@ def cargaUsuario(id):
 
 # Definir el contexto global para las variables aRU y aIS
 @spendyApp.context_processor
-def inject_user_info():
+def navI():
     if current_user.is_authenticated:
-        aRU = f'<a class="nav-link">{current_user.nombre}</a>'
+        aRU = '<a class="nav-link">{current_user.nombre}</a>'
         aIS = '<a class="nav-link" href="/signout">Salir <i class="fa-solid fa-right-from-bracket"></i></a>'
     else:
         aRU = '<a class="nav-link" href="/signup">Regístrate</a>'
@@ -33,9 +33,31 @@ def inject_user_info():
     # Pasar las variables a todas las plantillas
     return dict(Primero=aRU, Segundo=aIS)
 
+@spendyApp.context_processor
+def navR():
+    if current_user.is_authenticated:
+        perfil = current_user.perfil
+        if perfil == 'U':
+            rutaR = '/sRifa'
+            rutaU = '/sPerfil'
+        else:
+            rutaR = '/sAdmin'
+            rutaU = '/sUsuario'
+        return dict(r=rutaR, u=rutaU)
+    else:
+        rutaR = '/sRifa'
+        rutaU = '/sPerfil'
+        return dict(r=rutaR, u=rutaU)
+
+    
+
 @spendyApp.route('/')
 def home():
     return render_template('home.html')
+
+@spendyApp.route('/sPerfil')
+def perfils():
+    return render_template('perfil.html')
 
 @spendyApp.route('/preguntas')
 def preguntas():
@@ -75,9 +97,9 @@ def signin():
                 session['NombreU'] = usuarioAutenticado.nombre
                 session['PerfilU'] = usuarioAutenticado.perfil
                 if usuarioAutenticado.perfil == 'U':
-                    return render_template('user.html')  # Redirigir a la página de usuario
+                    return render_template('home.html')  # Redirigir a la página de usuario
                 else:
-                    return render_template('admin.html')  # Redirigir a la página de administrador
+                    return redirect('/sAdmin')  # Redirigir a la página de administrador
             else:
                 flash('Contraseña incorrecta')
                 return redirect(request.url)    
@@ -146,6 +168,14 @@ def sRifa():
     p = selRifa.fetchall()
     selRifa.close()
     return render_template('rifas.html', productos=p)
+
+@spendyApp.route('/sAdmin', methods=('GET', 'POST'))
+def sAdmin():
+    selAdmin = db.connection.cursor()
+    selAdmin.execute("SELECT * FROM rifasanuales")
+    p = selAdmin.fetchall()
+    selAdmin.close()
+    return render_template('admin.html', productos=p)
 
 @spendyApp.route("/oRifa", methods=['GET','POST'])
 def oRifa():
