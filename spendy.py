@@ -140,11 +140,11 @@ def dUsuario(id):
     return redirect('/sUsuario')
 
 @spendyApp.route('/sRifa', methods=('GET', 'POST'))
-def sProducto():
-    selProducto = db.connection.cursor()
-    selProducto.execute("SELECT * FROM rifasanuales")
-    p = selProducto.fetchall()
-    selProducto.close()
+def sRifa():
+    selRifa = db.connection.cursor()
+    selRifa.execute("SELECT * FROM rifasanuales")
+    p = selRifa.fetchall()
+    selRifa.close()
     return render_template('rifas.html', productos=p)
 
 @spendyApp.route("/oRifa", methods=['GET','POST'])

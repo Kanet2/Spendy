@@ -256,11 +256,45 @@
         </div>
         <!-- Modal Delete -->
         {% endfor %}
-        <!--Crear-->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insert" title="Añadir Rifa">
-      <i class="fa-solid fa-plus fa-2xl"></i>
-    </button>
-    </div>
 
+    <div class="col">
+        <div class="card">
+            <div style="box-shadow: 0px 3px 5px -2px rgba(0, 0, 0, 0.253);">
+                <img src="/static/img/Bici.jpg" class="card-img-top" alt="Not found">
+            </div>
+            <div class="card-body">
+                <p class="año"><small><b>¿Seguro?</b></small></p>
+                <p class="objeto" style="background-color: rgb(100, 179, 84); color: ghostwhite; margin-bottom: 1vh; font-size: 3vh;">Añade una rifa</p>
+                <p class="des" style="width: 100%; margin: auto; font-size: 3vh; font-family: Arial, Helvetica, sans-serif; text-align: center;">¿Nueva rifa en mente?<br></p>
+                <div style="max-height: 12vh; min-height: 12vh; width: 70%; margin: auto; display: flex; justify-content: center; align-items: center;">
+                    <br>
+                    <!--Crear-->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insert" title="Añadir Rifa">
+            <i style="font-size: 4vh;" class="fa-solid fa-plus fa-2xl"></i>
+          </button>
+          <br>
+                </div>
+                <div style="width: 100%; background-color: hotpink; color: ghostwhite; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; padding: 1.5vh;">
+                    <p class="objeto" style="margin: 0; font-size: 2.5vh;">Insertar/Crear una nueva rifa</p>
+                
+                  
+            <div class="boton agregar" style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                        <!-- Button Update -->
+        <button disabled type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update">
+            <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        
+
+
+        <!-- Button Delete -->
+        <button disabled type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete">
+            <i class="fa-solid fa-trash"></i>
+        </button>
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
