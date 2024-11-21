@@ -162,25 +162,25 @@ def oRifa():
     flash('Rifa creada')
     return redirect('/sRifa')
 
-@spendyApp.route('/uRifa/<string:premio>', methods=['GET','POST'])
-def uRifa(premio):
+@spendyApp.route('/uRifa/<int:id>', methods=['GET','POST'])
+def uRifa(id):
     anio = request.form['anio']
     premio = request.form['premio']
     descripcion = request.form['descripcion']
     fechaEntrega = request.form['fechaEntrega']
-    img = request.form['imag']
+    imag = request.form['imag']
 
     editarRifa = db.connection.cursor()
-    editarRifa.execute("Update rifasanuales SET anio = %s, premio = %s, descripcion = %s, fechaEntrega = %s, imag = %s WHERE premio = %s",
-                          (anio, premio, descripcion, fechaEntrega, img, premio))
+    editarRifa.execute("Update rifasanuales SET anio = %s, premio = %s, descripcion = %s, fechaEntrega = %s, imag = %s WHERE id = %s",
+                          (anio, premio, descripcion, fechaEntrega, imag, id))
     db.connection.commit()
     flash('Rifa Actualizada')
     return redirect('/sRifa')
 
-@spendyApp.route('/dRifa/<string:premio>', methods=['GET','POST']) 
-def dRifa(premio):
+@spendyApp.route('/dRifa/<int:id>', methods=['GET','POST']) 
+def dRifa(id):
     eliminarRifa = db.connection.cursor()
-    eliminarRifa.execute("DELETE FROM rifasanuales WHERE premio=%s", (premio,))
+    eliminarRifa.execute("DELETE FROM rifasanuales WHERE id=%s", (id,))
     db.connection.commit()
     flash('Rifa Eliminada')
     return redirect('/sRifa')
