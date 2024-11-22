@@ -5,106 +5,84 @@
 {% block contenido %}
 
 <style>
-  th,td{
-    padding: 2vh !important;
+  /* Contenedor principal */
+  .fonda {
+    width: 100vw;
+    height: 80vh;
+    position: relative;
+    background-color: rgb(2, 21, 130);  /* Color de fondo */
+    display: flex;
   }
-  th, thead{
-    background-color: rgb(252, 60, 156) !important;
-    color: ghostwhite !important;
+
+  /* Fondo con la imagen a la izquierda */
+  .fondosIA {
+    width: 50%;
+    height: 100%;
+    background: url(/static/img/bitcoin-wallpaper-4k.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
   }
-  .row{
-    width: 96vw !important;
-    margin: 0;
-    background-color: rgba(153, 151, 151, 0.486);
-    margin: 2vw;
-    padding: 2vw;
+
+  /* Fondo con la imagen a la derecha */
+  .fondosIAR {
+    width: 50%;
+    height: 100%;
+    background: url(/static/img/ia_reversed.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
   }
-  .grande:hover{
-    transform: scale(1.1);
-    transition: transform 0.3s ease;
+
+  /* Estilo para el texto centrado sobre las imágenes */
+  .contenidoTexto {
+    background-color: rgba(0, 51, 255, 0.507);  /* Fondo translúcido */
+    position: absolute;
+    width: 100vw;
+    height: 80vh;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
   }
-  .grande{
-    padding: 4vh;
-    transition: transform 0.3s ease;
+
+  .ce {
+    text-align: center;
   }
-  @media (max-width: 768px) {
-    .grande:hover{
-      transform: none;
-    }
-    th,td{
-    padding: .71vh !important;
+  .Htitu{
+    font-size: 2vw;
+    color: rgb(12, 12, 126);
+    margin-top: 4vh;
+    margin-bottom: 1vh;
   }
+  .Hp{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2vw;
   }
 </style>
-  <div class="row align-items-stretch">
-    <!-- Div de la tabla -->
-    <div class="grande col-md-5 d-flex flex-column bg-light">
-      <h1 class="text-center mt-3" style="margin: 4vh auto 2vh;">Spendy</h1>
-      <table class="table table-bordered mb-3" style="text-align: center">
-        <thead>
-          <tr>
-            <th>Meses Invertidos</th>
-            <th>Intereses Ganados</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>0.5%</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>1.7%</td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>3.8%</td>
-          </tr>
-          <tr>
-            <td>9</td>
-            <td>5.9%</td>
-          </tr>
-          <tr>
-            <td>12</td>
-            <td>8%</td>
-          </tr>
-        </tbody>
-      </table>
-      <div style="background-color: rgb(105, 104, 104); width: 90%; height: .5vh; margin: 0 auto;"></div>
-      <i><p style="text-align: center; margin-top: .5vh;">"Ahorra y gana con Spendy"</p></i>
-    </div>
 
-    <!-- Separación constante entre los divs -->
-    <div class="col-md-2 d-none d-md-block">
-      <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-        <div style="background-color: rgba(255, 255, 255, 0); height: 80%; width: 100%; display: flex; align-items: center; justify-content: center; font-size: 15vw;"><p>&hearts;</p></div>
-      </div>
-    </div>
+<div class="fonda">
+  <!-- Imagen de la izquierda -->
+  <div class="fondosIA"></div>
 
-    <!-- Div del carrusel -->
-    <div class=" grande col-md-5 d-flex flex-column bg-light" style="padding: 0;">
-      <div id="carouselExampleInterval" class="carousel slide h-100" data-bs-ride="carousel">
-        <div class="carousel-inner h-100">
-          <div class="carousel-item active h-100" data-bs-interval="3000">
-            <img src="{{ url_for('static', filename='img/agu.png') }}" class="d-block w-100 h-100" alt="...">
-          </div>
-          <div class="carousel-item h-100" data-bs-interval="3000">
-            <img src="{{ url_for('static', filename='img/7.jpeg') }}" class="d-block w-100 h-100" alt="...">
-          </div>
-          <div class="carousel-item h-100" data-bs-interval="3000">
-            <img src="{{ url_for('static', filename='img/bitcoin-wallpaper-4k.jpg') }}" class="d-block w-100 h-100" alt="...">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </div>
+  <!-- Imagen de la derecha -->
+  <div class="fondosIAR"></div>
+
+  <!-- Contenido de texto centrado -->
+  <div class="contenidoTexto">
+    <h1 style="font-size: 4vw;">Spendy</h1>
+    <p style="font-size: 2.2vw;">La mejor app para hacer inversiones</p>
   </div>
+</div>
+<div style="width: 40%; margin: auto;">
+<h2 class="Htitu">¿Que es Spendy?</h2>
+<p class="Hp">Nosotros somos una empresa que te ayuda a cuidar tu dinero, a invertirlo, y a cuidarlo, te asesoramos para que sepas como cuidar tu dinero, hacemos prestamos, y por si fuera poco, tenemos las mejores rifas,¿Estas listo?</p>
+
+<h2 class="Htitu">Inversiones</h2>
+<p class="Hp">Para invertir ve a <a href="/cInvertir">¿Como invertir?</a></p>
+<p class="Hp">Nuestras inversiones son seguras y las mas cuidadas por nuestros mejores inversionistas, puedes empezar a invertir desde 100$ pesos con un limite de 10 Millones.</p>
+
+<h2 class="Htitu">Rifas</h2>
+<p class="Hp">Nuestras rifas se hacen anualmente, pero mientras mas crezca Spendy mas pronto seran, para participar solo debes de tener invertidos 100 pesos, y asi ganas la posibilidad de obtener el premio anual.</p>
 </div>
 {% endblock %}
