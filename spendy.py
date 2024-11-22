@@ -21,7 +21,7 @@ adminSesion = LoginManager(spendyApp)
 def cargaUsuario(id):
     return ModelUser.get_by_id(db, id)
 
-# Definir el contexto global para las variables aRU y aIS
+#contexto global para las variables aRU y aIS
 @spendyApp.context_processor
 def navI():
     if current_user.is_authenticated:
@@ -31,7 +31,7 @@ def navI():
         aRU = '<a class="nav-link" href="/signup">Regístrate</a>'
         aIS = '<a class="nav-link" href="/signin">Iniciar sesión <i class="fa-regular fa-user"></i></a>'
 
-    # Pasar las variables a todas las plantillas
+    #asar las variables a layout
     return dict(Primero=aRU, Segundo=aIS)
 
 @spendyApp.context_processor
@@ -41,14 +41,17 @@ def navR():
         if perfil == 'U':
             rutaR = '/sRifa'
             rutaU = '/sPerfil'
+            name = 'Perfil'
         else:
             rutaR = '/sAdmin'
             rutaU = '/sUsuario'
-        return dict(r=rutaR, u=rutaU)
+            name = 'Usuarios'
+        return dict(r=rutaR, u=rutaU,nombre=name)
     else:
         rutaR = '/sRifa'
-        rutaU = '/sPerfil'
-        return dict(r=rutaR, u=rutaU)
+        rutaU = '/signin'
+        name = 'Perfil'
+        return dict(r=rutaR, u=rutaU, nombre=name)
 
     
 
@@ -58,6 +61,7 @@ def home():
 
 @spendyApp.route('/sPerfil')
 def perfils():
+    nombre = current_user.nombre
     return render_template('perfil.html')
 
 @spendyApp.route('/preguntas')
@@ -80,18 +84,13 @@ def signup():
         regUsuario.execute("INSERT INTO usuario (nombre, correo, clave, fechareg) VALUES(%s,%s,%s,%s)", (nombre, correo, claveCifrada, fechaReg))
         db.connection.commit()
         
-        # Crear el correo
+        #crear el correo
         msg = Message(subject='Bienvenido a Spendy', recipients=[correo])
         msg.html = render_template('mail.html', nombre=nombre)
         
         # Adjuntar imagen
         with spendyApp.open_resource(os.path.join('static', 'img', 'correoImg.png')) as img:
-            msg.attach(
-    'correoImg.png',
-    'image/png',
-    img.read(),
-    headers={'Content-ID': '<correoImg>'}
-)
+            msg.attach('correoImg.png', 'image/png', img.read(), headers={'Content-ID': '<correoImg>'})
         
         mail.send(msg)
         return render_template('home.html')
@@ -110,9 +109,9 @@ def signin():
                 session['NombreU'] = usuarioAutenticado.nombre
                 session['PerfilU'] = usuarioAutenticado.perfil
                 if usuarioAutenticado.perfil == 'U':
-                    return render_template('home.html')  # Redirigir a la página de usuario
+                    return redirect('/cInvertir')  
                 else:
-                    return redirect('/sAdmin')  # Redirigir a la página de administrador
+                    return redirect('/sAdmin')  
             else:
                 flash('Contraseña incorrecta')
                 return redirect(request.url)    
@@ -202,8 +201,11 @@ def oRifa():
     crearUsuario.execute("INSERT INTO rifasanuales (anio, premio, descripcion, fechaEntrega, imag) VALUES(%s, %s, %s, %s, %s)", 
                          (anio, premio, descripcion, fechaEntrega, img))
     db.connection.commit()
-    flash('Rifa creada')
-    return redirect('/sRifa')
+    if current_user.perfil == 'A': 
+        flash('Rifa Creada')
+        return redirect('/sAdmin')
+    else:
+        return redirect('/sRifa')
 
 @spendyApp.route('/uRifa/<int:id>', methods=['GET','POST'])
 def uRifa(id):
@@ -217,16 +219,22 @@ def uRifa(id):
     editarRifa.execute("Update rifasanuales SET anio = %s, premio = %s, descripcion = %s, fechaEntrega = %s, imag = %s WHERE id = %s",
                           (anio, premio, descripcion, fechaEntrega, imag, id))
     db.connection.commit()
-    flash('Rifa Actualizada')
-    return redirect('/sRifa')
+    if current_user.perfil == 'A': 
+        flash('Rifa Actualizada')
+        return redirect('/sAdmin')
+    else:
+        return redirect('/sRifa')
 
 @spendyApp.route('/dRifa/<int:id>', methods=['GET','POST']) 
 def dRifa(id):
     eliminarRifa = db.connection.cursor()
     eliminarRifa.execute("DELETE FROM rifasanuales WHERE id=%s", (id,))
     db.connection.commit()
-    flash('Rifa Eliminada')
-    return redirect('/sRifa')
+    if current_user.perfil == 'A': 
+        flash('Rifa Borrada')
+        return redirect('/sAdmin')
+    else:
+        return redirect('/sRifa')
 
 @spendyApp.route("/cInvertir")
 def inversiones():

@@ -48,7 +48,10 @@
         padding: 3vh;
         margin: 2vh auto;
     }
-
+    .no-btn{
+        background-color: rgba(240, 248, 255, 0) !important; 
+        color: rgba(240, 248, 255, 0) !important;
+    }
     @media (max-width: 768px) {
         .container.esg {
             padding: 1vh 1vh;
@@ -260,7 +263,7 @@
     <div class="col">
         <div class="card">
             <div style="box-shadow: 0px 3px 5px -2px rgba(0, 0, 0, 0.253);">
-                <img src="/static/img/Bici.jpg" class="card-img-top" alt="Not found">
+                <img src="/static/img/glitch.jpg" class="card-img-top" alt="Not found">
             </div>
             <div class="card-body">
                 <p class="año"><small><b>¿Seguro?</b></small></p>
@@ -280,14 +283,14 @@
                   
             <div class="boton agregar" style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
                         <!-- Button Update -->
-        <button disabled type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update">
+        <button disabled type="button" class="no-btn btn btn-primary" data-bs-toggle="modal" data-bs-target="#update">
             <i class="fa-solid fa-pen-to-square"></i>
         </button>
         
 
 
         <!-- Button Delete -->
-        <button disabled type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete">
+        <button disabled type="button" class="no-btn btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete">
             <i class="fa-solid fa-trash"></i>
         </button>
     </div>
