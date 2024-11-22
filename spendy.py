@@ -7,6 +7,7 @@ from models.ModelUser import ModelUser
 from models.entities.User import User
 import datetime
 from config import config
+import os
 
 spendyApp = Flask(__name__)  
 # Python anywhere
@@ -78,8 +79,20 @@ def signup():
         regUsuario = db.connection.cursor()
         regUsuario.execute("INSERT INTO usuario (nombre, correo, clave, fechareg) VALUES(%s,%s,%s,%s)", (nombre, correo, claveCifrada, fechaReg))
         db.connection.commit()
+        
+        # Crear el correo
         msg = Message(subject='Bienvenido a Spendy', recipients=[correo])
         msg.html = render_template('mail.html', nombre=nombre)
+        
+        # Adjuntar imagen
+        with spendyApp.open_resource(os.path.join('static', 'img', 'correoImg.png')) as img:
+            msg.attach(
+    'correoImg.png',
+    'image/png',
+    img.read(),
+    headers={'Content-ID': '<correoImg>'}
+)
+        
         mail.send(msg)
         return render_template('home.html')
     else:
@@ -222,6 +235,7 @@ def inversiones():
 @spendyApp.route('/Invertir')
 def invertir():
     return render_template('invertir.html')
+
 
 # Iniciar la aplicación
 if __name__ == '__main__':

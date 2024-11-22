@@ -8,42 +8,80 @@
     }
     main{
         background-color: white;
-        width: 100%;
+        width: 100vw;
         display: flex;         
         align-items: center;   
-        flex-direction: column; 
-        height: 85vh;        
+        flex-direction: column;        
     }
     .uy, .negro{
         color: black !important;
         list-style-type: none;
     }
     .centrado{
+        margin: 4vh auto;
         text-align: center;
+        color: chocolate;
     }
     h1, .uy, small{
         margin: 2vh auto;
     }
     
     .uy{
+        width: 40%;
+        font-family: Arial, Helvetica, sans-serif;
         padding: 0;
         margin: 0;
+        margin-top: 2vh;
     }
     .negro {
         margin-bottom: 1vh;
+        font-size: 1vw;
+    }
+    .imge{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 5vh;
+        background-image: url(/static/img/diner.jpg);
+        background-size: cover;
+        box-sizing: content-box;
+    }
+    .textoss{
+        font-size: 1.1vw;
+    }
+    .fotos{
+        width: 100%;
+        height: 40vh;
+        background-color: aqua;
+    }
+    .pasos{
+        width: 100%;
     }
 </style>
 
 <main>
+    <div class="imge"></div>
     <h1 class="centrado">Como invertir en nuestra pagina</h1>
+    <p class="textoss">Solo sigue estos pasos para comenzar a invertir, y disfruta de tus ganancias.</p>
     <ul class="uy">
-        <li class="negro">1. Inicia Sesion con tu correo electronico personal (Te contactaremos por aqui en caso de inconvenientes).</li>
-        <li class="negro">2. Escoge que cantidad de dinero invertiras.</li>
-        <li class="negro">3. Elige el tiempo que sera invertido.</li>
-        <li class="negro">4. Da click en invertir</li>
-        <li class="negro">5. Se mostrara una cuenta de banco, deposita a ella la cantidad elegida.</li>
+        <li class="negro">Paso 1: Inicia Sesion, o Registrate con tu correo electronico personal (Te contactaremos por aqui en caso de inconvenientes).
+            <div class="fotos"><img class="pasos" src="/static/img/Paso1.1.png" alt=""></div>
+        </li><br>
+        <li class="negro">Paso 2: Escoge que cantidad de dinero invertiras.
+            <div class="fotos"><img class="pasos" src="/static/img/Paso2.png" alt=""></div></div>
+        </li><br>
+        <li class="negro">Paso 3: Elige el tiempo que sera invertido.
+            <div class="fotos"><img class="pasos" src="/static/img/Paso3.png" alt=""></div></div>
+        </li><br>
+        <li class="negro">Paso 4: Da click en invertir
+            <div class="fotos"><img class="pasos" src="/static/img/Paso3.png" alt=""></div></div>
+        </li><br>
+        <li class="negro">Paso 5: Se mostrara una cuenta de banco, deposita a ella la cantidad elegida.
+            <div class="fotos"><img class="pasos" src="/static/img/Paso4.png" alt=""></div></div>
+        </li><br>
     </ul>
-    <small>Y listo, tu dinero estara invertido, solo espera a que el plazo termine y te depositaremos tu dinero mas las ganancias.</small>
+    <small>"Y listo, tu dinero estara invertido, solo espera a que el plazo termine y te depositaremos tu dinero mas las ganancias."</small>
+    <div class="imge"></div>
 </main>
 
 {% endblock %}
