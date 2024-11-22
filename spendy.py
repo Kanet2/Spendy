@@ -25,7 +25,7 @@ def cargaUsuario(id):
 @spendyApp.context_processor
 def navI():
     if current_user.is_authenticated:
-        aRU = '<a class="nav-link">{current_user.nombre}</a>'
+        aRU = f'<a class="nav-link">{current_user.nombre}</a>'
         aIS = '<a class="nav-link" href="/signout">Salir <i class="fa-solid fa-right-from-bracket"></i></a>'
     else:
         aRU = '<a class="nav-link" href="/signup">Regístrate</a>'
