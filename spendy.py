@@ -236,6 +236,20 @@ def inversiones():
 def invertir():
     return render_template('invertir.html')
 
+# Formulario Invertir
+@spendyApp.route('/iInvertir', methods=['POST','GET'])
+def invertir2():
+    #Id Automatico no poner
+    userId = current_user.id
+    precio = request.form['precio']
+    plazo = request.form['plazo']
+    fecha = datetime.datetime.now()
+    #Estatus esta automatico, no lo pongo
+    insertarInversion = db.connection.cursor()
+    insertarInversion.execute('INSERT INTO inversiones(userId, amount, plazo, fechaInversion) VALUES(%s, %s, %s, %s)',
+                              (userId, precio, plazo, fecha))
+    db.connection.commit()
+    return render_template('deposita.html')
 
 # Iniciar la aplicación
 if __name__ == '__main__':
