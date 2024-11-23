@@ -5,16 +5,14 @@
 {% block contenido %}
 
 <style>
-  /* Contenedor principal */
   .fonda {
-    width: 100vw;
+    width: 100%;
     height: 80vh;
     position: relative;
-    background-color: rgb(2, 21, 130);  /* Color de fondo */
+    background-color: rgb(4, 17, 92);
     display: flex;
   }
 
-  /* Fondo con la imagen a la izquierda */
   .fondosIA {
     width: 50%;
     height: 100%;
@@ -23,7 +21,6 @@
     background-repeat: no-repeat;
   }
 
-  /* Fondo con la imagen a la derecha */
   .fondosIAR {
     width: 50%;
     height: 100%;
@@ -32,11 +29,10 @@
     background-repeat: no-repeat;
   }
 
-  /* Estilo para el texto centrado sobre las imágenes */
   .contenidoTexto {
-    background-color: rgba(0, 51, 255, 0.507);  /* Fondo translúcido */
+    background-color: rgba(11, 31, 110, 0.562);
     position: absolute;
-    width: 100vw;
+    width: 100%;
     height: 80vh;
     flex-direction: column;
     display: flex;
@@ -49,40 +45,180 @@
   .ce {
     text-align: center;
   }
-  .Htitu{
+
+  .Htitu {
     font-size: 2vw;
-    color: rgb(12, 12, 126);
-    margin-top: 4vh;
-    margin-bottom: 1vh;
+    color: rgb(13, 13, 85);
+    margin-top: 6vh;
+    margin-bottom: 2vh;
   }
-  .Hp{
+
+  .Hp {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.2vw;
+    display: flex;
+    justify-content: center;
+  }
+
+  th,
+  td {
+    padding: 2vh !important;
+  }
+
+  th,
+  thead {
+    background-color: rgb(252, 60, 156) !important;
+    color: ghostwhite !important;
+  }
+
+  .row {
+    width: 96vw !important;
+    margin: 0;
+    background-color: rgba(153, 151, 151, 0.486);
+    margin: 2vw;
+    padding: 2vw;
+  }
+
+  .grande {
+    width: 100%;
+    padding: 2vw;
+  }
+
+  @media (max-width: 768px) {
+    .fonda {
+      width: 100%;
+      height: 40vh;
+      position: relative;
+      background-color: rgb(4, 17, 92);
+      display: flex;
+    }
+
+    .fondosIA {
+      width: 100%;
+      height: 100%;
+      background: url(/static/img/bitcoin-wallpaper-4k.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .fondosIAR {
+      width: 0;
+      height: 0;
+    }
+
+    .contenidoTexto {
+      background-color: rgba(11, 31, 110, 0.562);
+      position: absolute;
+      width: 100%;
+      height: 40vh;
+      flex-direction: column;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+    
+    th,
+    td {
+      padding: .71vh !important;
+    }
+
+    .abajo {
+      width: 90% !important;
+    }
+
+    .Htitu {
+      font-size: 5vw;
+      color: rgb(13, 13, 85);
+      margin-top: 6vh;
+      margin-bottom: 2vh;
+    }
+
+    .Hp {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 4vw;
+      display: flex;
+      justify-content: center;
+    }
+    
+    th,
+    td,.lll {
+      font-size: 3vw !important;
+    }
+    .text-center{
+      font-size: 5vw;
+    }
+  }
+
+  th,
+  td {
+    font-size: 1vw;
   }
 </style>
 
 <div class="fonda">
-  <!-- Imagen de la izquierda -->
   <div class="fondosIA"></div>
-
-  <!-- Imagen de la derecha -->
   <div class="fondosIAR"></div>
-
-  <!-- Contenido de texto centrado -->
   <div class="contenidoTexto">
     <h1 style="font-size: 4vw;">Spendy</h1>
-    <p style="font-size: 2.2vw;">La mejor app para hacer inversiones</p>
+    <p style="font-size: 2.2vw;"><i>La mejor app para hacer inversiones</i></p>
   </div>
 </div>
-<div style="width: 40%; margin: auto;">
-<h2 class="Htitu">¿Que es Spendy?</h2>
-<p class="Hp">Nosotros somos una empresa que te ayuda a cuidar tu dinero, a invertirlo, y a cuidarlo, te asesoramos para que sepas como cuidar tu dinero, hacemos prestamos, y por si fuera poco, tenemos las mejores rifas,¿Estas listo?</p>
 
-<h2 class="Htitu">Inversiones</h2>
-<p class="Hp">Para invertir ve a <a href="/cInvertir">¿Como invertir?</a></p>
-<p class="Hp">Nuestras inversiones son seguras y las mas cuidadas por nuestros mejores inversionistas, puedes empezar a invertir desde 100$ pesos con un limite de 10 Millones.</p>
+<div class="abajo" style="width: 40%; margin: auto; display: flex; flex-direction: column; justify-content: center;">
+  <h2 class="Htitu">¿Que es Spendy?</h2>
+  <p class="Hp">Nosotros somos una empresa que te ayuda a cuidar tu dinero, a invertirlo, y a cuidarlo,
+    te asesoramos para que sepas como cuidar tu dinero, hacemos prestamos, y por si fuera poco, tenemos las mejores
+    rifas ¿Estas listo?.</p>
 
-<h2 class="Htitu">Rifas</h2>
-<p class="Hp">Nuestras rifas se hacen anualmente, pero mientras mas crezca Spendy mas pronto seran, para participar solo debes de tener invertidos 100 pesos, y asi ganas la posibilidad de obtener el premio anual.</p>
+  <div class="grande col-md-5 d-flex flex-column bg-light">
+    <h1 class="text-center mt-3" style="margin: 4vh auto 2vh;">Ganancias por mes:</h1>
+    <table class="table table-bordered mb-3" style="text-align: center">
+      <thead>
+        <tr>
+          <th>Meses Invertidos</th>
+          <th>Intereses Ganados</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>0.5%</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>1.7%</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>3.8%</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>5.9%</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>8%</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="background-color: rgb(105, 104, 104); width: 90%; height: .5vh; margin: 0 auto;"></div>
+    <i>
+      <p class="lll" style="text-align: center; margin-top: .5vh;">"Ahorra y gana con Spendy"</p>
+    </i>
+  </div>
+
+  <h2 class="Htitu">Inversiones</h2>
+  <p class="Hp">Nuestras inversiones son seguras y las mas cuidadas por nuestros mejores inversionistas, puedes empezar
+    a invertir desde 100$ pesos con un limite de 10 Millones.</p>
+  <img src="/static/img/targeta.png" alt="">
+  <p class="Hp" style="font-family: serif;">Para invertir ve a <a href="/cInvertir">&nbsp;¿Como invertir?</a></p>
+
+  <h2 class="Htitu">Rifas</h2>
+  <p class="Hp">Nuestras rifas se hacen anualmente, pero mientras mas crezca Spendy mas pronto seran, para participar
+    solo debes de tener invertidos 100 pesos, y asi ganas la posibilidad de obtener el premio anual.</p>
+  <img src="/static/img/rif.png" alt="">
 </div>
 {% endblock %}

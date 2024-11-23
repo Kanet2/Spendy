@@ -1,99 +1,88 @@
 {% extends 'layout.html' %}
 
-{% block titulo %}Productos{% endblock %}
+{% block titulo %}Rifas{% endblock %}
 
 {% block contenido %}
-
 <style>
     .rifasT {
-        margin: 0 auto 3vh !important;
+        margin: 3vh auto 6vh;
+        font-size: 2.5rem;
     }
-
     .esg {
-        border: 30px ridge rgb(128, 128, 128);
+        border: 2vh ridge rgb(102, 101, 101);
     }
-
     .año {
-        text-align: center !important;
+        text-align: center;
         font-family: 'SilkScreen';
-        color: chocolate;
-        font-size: 2.5vh;
-        margin-top: 1vh;
-        margin-bottom: 1vh;
+        color: rgb(219, 91, 0);
+        font-size: 1.5rem;
+        margin: 1vh 0;
     }
-
     .objeto {
-        text-align: center !important;
-        font-size: 3vh;
+        text-align: center;
+        font-size: 1.8rem;
         margin-bottom: 2vh;
     }
-
     .des {
-        font-size: 2.7vh;
+        font-size: 1.5rem;
         justify-content: right;
         margin-bottom: 1vh;
     }
-
     .card-body {
         padding: 0;
     }
-
     .card {
-        border-radius: 10px;
+        border-radius: 1rem;
         border: none;
     }
-
     .container.esg {
-        background-color: rgb(118, 163, 60);
+        background-color: rgb(110, 155, 51);
         padding: 3vh;
         margin: 2vh auto;
     }
-
+    .fecha {
+        margin: 1vh auto !important;
+        font-size: 1.5rem;
+    }
     @media (max-width: 768px) {
         .container.esg {
-            padding: 1vh 1vh;
+            padding: 2vh;
         }
-
         .rifasT {
-            font-size: 2.5vh;
-            margin-bottom: 2vh;
+            font-size: 2rem;
+            margin: 3vh 0;
         }
-
         .año {
-            font-size: 2vh;
+            font-size: 1.2rem;
         }
-
         .objeto {
-            font-size: 5vw !important;
+            font-size: 1.5rem;
         }
-
         .des {
-            font-size: 2vh;
+            font-size: 1.2rem;
         }
-
         .col {
-            padding: 5vw !important;
+            padding: 1rem;
         }
-
         .card {
-            margin: 1vh auto;
+            margin: 2vh auto;
         }
-
         .row-cols-1.row-cols-md-3.g-4 {
             gap: 2vh;
         }
-
         img.card-img-top {
             max-height: 30vh;
             object-fit: cover;
         }
-
         .modal-content {
-            font-size: 2vh;
+            font-size: 1rem;
+        }
+        .fecha {
+            margin: 1vh auto !important;
+            font-size: 1.2rem;
         }
     }
 </style>
-
 <div class="container esg">
     <h1 class="rifasT" style="color: ghostwhite; text-align: center; font-family: Silkscreen;">$Rifas$</h1>
     {% with mensajes = get_flashed_messages() %}
@@ -106,31 +95,27 @@
     {% endfor %}
     {% endif %}
     {% endwith %}
-
     <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for p in productos %}
         <div class="col">
             <div class="card">
-                <div style="box-shadow: 0px 3px 5px -2px rgba(0, 0, 0, 0.253);">
+                <div style="box-shadow: 0 3px 5px -2px rgba(0, 0, 0, 0.253);">
                     <img src="/static/img/{{p.5}}" class="card-img-top" alt="Not found">
                 </div>
                 <div class="card-body">
                     <p class="año"><small><b>{{p.1}}</b></small></p>
-                    <p class="objeto" style="background-color: rgb(100, 179, 84); color: ghostwhite; margin-bottom: 1vh;">{{p.2}}</p>
-                    <p class="des" style="width: 85%; margin: auto; font-size: 3vh; font-family: Arial, Helvetica, sans-serif;">Descripción: <br></p>
+                    <p class="objeto" style="background-color: rgb(24, 143, 0); color: ghostwhite; margin-bottom: 1vh;">{{p.2}}</p>
+                    <p class="des" style="width: 85%; margin: auto; font-family: Arial, Helvetica, sans-serif; margin-top: 2vh;"><b>Descripción: </b><br></p>
                     <div style="max-height: 12vh; min-height: 12vh; width: 70%; margin: auto;">
                         <p class="des" style="font-family: Arial, Helvetica, sans-serif;">{{p.3}}</p>
                     </div>
-                    <div style="width: 100%; background-color: hotpink; color: ghostwhite; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; padding: 1.5vh;">
-                        <p class="objeto" style="margin: 0; font-size: 2.5vh;">Fecha de entrega: {{p.4}}</p>
+                    <div style="width: 100%; background-color: rgb(221, 71, 146); color: ghostwhite; border-bottom-right-radius: 1rem; border-bottom-left-radius: 1rem; padding: 1.5vh;">
+                        <p class="fecha" style="margin: 0;">Fecha de entrega: {{p.4}}</p>
                     </div>
                 </div>
             </div>
         </div>
         {% endfor %}
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 {% endblock %}
