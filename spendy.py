@@ -62,7 +62,8 @@ def home():
 @spendyApp.route('/sPerfil')
 def perfils():
     nombre = current_user.nombre
-    return render_template('perfil.html')
+    correo = current_user.correo
+    return render_template('perfil.html', nombreU=nombre, correoU=correo)
 
 @spendyApp.route('/preguntas')
 def preguntas():

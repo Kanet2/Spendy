@@ -1,9 +1,73 @@
 {% extends 'layout.html' %}
 {% block titulo %}Ahorra y gana con Spendy{% endblock %}
 {% block contenido %}
-<p>"Este es tu Perfil"</p>
-<h1>Mi Perfil</h1>
-<p>!Hola {{nombreU}} bienvenido¡</p>
-<p>Correo: {{correoU}}</p>
-<p><small>Mas funcionalidades proximamente.</small></p>
+<style>
+    body {
+        background-color: aliceblue !important;
+        background-image: none !important;
+    }
+    main {
+        background-color: rgb(224, 224, 224);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 5vw;
+    }
+    .centrado {
+        text-align: center;
+        margin: 3vh auto;
+    }
+    h1 {
+        font-size: 2.5vw;
+        margin-top: 2vh;
+    }
+    p {
+        font-size: 1.5vw;
+        margin: 1vh 0;
+    }
+    small {
+        font-size: 1.2vw;
+        color: grey;
+    }
+
+    .perfil {
+        background-color: white;
+        border-radius: 10px;
+        padding: 3vw;
+        width: 60%;
+        margin: 2vh auto;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    
+    @media (max-width: 768px) {
+        main {
+            padding: 5vw;
+        }
+        .perfil {
+            width: 90%;
+            padding: 5vw;
+        }
+        h1 {
+            font-size: 5vw;
+        }
+        p {
+            font-size: 4vw;
+        }
+        small {
+            font-size: 3.5vw;
+        }
+    }
+</style>
+
+<main>
+    <div class="perfil">
+        <h1>Mi Perfil</h1>
+        <p>¡Hola {{nombreU}}, bienvenido!</p>
+        <p>Correo: {{correoU}}</p>
+        <p><small>Más funcionalidades próximamente.</small></p>
+    </div>
+</main>
+
 {% endblock %}

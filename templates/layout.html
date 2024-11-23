@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block titulo %}Página{% endblock %}</title>
 
-  <!-- Archivos CSS -->
+  <!-- archios CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/all.min.css') }}">
   <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Rubik+Mono+One&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
@@ -137,12 +137,12 @@
     </div>
   </nav>
 
-  <!-- Contenido dinámico -->
+  
   <main style="width: 100%; margin: 0; padding: 0;">
     {% block contenido %}{% endblock %}
   </main>
 
-  <!-- Footer -->
+  <!-- footer -->
   <footer>
     <p style="margin: 0;">&copy; 2024 Spendy, Inc</p>
   </footer>

@@ -32,7 +32,7 @@
           border-radius: 5px;
           border: 1px solid rgb(188, 188, 188);
           width: 100%;
-          /* Se ajusta automáticamente */
+          
           padding: 0.5vh;
         }
 
@@ -46,8 +46,10 @@
 
         @media (max-width: 768px) {
           div[style*="width: 33%"] {
-            width: 90vw !important;
-            /* Ajustar ancho en pantallas medianas */
+            width: 99vw !important;
+            padding: 0vh 2vh 3vh !important;
+            margin-top: 1vw !important;
+            
           }
 
           label {
@@ -74,9 +76,10 @@
 
         @media (max-width: 576px) {
           div[style*="width: 33%"] {
-            width: 90vw !important;
-            /* Ocupa todo el ancho */
-            padding: 2vh 2vh 3vh;
+            width: 99vw !important;
+            
+            padding: 0vh 2vh 3vh !important;
+            margin-top: 1vw !important;
           }
 
           label {
@@ -122,9 +125,9 @@
       </div>
       <div style="display: flex;">
         <small
-          style="display: inline; font-size: 1.3vh; padding: 0; margin: 0; margin-right: 0.5vh; margin-left: auto;">Acepta
+          style="display: inline; font-size: 1.3vh; padding: 0; margin: 0; margin-right: 0; margin-left: auto;">Acepta
           los <a class="gold" style="display: inline;">Términos y Condiciones</a></small>
-        <input type="checkbox" style="width: auto; margin: 0 0 0 auto; height: 2.3vh;">
+        <input type="checkbox" style="width: auto; margin: 0 auto 0 5px; height: 2.3vh;">
       </div>
       <br>
       <button class="regi" type="submit"

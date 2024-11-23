@@ -7,8 +7,8 @@
         background-image: none !important;
     }
     main{
-        background-color: rgb(224, 224, 224);
-        width: 100vw;
+        background-color: rgb(238, 238, 238);
+        width: 100%;
         display: flex;         
         align-items: center;   
         flex-direction: column;        
@@ -32,6 +32,27 @@
         margin: 0;
         margin-top: 2vh;
     }
+      @media (max-width: 600px){
+        .uy{
+          width: 90%;
+        }
+        .fotos{
+          height: fit-content !important;
+        }
+        .jff{
+          font-size: 4vw;
+          width: 90%;
+          margin: auto;
+        }
+        .negro {
+        margin-bottom: 2vh;
+        font-size: 4vw !important; 
+    }
+      }
+
+      .fotos{
+          height: fit-content !important;
+        }
     .negro {
         margin-bottom: 2vh;
         font-size: 1vw;
@@ -81,7 +102,7 @@
             <div class="fotos"><img class="pasos" src="/static/img/Paso4.png" alt=""></div></div>
         </li><br>
     </ul>
-    <p>"Y listo, tu dinero estara invertido, solo espera a que el plazo termine y te depositaremos tu dinero mas las ganancias."</p>
+    <p class="jff">"Y listo, tu dinero estara invertido, solo espera a que el plazo termine y te depositaremos tu dinero mas las ganancias."</p>
     <div class="imge"></div>
 </main>
 
