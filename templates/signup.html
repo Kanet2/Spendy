@@ -13,6 +13,18 @@
   <div class="container"
     style="border: 1px solid rgb(214, 214, 214); background-color: rgb(226, 226, 226); padding: 4vh; margin: auto; border-radius: 4px;">
     <form method="post" action="/signup" class="row g-3" style="color: rgb(0, 0, 0);">
+      
+      {% with mensajes = get_flashed_messages() %}
+      {% if mensajes %}
+      {% for m in mensajes %}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{m}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      
       <h2 style="text-align: center; font-size: 3vh; font-family: Calibri; margin-top: 3vh; margin-bottom: 1vh;">Crea
         una cuenta</h2>
       <style>
@@ -112,13 +124,13 @@
       </style>
 
       <label for="nom">Nombre:</label><br>
-      <input type="text" name="nombre" id="nom"><br>
+      <input type="text" name="nombre" id="nom" required><br>
 
       <label for="corr">Correo:</label><br>
-      <input type="email" name="correo" id="corr"><br>
+      <input type="email" name="correo" id="corr" required><br>
 
       <label for="contra">Contraseña:</label><br>
-      <input type="password" name="clave" id="contra" style="margin-bottom: 4vh;">
+      <input type="password" name="clave" id="contra" style="margin-bottom: 4vh;" required>
 
       <div class="hr"
         style="margin: 0vh auto 2vh; padding: 1px; background-color: rgb(0, 0, 0); width: 75%; box-shadow: 0 1px 5px 0.5px rgb(166, 166, 166);">

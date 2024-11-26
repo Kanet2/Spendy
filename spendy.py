@@ -11,7 +11,7 @@ import os
 
 spendyApp = Flask(__name__)  
 # Python anywhere
-spendyApp.config.from_object(config['development'])
+#spendyApp.config.from_object(config['development'])
 spendyApp.config.from_object(config['mail'])
 db = MySQL(spendyApp)
 mail = Mail(spendyApp)
@@ -42,16 +42,22 @@ def navR():
             rutaR = '/sRifa'
             rutaU = '/sPerfil'
             name = 'Perfil'
+            Invertir = '/Invertir'
+            mInversion = '/mInversiones'
         else:
             rutaR = '/sAdmin'
             rutaU = '/sUsuario'
             name = 'Usuarios'
-        return dict(r=rutaR, u=rutaU,nombre=name)
+            Invertir = '/Invertir'
+            mInversion = '/mInversiones'
+        return dict(r=rutaR, u=rutaU,nombre=name, i=Invertir, mi=mInversion)
     else:
         rutaR = '/sRifa'
         rutaU = '/signin'
         name = 'Perfil'
-        return dict(r=rutaR, u=rutaU, nombre=name)
+        Invertir = '/signin'
+        mInversion = '/signin'
+        return dict(r=rutaR, u=rutaU, nombre=name, i=Invertir, mi=mInversion)
 
     
 
@@ -79,24 +85,31 @@ def signup():
         nombre = request.form['nombre'] 
         correo = request.form['correo']
         clave = request.form['clave']
-        claveCifrada = generate_password_hash(clave)
-        fechaReg = datetime.datetime.now()
-        regUsuario = db.connection.cursor()
-        regUsuario.execute("INSERT INTO usuario (nombre, correo, clave, fechareg) VALUES(%s,%s,%s,%s)", (nombre, correo, claveCifrada, fechaReg))
-        db.connection.commit()
+        RevisarCorreo = db.connection.cursor()
+        RevisarCorreo.execute("SELECT correo FROM usuario WHERE correo = %s", (correo,))
+        CorreoExiste = RevisarCorreo.fetchone()
+        if CorreoExiste is None:
+            claveCifrada = generate_password_hash(clave)
+            fechaReg = datetime.datetime.now()
+            regUsuario = db.connection.cursor()
+            regUsuario.execute("INSERT INTO usuario (nombre, correo, clave, fechareg) VALUES(%s,%s,%s,%s)", (nombre, correo, claveCifrada, fechaReg))
+            db.connection.commit()
         
-        #crear el correo
-        msg = Message(subject='Bienvenido a Spendy', recipients=[correo])
-        msg.html = render_template('mail.html', nombre=nombre)
+            #crear el correo
+            msg = Message(subject='Bienvenido a Spendy', recipients=[correo])
+            msg.html = render_template('mail.html', nombre=nombre)
         
-        # Adjuntar imagen
-        with spendyApp.open_resource(os.path.join('static', 'img', 'correoImg.png')) as img:
-            msg.attach('correoImg.png', 'image/png', img.read(), headers={'Content-ID': '<correoImg>'})
+            # Adjuntar imagen
+            with spendyApp.open_resource(os.path.join('static', 'img', 'correoImg.png')) as img:
+                msg.attach('correoImg.png', 'image/png', img.read(), headers={'Content-ID': '<correoImg>'})
         
-        mail.send(msg)
-        return render_template('home.html')
+            mail.send(msg)
+            return render_template('home.html')
+        else:
+            flash('Correo en uso')
+            return redirect(request.url)    
     else:
-        return render_template('signup.html')
+            return render_template('signup.html')
 
 @spendyApp.route('/signin', methods=['GET', 'POST'])
 def signin():
@@ -259,6 +272,16 @@ def invertir2():
                               (userId, precio, plazo, fecha))
     db.connection.commit()
     return render_template('deposita.html')
+
+@spendyApp.route('/mInversiones')
+def misInversiones():
+    id = current_user.id
+    print(f"ID del usuario actual: {id}")
+    miInversion = db.connection.cursor()
+    miInversion.execute('SELECT fechaInversion, amount, plazo, status FROM inversiones WHERE userId = %s',(id,))
+    I = miInversion.fetchall()
+    miInversion.close
+    return render_template('Minversiones.html', Inversiones=I)
 
 # Iniciar la aplicación
 if __name__ == '__main__':
