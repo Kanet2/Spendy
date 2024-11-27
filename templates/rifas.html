@@ -5,81 +5,129 @@
 {% block contenido %}
 <style>
     .rifasT {
-        margin: 3vh auto 6vh;
-        font-size: 2.5rem;
+        margin: 2vh auto 5vh !important;
     }
+
     .esg {
-        border: 2vh ridge rgb(102, 101, 101);
+        border: 30px ridge rgb(102, 101, 101);
     }
+
     .año {
-        text-align: center;
+        text-align: center !important;
         font-family: 'SilkScreen';
         color: rgb(219, 91, 0);
-        font-size: 1.5rem;
-        margin: 1vh 0;
-    }
-    .objeto {
-        text-align: center;
-        font-size: 1.8rem;
-        margin-bottom: 2vh;
-    }
-    .des {
-        font-size: 1.4rem;
-        justify-content: right;
+        font-size: 2.5vh;
+        margin-top: 1vh;
         margin-bottom: 1vh;
     }
+
+    .objeto {
+        text-align: center !important;
+        font-size: 3vh;
+        margin-bottom: 2vh;
+    }
+
+    .des {
+        font-size: 1.39rem;
+        text-align: center;
+        margin-bottom: 1vh;
+    }
+    .des2 {
+        font-family: serif !important;
+        font-size: 1.2rem;
+        text-align: center;
+        margin-top: 1vh;
+        font-weight: 1 !important;
+    }
+
     .card-body {
         padding: 0;
     }
+
     .card {
-        border-radius: 1rem;
+        border-radius: 10px;
         border: none;
     }
+
     .container.esg {
         background-color: rgb(110, 155, 51);
         padding: 3vh;
         margin: 2vh auto;
+        max-width: 70%;
     }
+
+    .no-btn {
+        background-color: rgba(240, 248, 255, 0) !important; 
+        color: rgba(240, 248, 255, 0) !important;
+    }
+
+    img.card-img-top {
+        height: 30vh;
+        object-fit: cover;
+    }
+
+    .poloI{
+        width: 49%;
+        margin-left: 0 !important;
+    }
+    .poloD{
+        width: 49%;
+        margin-right: 0 !important;
+    }
+
     .fecha {
-        margin: 1vh auto !important;
-        font-size: 1.5rem;
-    }
-    @media (max-width: 768px) {
-        .container.esg {
-            padding: 2vh;
-        }
-        .rifasT {
-            font-size: 2rem;
-            margin: 3vh 0;
-        }
-        .año {
+            margin: .5vh auto .5vh !important;
             font-size: 1.2rem;
         }
-        .objeto {
-            font-size: 1.5rem;
+    @media (max-width: 768px) {
+        .container.esg {
+            padding: .2vh .2vh;
+            max-width: 100%;
+            margin: 0;
         }
+
+        .rifasT {
+            font-size: 2.5vh;
+            margin-bottom: 1vh !important;
+            margin-top: 3vh !important;
+        }
+
+        .año {
+            font-size: 2vh;
+        }
+
+        .objeto {
+            padding: 1vw 0;
+            font-size: 5vw !important;
+        }
+
         .des {
             font-size: 1.2rem;
         }
+        .des2 {
+            font-size: 1.1rem;
+        }
+
         .col {
-            padding: 1rem;
+            padding: 5vw !important;
         }
+
         .card {
-            margin: 2vh auto;
+            margin: 1vh auto;
         }
-        .row-cols-1.row-cols-md-3.g-4 {
-            gap: 2vh;
-        }
+
         img.card-img-top {
             max-height: 30vh;
             object-fit: cover;
         }
+
         .modal-content {
-            font-size: 1rem;
+            font-size: 2vh;
         }
+
         .fecha {
-            margin: 1vh auto !important;
-            font-size: 1.2rem;
+            margin: 1vh auto 1vh !important;
+            font-size: 4vw !important;
         }
     }
 </style>
@@ -102,14 +150,15 @@
                 <div style="box-shadow: 0 3px 5px -2px rgba(0, 0, 0, 0.253);">
                     <img src="/static/img/{{p.5}}" class="card-img-top" alt="Not found">
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;">
                     <p class="año"><small><b>{{p.1}}</b></small></p>
                     <p class="objeto" style="background-color: rgb(24, 143, 0); color: ghostwhite; margin-bottom: 1vh;">{{p.2}}</p>
-                    <p class="des" style="width: 85%; margin: auto; font-family: Arial, Helvetica, sans-serif; margin-top: 2vh;"><b>Descripción: </b><br></p>
+                    <p class="des" style="width: 85%; margin: auto; font-family: Arial, Helvetica, sans-serif; margin-top: 2vh;"><b>Descripción </b><br></p>
                     <div style="max-height: 12vh; min-height: 12vh; width: 70%; margin: auto;">
-                        <p class="des" style="font-family: Arial, Helvetica, sans-serif;">{{p.3}}</p>
+                        <p class="des2" style="font-family: Arial, Helvetica, sans-serif; text-align: center;"><i>{{p.3}}</i></p>
                     </div>
-                    <div style="width: 100%; background-color: rgb(221, 71, 146); color: ghostwhite; border-bottom-right-radius: 1rem; border-bottom-left-radius: 1rem; padding: 1.5vh;">
+                    <div style="width: 100%; background-color: rgb(221, 71, 146); color: ghostwhite; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; padding: 1.5vh;
+                    display: flex; justify-content: center; align-items: center;">
                         <p class="fecha" style="margin: 0;">Fecha de entrega: {{p.4}}</p>
                     </div>
                 </div>

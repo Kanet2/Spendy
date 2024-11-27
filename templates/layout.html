@@ -9,7 +9,9 @@
   <!-- archios CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/all.min.css') }}">
-  <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Rubik+Mono+One&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Electrolize&family=Rubik+Mono+One&family=Silkscreen:wght@400;700&display=swap"
+    rel="stylesheet">
 
   <style>
     body {
@@ -46,12 +48,10 @@
       color: white !important;
       font-size: 1rem;
       margin: 0 0.5rem;
-      transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
     .nav-link:hover {
-      background: linear-gradient(#4023ea, #a10aa3);
-      transform: scale(1.1);
+      color: black !important;
     }
 
     .separator {
@@ -74,16 +74,19 @@
       margin: 0 auto;
       width: 80%;
     }
-    .btn{
+
+    .btn {
       background-color: rgb(9, 177, 9);
       color: rgb(255, 255, 255);
       border: none;
       margin: auto;
     }
-    .btn:hover{
+
+    .btn:hover {
       background-color: rgb(37, 182, 37);
     }
-    .me-2{
+
+    .me-2 {
       width: 15vw !important;
       margin: auto;
     }
@@ -97,7 +100,8 @@
       <a class="navbar-brand" href="/">
         <i class="fa-solid fa-sack-dollar"></i> Spendy
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -105,40 +109,50 @@
           <li class="nav-item">
             <a class="nav-link active" href="/">Home</a>
           </li>
-          <span class="separator">|</span>
-          <li class="nav-item">
-            <a class="nav-link" href="{{i}}">Invertir</a>
-          </li>
-          <span class="separator">|</span>
+          
+          <li class="nav-item"><a class="nav-link" href="{{ r }}">Rifas</a></li>
+          
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Funciones
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Inversiones
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="/cInvertir">Cómo invertir</a></li>
-              <li><a class="dropdown-item" href="{{ r }}">Rifas</a></li>
-              <li><a class="dropdown-item" href="{{ u }}">{{nombre}}</a></li>
+              <li><a class="dropdown-item" href="{{i}}">Invertir</a></li>
               <li><a class="dropdown-item" href="{{mi}}">Mis Inversiones</a></li>
             </ul>
           </li>
-          <span class="separator">|</span>
+          
           <li class="nav-item">
             {{ Primero|safe }}
           </li>
-          <span class="separator">|</span>
+          
           <li class="nav-item">
             {{ Segundo|safe }}
           </li>
         </ul>
-        <form class="form-inline" style="width: fit-content;">
-          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-          <button class="btn btn-outline-light" type="submit">Buscar</button>
-        </form>
+        <form class="form-inline"
+          style="width: fit-content; display: flex; justify-content: center; align-items: center; flex-direction: row;">
+
+          
+            <a class="dropdown-item nav-link" href="{{ u }}" style="width: fit-content; display: flex; justify-content: center; align-items: center; flex-direction: row;">
+              <div style="display: flex; align-items: center;">
+                <p class="nav-link" style="margin: 0; margin-right: 5px; color: ghostwhite;">{{ nombre }}</p>
+                <img src="/static/img/perfil.webp" alt="" style="border-radius: 100%; width: 1.5rem;">
+            </a>
       </div>
+
+      </li>
+
+
+
+      </form>
+    </div>
     </div>
   </nav>
 
-  
+
   <main style="width: 100%; margin: 0; padding: 0;">
     {% block contenido %}{% endblock %}
   </main>

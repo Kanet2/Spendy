@@ -29,9 +29,16 @@
     }
 
     .des {
-        font-size: 2.7vh;
-        justify-content: right;
+        font-size: 1.39rem;
+        text-align: center;
         margin-bottom: 1vh;
+    }
+    .des2 {
+        font-family: serif !important;
+        font-size: 1.2rem;
+        text-align: center;
+        margin-top: 1vh;
+        font-weight: 1 !important;
     }
 
     .card-body {
@@ -47,6 +54,7 @@
         background-color: rgb(110, 155, 51);
         padding: 3vh;
         margin: 2vh auto;
+        max-width: 70%;
     }
 
     .no-btn {
@@ -55,13 +63,27 @@
     }
 
     img.card-img-top {
-        height: 20vw;
+        height: 30vh;
         object-fit: cover;
     }
 
+    .poloI{
+        width: 49%;
+        margin-left: 0 !important;
+    }
+    .poloD{
+        width: 49%;
+        margin-right: 0 !important;
+    }
+
+    .fecha {
+            margin: .5vh auto 1.5vh !important;
+        }
     @media (max-width: 768px) {
         .container.esg {
             padding: .2vh .2vh;
+            max-width: 100%;
+            margin: 0;
         }
 
         .rifasT {
@@ -75,11 +97,15 @@
         }
 
         .objeto {
-            font-size: 6vw !important;
+            padding: 1vw 0;
+            font-size: 5vw !important;
         }
 
         .des {
-            font-size: 5vw;
+            font-size: 1.2rem;
+        }
+        .des2 {
+            font-size: 1.1rem;
         }
 
         .col {
@@ -100,7 +126,7 @@
         }
 
         .fecha {
-            margin: 1vh auto !important;
+            margin: 1vh auto 2vh !important;
             font-size: 5vw !important;
         }
     }
@@ -129,18 +155,20 @@
                 <div class="card-body">
                     <p class="año"><small><b>{{p.1}}</b></small></p>
                     <p class="objeto" style="background-color: rgb(24, 143, 0); color: ghostwhite; margin-bottom: 1vh;">{{p.2}}</p>
-                    <p class="des" style="width: 85%; margin: auto; font-family: Arial, Helvetica, sans-serif; margin-top: 2vh;"><b>Descripción: </b><br></p>
+                    <p class="des" style="width: 85%; margin: auto; font-family: Arial, Helvetica, sans-serif; margin-top: 2vh;"><b>Descripción</b><br></p>
                     <div style="max-height: 12vh; min-height: 12vh; width: 70%; margin: auto;">
-                        <p class="des" style="font-family: Arial, Helvetica, sans-serif;">{{p.3}}</p>
+                        <p class="des2" style="font-family: Arial, Helvetica, sans-serif;"><i>{{p.3}}</i></p>
                     </div>
                     <div style="width: 100%; background-color: rgb(221, 71, 146); color: ghostwhite; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; padding: 1.5vh;">
-                        <p class="fecha" style="margin: 0;">Fecha de entrega: {{p.4}}</p>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update{{p.0}}">
-                            <i class="fa-solid fa-pen-to-square"></i>
+                        <p class="fecha" style="margin: 0; text-align: center;">Fecha de entrega: {{p.4}}</p>
+                        <div style="display: flex; flex-direction: row; justify-content: center;">
+                        <button type="button" class="btn btn-primary poloI" data-bs-toggle="modal" data-bs-target="#update{{p.0}}">
+                            Modificar <i class="fa-solid fa-pen-to-square"></i>
                         </button>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{p.0}}">
-                            <i class="fa-solid fa-trash"></i>
+                        <button type="button" class="btn btn-danger poloD" data-bs-toggle="modal" data-bs-target="#delete{{p.0}}">
+                            Borrar <i class="fa-solid fa-trash"></i>
                         </button>
+                    </div>
                     </div>
                 </div>
             </div>
