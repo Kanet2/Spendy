@@ -3,11 +3,11 @@
 {% block contenido %}
 <style>
     body{
-        background-color: aliceblue !important;
+        background-color: rgb(255, 255, 255) !important;
         background-image: none !important;
     }
     main{
-        background-color: rgb(238, 238, 238);
+        background-color: rgb(255, 255, 255);
         width: 100%;
         display: flex;         
         align-items: center;   
@@ -15,11 +15,14 @@
     }
     .uy, .negro{
         color: black !important;
-        list-style-type: none;
+       text-align: center;
+       font-family: Arial, Helvetica, sans-serif;
+       font-size: 1rem !important;
     }
     .centrado{
         margin: 4vh auto;
         text-align: center;
+        color: rgb(27, 96, 199);
     }
     h1, .uy, small{
         margin: 2vh auto;
@@ -30,7 +33,6 @@
         font-family: Arial, Helvetica, sans-serif;
         padding: 0;
         margin: 0;
-        margin-top: 2vh;
     }
       @media (max-width: 600px){
         .uy{
@@ -54,8 +56,12 @@
           height: fit-content !important;
         }
     .negro {
-        margin-bottom: 2vh;
-        font-size: 1vw;
+        margin-top: 1vh !important;
+        margin-bottom: 3vh !important;
+        font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.3rem !important;
+      list-style-type: none;
+      text-align: justify;
     }
     .imge{
         margin: 0;
@@ -71,38 +77,59 @@
     .fotos{
         width: 100%;
         height: 40vh;
-        background-color: aqua;
         margin: 1vh 0;
     }
     .pasos{
         width: 100%;
+    }
+    .pasos2{
+        color: rgb(183, 0, 255);
+        text-align: left;
+        font-size: 2rem;
+    }
+    h2{
+        margin-top: 6vh;
+    }
+    .eq{
+        text-align: center;
+        font-size: 1.5rem !important;
     }
 </style>
 
 <main>
     <div class="imge"></div>
     <h1 class="centrado">Como invertir en nuestra pagina</h1>
+    <p class="negro eq"><i style="color: red;">!Para poder invertir primero debes registrarte e Iniciar Sesion¡</i>
 
-    
+    <ol type="1" class="uy">
+        <h2 class="pasos2">&lozf; Paso 1:</h2>
+        <li class="negro" style="text-align: center;"> Escribe la cantidad de dinero que deseas invertir.
+            <div class="fotos"><img class="pasos" src="/static/img/1.png" alt=""></div>
+        </li><br>
 
-    <ul class="uy">
-        <li class="negro">Paso 1: Inicia Sesion, o Registrate con tu correo electronico personal (Te contactaremos por aqui en caso de inconvenientes).
-            <div class="fotos"><img class="pasos" src="/static/img/Paso1.1.png" alt=""></div>
+        <h2 class="pasos2">&lozf; Paso 2:</h2>
+        <li class="negro" style="text-align: center
+        ;">Elige cuanto tiempo sera invertido.
+            <div class="fotos"><img class="pasos" src="/static/img/2.png" alt=""></div></div>
         </li><br>
-        <li class="negro">Paso 2: Escoge que cantidad de dinero invertiras.
-            <div class="fotos"><img class="pasos" src="/static/img/Paso2.png" alt=""></div></div>
+
+        <h2 class="pasos2">&lozf; Paso 3:</h2>
+        <li class="negro">Deposita la cantidad de dinero que elegiste a la cuenta de banco que se mostrara.
+            <div class="fotos"><img class="pasos" src="/static/img/33.png" alt=""></div></div>
         </li><br>
-        <li class="negro">Paso 3: Elige el tiempo que sera invertido.
-            <div class="fotos"><img class="pasos" src="/static/img/Paso3.png" alt=""></div></div>
+
+        <h2 class="pasos2">&lozf; Paso 4:</h2>
+        <li class="negro">Para ver tus inversiones ve a:
+            <div class="fotos"><img class="pasos" src="/static/img/mi1-.png" alt=""></div></div>
         </li><br>
-        <li class="negro">Paso 4: Da click en invertir
-            <div class="fotos"><img class="pasos" src="/static/img/Paso3.png" alt=""></div></div>
+
+        <h2 class="pasos2">&lozf; Paso 5:</h2>
+        <li class="negro">Podras ver tus inversiones, una ves que deposites el estatus cambiara a una A,
+            lo que tu dinero esta invertido, solo espera a que el plazo termine y te depositaremos tu dinero
+            mas intereses.
+            <div class="fotos"><img class="pasos" src="/static/img/m-2.png" alt=""></div></div>
         </li><br>
-        <li class="negro">Paso 5: Se mostrara una cuenta de banco, deposita a ella la cantidad elegida.
-            <div class="fotos"><img class="pasos" src="/static/img/Paso4.png" alt=""></div></div>
-        </li><br>
-    </ul>
-    <p class="jff">"Y listo, tu dinero estara invertido, solo espera a que el plazo termine y te depositaremos tu dinero mas las ganancias."</p>
+    </ol>
     <div class="imge"></div>
 </main>
 
