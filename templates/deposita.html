@@ -22,68 +22,25 @@
     }
 
     .tarjeta {
-        width: 70%;
+        width: 65% !important;
         height: 80vh;
-        background-color: grey;
-        margin: 1vh auto;
+        background: linear-gradient(to bottom right, rgb(68, 68, 68), rgb(107, 107, 107), rgb(68, 68, 68), rgb(68, 68, 68), rgb(107, 107, 107), rgb(68, 68, 68));
+        box-shadow: 0 4px 10px 2px rgb(48, 48, 48);
+        margin: 3vh auto;
         border-radius: 10px;
         padding: 0 2vw;
     }
 
-    @media (max-width: 600px) {
-        .tarjeta {
-            width: 99%;
-            height: 40vh;
-            background-color: grey;
-            margin: 1vh auto;
-            border-radius: 10px;
-            padding: 0 5vw;
-        }
-
-        .tarjeta-header {
-            height: 15%;
-            width: 100%;
-            padding-top: 2vh;
-        }
-
-        .tarjeta-body {
-            height: 25%;
-            padding-top: 3%;
-        }
-
-        .nota {
-            font-size: 3vw !important;
-        }
-
-        .tarjeta-footer {
-            height: 15% !important;
-        }
-
-        .chip-container {
-            height: 5vh !important;
-            width: 13vw !important;
-        }
-
-        .seccion-clabe {
-            font-size: 3vw !important;
-        }
-
-        .clabe {
-            font-size: 3vw !important;
-        }
-
-        .titulo-paso-final {
-            margin: 0 !important;
-        }
+    .Deposita {
+        font-size: 2rem;
     }
-
     .titulo-paso-final {
         font-size: 2.4vw;
         margin: 2vh auto;
     }
 
     .seccion-clabe {
-        font-size: 2vw;
+        font-size: 2vw !important;
         font-family: Arial, Helvetica, sans-serif;
     }
 
@@ -91,16 +48,20 @@
         display: inline;
         background-color: white;
         padding: 0 2vh;
-        font-size: 2vw;
+        font-size: 2vw !important;
         border-radius: 5px;
     }
 
     .nota {
-        background-color: rgb(255, 255, 255);
-        margin: 0;
-        padding: 0 1vw;
-        border-radius: 5px;
+        text-align: center;
+        background-color: rgb(88, 88, 88);
+        color: ghostwhite;
         font-size: 1rem;
+        width: 65%;
+        margin: auto;
+        padding: 2vh;
+        border-radius: 5px;
+        font-size: 1.2rem;
     }
 
     .contenedor-clabe {
@@ -110,10 +71,12 @@
     .contenedor-nota {
         height: 10%;
         border-radius: 5px;
+        width: fit-content;
+        margin: auto;
     }
 
     .tarjeta-header {
-        height: 15%;
+        height: 25%;
         width: 100%;
         padding-top: 2vh;
     }
@@ -128,7 +91,9 @@
     }
 
     .tarjeta-footer {
-        height: 20%;
+        height: 35%;
+        display: flex;
+        align-items: center;
     }
 
     .tarjeta-footer p {
@@ -137,7 +102,7 @@
     }
 
     .chip-container {
-        background: linear-gradient(to top right, yellow, rgb(184, 165, 2));
+        background: linear-gradient(to top right, yellow, rgb(225, 165, 2));
         width: 5.5vw;
         height: 9vh;
         border-radius: 10px;
@@ -163,45 +128,190 @@
     .chip:last-child .credits {
         border-bottom: none;
     }
+
+    .centross {
+        height: 25%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 3vw;
+    }
+
+    .chip-container2 {
+        background-image: url(/static/img/mundos3.jpg);
+        background-size: cover;
+        width: 8.5vw;
+        height: 9vh;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: row;
+        border: 1px solid rgb(97, 97, 97);
+    }
+
+    .ei {
+        max-height: 4vh !important;
+        font-size: 2rem !important;
+        display: flex !important;
+        width: 100% !important;
+        text-align: center !important;
+        letter-spacing: 1.5vw;
+        word-spacing: 1.8vw;
+        justify-content: center !important;
+        align-items: center;
+        margin: 0 !;
+        padding: 0 !important;
+    }
+
+    .IB {
+        height: 2rem;
+        margin: 0;
+        padding: 0;
+    }
+
+    .bano {
+        width: 100%;
+        text-align: left;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center;
+    }
+
+    .PB {
+        letter-spacing: .2vw;
+        font-family: serif;
+        margin: 0;
+        padding: 0;
+        margin-left: 1vw;
+        color: red; font-size: 2.5rem; margin-right: 8vw;
+    }
+    .spT{
+        color: white; font-size: 2rem; margin: 0; margin-left: 8vw;
+    }
+    .nota{
+        margin-bottom: 2vh;
+    }
+    @media (max-width: 600px) {
+        .tarjeta {
+            width: 95% !important;
+            height: 35vh;
+            background-color: grey;
+            margin: 1vh auto;
+            border-radius: 10px;
+            padding: 0 5vw;
+        }
+
+        .tarjeta-header {
+            height: 15%;
+            width: 100%;
+            padding-top: 2vh;
+            font-size: 1rem !important; 
+        }
+        .ei{
+            font-size: 1rem !important;
+        }
+        .centross{
+            width: 100%;
+        }
+        .IB{
+            font-size: 1rem !important;
+            height: 1rem;
+        }
+        .PB{
+            font-size: 1rem !important;
+        }
+        .spT{
+        color: white; font-size: 1rem; margin: 0; margin-left: 8vw;
+    }
+        .centross {
+            height: 25%;
+            padding-top: 3%;
+        }
+
+        .nota {
+            font-size: 3vw !important;
+        }
+
+        .tarjeta-footer {
+            height: 40% !important;
+        }
+
+        .chip-container {
+            height: 5vh !important;
+            width: 13vw !important;
+        }
+
+        .seccion-clabe {
+            font-size: 3vw !important;
+        }
+        .chipP{
+            width: 20vw;
+            height: 5vh;
+        }
+        .clabe {
+            font-size: 3vw !important;
+        }
+
+        .titulo-paso-final {
+            margin: 0 !important;
+            font-size: 4vw;
+        }
+        .bano{
+            max-width: 50% !important;
+        }
+    }
 </style>
+
 
 <div class="tarjeta">
     <div class="tarjeta-header">
-        <p class="alineado-centro texto-blanco titulo-paso-final">Paso final</p>
-        <hr style="background-color: white; height: 1vh;">
-    </div>
-    <div class="tarjeta-body">
-        <h3 class="texto-blanco">Deposita a esta cuenta</h3>
+        <p class="alineado-centro texto-blanco titulo-paso-final">Deposita a esta cuenta</p>
+        <div style="background-color: white; height: .3vh; width: 100%; "></div>
     </div>
 
-    <div class="tarjeta-central">
-        <div class="chip-container">
-            <div class="tres" style="border-right: 1px solid rgb(99, 98, 98);">
-                <div class="credits"></div>
-                <div class="credits"></div>
-                <div class="credits"></div>
-                <div class="credits" style="border-bottom: none;"></div>
+    <div class="centross">
+        <div class="tarjeta-central">
+            <div class="chip-container">
+                <div class="tres" style="border-right: 1px solid rgb(99, 98, 98);">
+                    <div class="credits"></div>
+                    <div class="credits"></div>
+                    <div class="credits"></div>
+                    <div class="credits" style="border-bottom: none;"></div>
+                </div>
+                <div class="tres"></div>
+                <div class="tres" style="border-left: 1px solid rgb(99, 98, 98);">
+                    <div class="credits"></div>
+                    <div class="credits"></div>
+                    <div class="credits"></div>
+                    <div class="credits" style="border-bottom: none;"></div>
+                </div>
             </div>
-            <div class="tres"></div>
-            <div class="tres" style="border-left: 1px solid rgb(99, 98, 98);">
-                <div class="credits"></div>
-                <div class="credits"></div>
-                <div class="credits"></div>
-                <div class="credits" style="border-bottom: none;"></div>
+        </div>
+
+
+
+        <div class="tarjeta-central">
+            <div class="chipP chip-container2">
+
             </div>
         </div>
     </div>
 
     <div class="tarjeta-footer">
-        <p class="seccion-clabe">CLABE: </p>
-        <p class="clabe">
-            002 115 01600326941 1
-        </p>
+        <p class="texto-blanco ei">4765 8820 5367 8122</p>
     </div>
-
-    <div class="contenedor-nota">
-        <p class="nota">Nota: Después del depósito validaremos tu inversión y al terminar el plazo elegido se te devolverá tu dinero más el dinero extra ganado.</p>
+    <div style="display: flex; align-items: center;">
+        <div class="bano">
+            <img class="IB" src="/static/img/BT.png" alt="">
+            <p class="PB"><b>BANORTE</b></p>
+        </div>
+        <div class="bano">
+            <p class="spT">SPENDY 10/24</p>
+        </div>
     </div>
 </div>
 
+<div class="contenedor-nota">
+    <p class="nota">Nota: Después del depósito validaremos tu inversión y al terminar el plazo elegido se te devolverá
+        tu dinero más el dinero extra ganado.</p>
+</div>
 {% endblock %}

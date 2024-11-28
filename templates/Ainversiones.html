@@ -1,0 +1,194 @@
+{% extends 'layout.html' %}
+
+{% block titulo %}Usuarios{% endblock %}
+
+{% block contenido %}
+
+<style>
+    table {
+        width: 80%;
+        max-width: 900px;
+        margin: auto;
+        border-collapse: collapse;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+
+    thead th {
+        text-align: center;
+        font-size: 1.5em;
+        background-color: #0078d7;
+        color: white;
+        padding: 15px;
+    }
+
+    tbody td {
+        text-align: center;
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    th,
+    td {
+        font-size: 1em;
+    }
+    .boxs {
+            margin: 1vh;
+        }
+
+    @media screen and (max-width: 600px) {
+        table {
+            width: 100%;
+        }
+
+        thead th {
+            font-size: 1em;
+            padding: 10px;
+        }
+
+        tbody td {
+            font-size: 0.6em;
+            padding: 8px;
+        }
+
+        td button {
+            width: .1vw !important;
+            height: 3vh;
+        }
+
+        .btn {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 10px;
+        }
+
+        .boxs {
+            margin: 1vh;
+        }
+    }
+</style>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="7">Todas las Inversiones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Id">Id</td>
+                <td data-label="UserId">User</td>
+                <td data-label="Fecha">Fecha</td>
+                <td data-label="Cantidad">Cantidad</td>
+                <td data-label="Plazo">Plazo</td>
+                <td data-label="Estado">Estatus</td>
+                <td>Botones</td>
+            </tr>
+            {% for Ai in A %}
+            <tr>
+                <td data-label="Id">{{Ai.0}}</td>
+                <td data-label="UserId">{{Ai.1}}</td>
+                <td data-label="Fecha">{{Ai.4}}</td>
+                <td data-label="Cantidad">{{Ai.3}}</td>
+                <td data-label="Plazo">{{Ai.2}}</td>
+                <td data-label="Estatus">{{Ai.5}}</td>
+                <td class="bo">
+                    <div class="boxs">
+                        <button type="button" data-bs-target="#Modificar{{Ai.0}}" data-bs-toggle="modal"
+                            class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i>
+                    </div>
+                    <div class="boxs">
+                    <button type="button" class="btn btn-danger poloD" data-bs-toggle="modal"
+                        data-bs-target="#delete{{Ai.0}}"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                </td>
+
+            </tr>
+
+
+
+            <!-- Modales -->
+
+            <!-- Modal Modificar -->
+            <div class="modal fade" id="Modificar{{Ai.0}}" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modificar Inversion</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="/uInversiones/{{Ai.0}}" method="post">
+                            <div class="modal-body">
+                                <div class="form-floating mb-3">
+                                    <input type="date" name="fecha" value="{{Ai.4}}" class="form-control"
+                                        placeholder="Nuevo año de rifa">
+                                    <label for="floatingInput">Fecha: </label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text" name="cantidad" value="{{Ai.2}}" class="form-control"
+                                        placeholder="Nuevo premio">
+                                    <label for="floatingInput">Cantidad: </label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text" name="plazo" value="{{Ai.3}}" class="form-control"
+                                        placeholder="Nueva descripción">
+                                    <label for="floatingInput">Plazo: </label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <select name="estatus" style="padding: 2vh; width: 100%;">
+                                        <option disabled selected>Estatus</option>
+                                        <option {% if Ai.5=='I' %} selected {% endif %} value="I">Inactiva</option>
+                                        <option {% if Ai.5=='A' %} selected {% endif %} value="A">Activa</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Actualizar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Modal Borrar -->
+            <div class="modal fade" id="delete{{Ai.0}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">¿Seguro que quieres eliminar la rifa
+                                <b>{{Ai.0}}</b>?
+                            </h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <a href="/dInversion/{{Ai.0}}" class="btn btn-danger">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>
+
+{% endblock %}

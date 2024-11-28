@@ -49,7 +49,7 @@ def navR():
             rutaU = '/sUsuario'
             name = 'Usuarios'
             Invertir = '/Invertir'
-            mInversion = '/mInversiones'
+            mInversion = '/Ainversiones'
         return dict(r=rutaR, u=rutaU,nombre=name, i=Invertir, mi=mInversion)
     else:
         rutaR = '/sRifa'
@@ -182,6 +182,7 @@ def uUsuario(id):
 @spendyApp.route('/dUsuario/<int:id>', methods=['GET','POST']) 
 def dUsuario(id):
     eliminarCuenta = db.connection.cursor()
+    eliminarCuenta.execute("DELETE FROM inversiones WHERE userId=%s",(id,))
     eliminarCuenta.execute("DELETE FROM usuario WHERE id=%s", (id,))
     db.connection.commit()
     flash('Usuario Eliminado')
@@ -282,6 +283,35 @@ def misInversiones():
     I = miInversion.fetchall()
     miInversion.close
     return render_template('Minversiones.html', Inversiones=I)
+
+@spendyApp.route('/Ainversiones')
+def AdminInversiones():
+    AInversiones = db.connection.cursor()
+    AInversiones.execute('SELECT * FROM inversiones')
+    Ai = AInversiones.fetchall()
+    AInversiones.close
+    return render_template('Ainversiones.html', A=Ai)
+
+@spendyApp.route('/uInversiones/<int:Id>', methods=['POST','GET'])
+def UpdateInversiones(Id):
+    fecha = request.form['fecha']
+    cantidad = request.form['cantidad']
+    plazo = request.form['plazo']
+    estatus = request.form['estatus']
+    Uinversiones = db.connection.cursor()
+    Uinversiones.execute('UPDATE inversiones SET fechaInversion = %s, amount = %s, plazo = %s, status = %s WHERE id = %s', (fecha, cantidad, plazo, estatus, Id))
+    db.connection.commit()
+    Uinversiones.close()
+    return redirect('/Ainversiones')
+
+@spendyApp.route('/dInversion/<int:id>')
+def delInv(id):
+    dinv = db.connection.cursor()
+    dinv.execute('DELETE FROM inversiones WHERE id=%s', (id,))
+    db.connection.commit()
+
+    dinv.close()
+    return redirect('/Ainversiones')
 
 # Iniciar la aplicación
 if __name__ == '__main__':

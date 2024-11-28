@@ -7,7 +7,7 @@
 <style>
   .fonda {
     width: 100%;
-    height: 80vh;
+    height: fit-content;
     position: relative;
     background-color: rgb(4, 17, 92);
     display: flex;
@@ -15,25 +15,21 @@
 
   .fondosIA {
     width: 50%;
-    height: 100%;
-    background: url(/static/img/bitcoin-wallpaper-4k.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
+    
+    
   }
 
   .fondosIAR {
     width: 50%;
-    height: 100%;
-    background: url(/static/img/ia_reversed.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
+  
+    
   }
 
   .contenidoTexto {
-    background-color: rgba(11, 31, 110, 0.562);
+    background-color: rgba(10, 19, 56, 0.562);
     position: absolute;
     width: 100%;
-    height: 80vh;
+    height: 100%;
     flex-direction: column;
     display: flex;
     justify-content: center;
@@ -42,23 +38,31 @@
     color: white;
   }
 
+  .spendy{
+    font-size: 2.5rem;
+  }
+  .laMejor{
+    font-size: 1.5rem;
+  }
   .ce {
     text-align: center;
   }
 
   .Htitu {
-    
-    font-size: 2vw;
-    color: rgb(13, 13, 85);
-    margin-top: 6vh;
-    margin-bottom: 2vh;
+    text-align: center;
+    font-size: 1.5rem;
+    color: rgb(33, 64, 165);
+    margin-top: 10vh;
+    margin-bottom: 3vh;
   }
 
   .Hp {
-    font-family: serif;
-    font-size: 1.2vw;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    text-align: justify;
     display: flex;
     justify-content: center;
+    margin-bottom: 4vh;
   }
 
   th,
@@ -68,38 +72,38 @@
 
   th,
   thead {
-    background-color: rgb(252, 60, 156) !important;
-    color: ghostwhite !important;
+    background-color: rgb(255, 0, 128) !important;
+    color: rgb(255, 255, 255) !important;
   }
 
   .row {
     width: 96vw !important;
     margin: 0;
-    background-color: rgba(153, 151, 151, 0.486);
+    background-color: white !important;
     margin: 2vw;
     padding: 2vw;
   }
 
   .grande {
     width: 100%;
-    padding: 2vw 0;
+    padding: 0;
+    background-color: white !important;
   }
-
+  .abajo{
+    width: 35%; margin: auto; display: flex; flex-direction: column; justify-content: center;
+  }
   @media (max-width: 768px) {
     .fonda {
       width: 100%;
-      height: 40vh;
+      height: 100%;
       position: relative;
-      background-color: rgb(4, 17, 92);
+      
       display: flex;
     }
 
     .fondosIA {
       width: 100%;
       height: 100%;
-      background: url(/static/img/bitcoin-wallpaper-4k.jpg);
-      background-size: cover;
-      background-repeat: no-repeat;
     }
 
     .fondosIAR {
@@ -108,10 +112,10 @@
     }
 
     .contenidoTexto {
-      background-color: rgba(11, 31, 110, 0.562);
+      
       position: absolute;
       width: 100%;
-      height: 40vh;
+      height: 100%;
       flex-direction: column;
       display: flex;
       justify-content: center;
@@ -119,10 +123,15 @@
       text-align: center;
       color: white;
     }
-    
+    .spendy{
+      font-size: 1.5rem;
+    }
+    .laMejor{
+      font-size: 1rem;
+    }
     th,
     td {
-      padding: .71vh !important;
+      padding: 1vh !important;
     }
 
     .abajo {
@@ -154,26 +163,35 @@
 
   th,
   td {
-    font-size: 1vw;
+    font-size: 1rem;
+  }
+  .TT{
+    text-align: center;
+    font-size: 1rem;
+  }
+  table{
+    box-shadow: 0 5px 10px 1px rgb(190, 190, 190);
+    
   }
 </style>
 
 <div class="fonda">
-  <div class="fondosIA"></div>
-  <div class="fondosIAR"></div>
+  <div class="fondosIA"><img style="width: 100%;" src="/static/img/bitcoin-wallpaper-4k.jpg" alt=""></div>
+  <div class="fondosIAR"><img style="width: 100%;" src="/static/img/ia_reversed.jpg" alt=""></div>
   <div class="contenidoTexto">
-    <h1 style="font-size: 4vw;">Spendy</h1>
-    <p style="font-size: 2.2vw;"><i>La mejor app para hacer inversiones</i></p>
+    <h1 class="spendy">Spendy</h1>
+    <p class="laMejor"><i>La mejor app para hacer inversiones</i></p>
   </div>
 </div>
 
-<div class="abajo" style="width: 35%; margin: auto; display: flex; flex-direction: column; justify-content: center;">
+<div class="abajo">
   <h2 class="Htitu">¿Que es Spendy?</h2>
   <p class="Hp">Nosotros somos una empresa que te ayuda a cuidar tu dinero, a invertirlo, y a cuidarlo,
     te asesoramos para que sepas como cuidar tu dinero, hacemos prestamos, y por si fuera poco, tenemos las mejores
     rifas ¿Estas listo?.</p>
 
   <div class="grande col-md-5 d-flex flex-column bg-light">
+    <h2 class="TT">Tabla 1: Intererses</h2>
     <table class="table table-bordered mb-3" style="text-align: center">
       <thead>
         <tr>
@@ -204,21 +222,17 @@
         </tr>
       </tbody>
     </table>
-    <div style="background-color: rgb(105, 104, 104); width: 90%; height: .5vh; margin: 0 auto;"></div>
-    <i>
-      <p class="lll" style="text-align: center; margin-top: .5vh;">"Ahorra y gana con Spendy"</p>
-    </i>
-  </div>
+    
 
   <h2 class="Htitu">Inversiones</h2>
   <p class="Hp">Nuestras inversiones son seguras y las mas cuidadas por nuestros mejores inversionistas, puedes empezar
     a invertir desde 100$ pesos con un limite de 10 Millones.</p>
-  <img src="/static/img/targeta.png" alt="">
-  <p class="Hp" style="font-family: serif;">Para invertir ve a <a href="/cInvertir">&nbsp;¿Como invertir?</a></p>
+  <img class="hp" src="/static/img/TargetaInicio.png" alt="">
+  
 
   <h2 class="Htitu">Rifas</h2>
   <p class="Hp">Nuestras rifas se hacen anualmente, pero mientras mas crezca Spendy mas pronto seran, para participar
     solo debes de tener invertidos 100 pesos, y asi ganas la posibilidad de obtener el premio anual.</p>
-  <img src="/static/img/rif.png" alt="">
+  <img src="/static/img/RifasInicio.png" alt="">
 </div>
 {% endblock %}
