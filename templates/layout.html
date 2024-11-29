@@ -60,11 +60,15 @@
       font-size: 1rem;
     }
 
-    .form-inline {
+    .form-flex {
       display: flex;
       align-items: center;
     }
-
+    @media (max-width: 991px){
+    .form-flex{
+      width: 100% !important;
+    }
+  }
     footer {
       border-top: 1px solid #ccc;
       padding: .4rem;
@@ -132,7 +136,7 @@
             {{ Segundo|safe }}
           </li>
         </ul>
-        <form class="form-inline"
+        <form class="form-flex"
           style="width: fit-content; display: flex; justify-content: center; align-items: center; flex-direction: row;">
 
           
